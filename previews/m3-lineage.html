@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suchetana Electricals — M3: Lineage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#580E8F;
+  --purple-deep:#3A0960;
+  --purple-lift:#8B2FD6;
+  --plum:#2A0745;
+  --white:#FFFFFF;
+  --wash:#EADCF6;
+  --wash-2:#C3A6DC;
+  --amber:#F0B049;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --sans:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--purple);color:var(--white);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1380px;margin:0 auto;padding:0 clamp(20px,4vw,60px);width:100%}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(88,14,143,.72);backdrop-filter:blur(10px)}
+nav .wrap{height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+nav .lk{display:flex;align-items:center;gap:12px}
+nav .lk img{height:28px;width:auto}
+nav .lk b{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.wa{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--purple);background:#fff;font-size:12.5px;font-weight:600;padding:9px 14px;border-radius:2px;transition:background .2s,transform .2s,color .2s}
+.wa:hover{background:var(--amber);color:var(--plum);transform:translateY(-1px)}
+.wa svg{width:15px;height:15px}
+
+/* progress rail */
+.rail{position:fixed;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.16);z-index:70}
+.rail i{display:block;height:100%;width:0%;background:var(--amber)}
+
+/* horizontal stage */
+.stage{position:relative;overflow:hidden}
+.track{display:flex;align-items:stretch}
+.panel{flex:0 0 100vw;min-height:100vh;display:flex;align-items:center;padding:96px 0 72px;position:relative}
+@media(max-width:900px){
+  .track{flex-direction:column}
+  .panel{flex:0 0 auto;min-height:auto;padding:74px 0}
+}
+
+/* panel 1 */
+.opening{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr);gap:clamp(24px,5vw,64px);align-items:center}
+@media(max-width:1000px){.opening{grid-template-columns:1fr;gap:34px}}
+.kick{display:flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--wash-2);margin-bottom:clamp(18px,2.4vw,30px)}
+.kick i{width:26px;height:2px;background:var(--amber);display:block}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.8rem,8vw,7rem);line-height:.94;letter-spacing:-.028em}
+h1 .ln{display:block;overflow:hidden}
+h1 .ln > span{display:block;transform:translateY(105%)}
+h1 i{font-style:italic;color:var(--amber)}
+.sub{margin-top:clamp(20px,2.4vw,30px);max-width:44ch;color:var(--wash);font-size:clamp(1rem,1.2vw,1.12rem);line-height:1.66}
+.sub b{color:#fff;font-weight:600}
+.markbox{display:flex;justify-content:center}
+.markbox img{width:min(300px,62%);height:auto;opacity:.95}
+
+/* generation panels */
+.gen{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1fr);gap:clamp(26px,5vw,72px);align-items:center;width:100%}
+@media(max-width:1000px){.gen{grid-template-columns:1fr;gap:28px}}
+.year{font-family:var(--serif);font-weight:400;font-size:clamp(4.6rem,15vw,13rem);line-height:.8;letter-spacing:-.05em;color:rgba(255,255,255,.14);font-variant-numeric:tabular-nums}
+.gen.alt .year{color:var(--amber);opacity:.9}
+.tile{
+  width:clamp(78px,9vw,116px);aspect-ratio:1;display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.28);font-family:var(--serif);font-size:clamp(1.4rem,2.6vw,2.1rem);
+  letter-spacing:.04em;color:#fff;margin-bottom:22px;
+}
+.gen h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,4vw,3.3rem);line-height:1.05;letter-spacing:-.024em;max-width:20ch}
+.gen .role{margin-top:12px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+.gen p{margin-top:18px;max-width:50ch;color:var(--wash);line-height:1.68}
+.gen .facts{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px}
+.fact{border:1px solid rgba(255,255,255,.24);padding:8px 12px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--wash)}
+
+/* today panel */
+.today .nums{display:grid;grid-template-columns:repeat(4,auto);gap:clamp(18px,3.4vw,52px);justify-content:start;margin-top:30px}
+@media(max-width:680px){.today .nums{grid-template-columns:1fr 1fr;gap:22px}}
+.today .nums .n{font-family:var(--serif);font-size:clamp(2rem,4.4vw,3.4rem);line-height:1;letter-spacing:-.03em;display:block;font-variant-numeric:tabular-nums}
+.today .nums .n small{font-family:var(--sans);font-size:.32em;font-weight:600;letter-spacing:.08em;color:var(--wash-2);margin-left:.3em}
+.today .nums .k{display:block;margin-top:8px;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--wash-2)}
+
+/* closing panel */
+.finale{background:var(--plum)}
+.finale h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,6vw,5rem);line-height:1;letter-spacing:-.03em;max-width:16ch}
+.finale p{margin-top:18px;color:var(--wash);max-width:44ch;line-height:1.65}
+.acts{margin-top:30px;display:flex;flex-wrap:wrap;gap:11px}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-size:14.5px;font-weight:500;padding:14px 20px;border-radius:2px;transition:all .2s ease}
+.btn svg{width:16px;height:16px;flex:none}
+.btn.w{background:#fff;color:var(--purple);font-weight:600}
+.btn.w:hover{background:var(--amber);color:var(--plum);transform:translateY(-2px)}
+.btn.o{border:1px solid rgba(255,255,255,.34);color:#fff}
+.btn.o:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px)}
+
+.badge{position:fixed;left:16px;bottom:14px;z-index:90;background:#fff;color:var(--purple);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;border-radius:2px}
+.hint{position:fixed;right:16px;bottom:16px;z-index:90;color:var(--wash-2);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="lk"><img src="assets/se-logo-white.png" alt="Suchetana Electricals"><b>Suchetana Electricals</b></div>
+    <a class="wa" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.16c-.25.69-1.44 1.31-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.16-1.55-1.16-2.95 0-1.4.73-2.09 1-2.38.24-.27.55-.34.73-.34h.53c.17 0 .4-.06.62.48.25.6.85 2.08.92 2.23.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.35 1.45.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.65.78 1.94.92.29.14.48.22.55.34.07.12.07.7-.18 1.39Z"/></svg>WhatsApp</a>
+  </div>
+</nav>
+
+<div class="rail"><i id="railFill"></i></div>
+
+<div class="stage" id="stage">
+  <div class="track" id="track">
+
+    <section class="panel">
+      <div class="wrap opening">
+        <div>
+          <div class="kick" id="k1"><i></i>Bengaluru · Class I · established 1969</div>
+          <h1>
+            <span class="ln"><span>One family</span></span>
+            <span class="ln"><span>has signed for</span></span>
+            <span class="ln"><span><i>the work</i> since 1969.</span></span>
+          </h1>
+          <p class="sub" id="s1">
+            Fifty-seven unbroken years in the same trade, under the same licence class —
+            <b>73 installations, 39 MVA, 42 localities.</b> A house, a hospital, a state sub-station.
+          </p>
+        </div>
+        <div class="markbox" id="m1"><img src="assets/se-logo-white.png" alt="Suchetana Electricals monogram"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="wrap gen">
+        <div class="year" data-anim>1969</div>
+        <div data-anim>
+          <div class="tile">SM</div>
+          <h2>Sri Subramanyappa M. founds the firm.</h2>
+          <div class="role">Founder · Licensed Electrical Engineer, Mysore State</div>
+          <p>A proprietorship set up to take domestic, commercial and industrial electrical
+             contracting work — Class I from the outset. He gives the firm its direction for
+             close to three decades, until his retirement in 1996.</p>
+          <div class="facts"><span class="fact">Class I from day one</span><span class="fact">Mysore State licence</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="wrap gen alt">
+        <div class="year" data-anim>1996</div>
+        <div data-anim>
+          <div class="tile">MS</div>
+          <h2>Mr. Madhusudan M.S. takes it on.</h2>
+          <div class="role">Proprietor · Dip. Electrical Engineering, BBM · 35 years</div>
+          <p>Son of the founder, on site with his father from a very young age. He still signs
+             for every job the firm takes, and still reads the enquiries himself.</p>
+          <div class="facts">
+            <span class="fact">Contractor licence 1CL192563BNG</span>
+            <span class="fact">Supervisor licence 1SP191691BNG</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel today">
+      <div class="wrap gen">
+        <div class="year" data-anim>Today</div>
+        <div data-anim>
+          <div class="tile">SMS</div>
+          <h2>Mr. Suchetan M.S. runs the engineering.</h2>
+          <div class="role">Concept Design Architect · Graduate Electrical Engineer · 34 years</div>
+          <p>The third generation oversees engineering and implementation — from HT supply
+             sanction through erection, cable runs and commissioning. Supported by a site team
+             whose service is measured in decades: Mr. Jagadisha S. has been here 38 years.</p>
+          <div class="nums">
+            <div><span class="n">57</span><span class="k">Years</span></div>
+            <div><span class="n">73</span><span class="k">Projects</span></div>
+            <div><span class="n">39<small>MVA</small></span><span class="k">Load</span></div>
+            <div><span class="n">42</span><span class="k">Localities</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel finale">
+      <div class="wrap">
+        <div data-anim>
+          <h2>Let us look at your next project.</h2>
+          <p>Send the drawings, the sanctioned load, or just the address —
+             whether it is a single house or a sub-station.</p>
+          <div class="acts">
+            <a class="btn w" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.16c-.25.69-1.44 1.31-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.16-1.55-1.16-2.95 0-1.4.73-2.09 1-2.38.24-.27.55-.34.73-.34h.53c.17 0 .4-.06.62.48.25.6.85 2.08.92 2.23.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.35 1.45.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.65.78 1.94.92.29.14.48.22.55.34.07.12.07.7-.18 1.39Z"/></svg>WhatsApp +91 98450 13813</a>
+            <a class="btn o" href="tel:08023464320">080 2346 4320</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div class="badge">M3 — Lineage</div>
+<div class="hint">scroll ↓</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!window.gsap || reduce){
+  document.querySelectorAll('h1 .ln > span').forEach(e => e.style.transform='none');
+} else {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // intro
+  gsap.set(['#k1','#s1','#m1'], {opacity:0, y:24});
+  gsap.timeline({defaults:{ease:'power3.out'}})
+    .to('#k1', {opacity:1, y:0, duration:.6})
+    .to('h1 .ln > span', {y:'0%', duration:1.05, stagger:.09, ease:'expo.out'}, .1)
+    .to('#s1', {opacity:1, y:0, duration:.8}, .6)
+    .to('#m1', {opacity:1, y:0, duration:1, ease:'power2.out'}, .45);
+
+  const mm = gsap.matchMedia();
+
+  // desktop: the page runs sideways through the generations
+  mm.add('(min-width: 901px)', () => {
+    const track  = document.getElementById('track');
+    const panels = gsap.utils.toArray('.panel');
+    const dist   = () => track.scrollWidth - window.innerWidth;
+
+    const sweep = gsap.to(track, {
+      x: () => -dist(), ease:'none',
+      scrollTrigger:{
+        trigger:'#stage', start:'top top', end:() => '+=' + dist(),
+        pin:true, scrub:.8, invalidateOnRefresh:true,
+        onUpdate: self => { document.getElementById('railFill').style.width = (self.progress*100)+'%'; }
+      }
+    });
+
+    panels.slice(1).forEach(p => {
+      gsap.from(p.querySelectorAll('[data-anim]'), {
+        opacity:0, y:52, duration:.9, stagger:.12, ease:'power3.out',
+        scrollTrigger:{ trigger:p, containerAnimation:sweep, start:'left 72%' }
+      });
+      const yr = p.querySelector('.year');
+      if (yr) gsap.fromTo(yr, {x:70}, {x:-40, ease:'none',
+        scrollTrigger:{ trigger:p, containerAnimation:sweep, start:'left right', end:'right left', scrub:true }});
+    });
+
+    return () => { document.getElementById('railFill').style.width = '0%'; };
+  });
+
+  // mobile: same story, stacked
+  mm.add('(max-width: 900px)', () => {
+    gsap.utils.toArray('.panel').slice(1).forEach(p => {
+      gsap.from(p.querySelectorAll('[data-anim]'), {
+        opacity:0, y:40, duration:.8, stagger:.1, ease:'power3.out',
+        scrollTrigger:{ trigger:p, start:'top 76%' }
+      });
+    });
+    ScrollTrigger.create({
+      trigger:'body', start:'top top', end:'bottom bottom', scrub:true,
+      onUpdate: s => { document.getElementById('railFill').style.width = (s.progress*100)+'%'; }
+    });
+  });
+}
+</script>
+</body>
+</html>

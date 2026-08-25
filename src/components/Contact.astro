@@ -1,0 +1,200 @@
+---
+import WhatsAppComposer from './react/WhatsAppComposer';
+interface Props { about?: string; }
+const { about } = Astro.props;
+---
+<div class="contact-world">
+  <section class="drawing-table" aria-labelledby="contact-title">
+    <div class="table-wrap">
+      <div class="sheet-corner corner-a" aria-hidden="true"></div>
+      <div class="sheet-corner corner-b" aria-hidden="true"></div>
+
+      <header class="contact-intro">
+        <h1 id="contact-title">A complete drawing set is useful. <span>An address is enough to begin.</span></h1>
+        <p>
+          Tell us what you know. Madhusudan M.S., proprietor and Class I licence holder, reads the
+          enquiry himself.
+        </p>
+      </header>
+
+      <aside class="recipient" aria-label="Your enquiry is sent directly to Madhusudan M.S.">
+        <img src="/people/madhusudan-ms.jpg" alt="Madhusudan M.S., proprietor" width="1023" height="1537" />
+        <div>
+          <span>ISSUED DIRECTLY TO</span>
+          <h2>Madhusudan M.S.</h2>
+          <p>Proprietor · Class I contractor</p>
+          <b>1CL192563BNG</b>
+          <small>Reads this enquiry himself</small>
+        </div>
+      </aside>
+
+      <WhatsAppComposer about={about} client:visible />
+    </div>
+  </section>
+
+  <section class="after-send" aria-labelledby="after-title">
+    <div class="wrap">
+      <header>
+        <h2 id="after-title">What happens after you send it.</h2>
+        <p>No automated estimate and no sales desk. The available information is reviewed first.</p>
+      </header>
+      <ol>
+        <li>
+          <span>Read</span>
+          <div><h3>Madhusudan receives it.</h3><p>The WhatsApp message reaches the proprietor and licence holder directly.</p></div>
+        </li>
+        <li>
+          <span>Review</span>
+          <div><h3>The available information is checked.</h3><p>Drawings and sanctioned load if available; the address and basic scope if not.</p></div>
+        </li>
+        <li>
+          <span>Clarify</span>
+          <div><h3>The next requirement is identified.</h3><p>A call, drawing discussion or site coordination—depending on what the work needs.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="distribution" aria-labelledby="distribution-title">
+    <div class="wrap distribution-grid">
+      <div>
+        <h2 id="distribution-title">Other ways to reach the firm.</h2>
+        <p>Use the direct line when speaking is easier, or the office details for formal correspondence.</p>
+      </div>
+      <dl>
+        <div>
+          <dt>Proprietor · calls and WhatsApp</dt>
+          <dd><a href="tel:+919845013813">+91 98450 13813</a><small>Madhusudan M.S.</small></dd>
+        </div>
+        <div><dt>Site coordination</dt><dd><a href="tel:+918310267137">+91 83102 67137</a></dd></div>
+        <div><dt>Office</dt><dd><a href="tel:08023464320">080 2346 4320</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:suchetanaele@gmail.com">suchetanaele@gmail.com</a></dd></div>
+        <div>
+          <dt>Registered office</dt>
+          <dd class="address">G 4/5, No. 139, Shalimar Galaxy, Sheshadripuram, Bengaluru 560 020
+            <small><a href="https://maps.google.com/?q=Shalimar+Galaxy+Sheshadripuram+Bengaluru+560020" target="_blank" rel="noopener">Open in Maps</a></small>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+</div>
+
+<style>
+  .contact-world { --table: #656a70; --paper: #f3f2ed; --rule: rgba(22,19,26,.26); }
+  .drawing-table { background: var(--table); padding: clamp(20px, 3vw, 44px); }
+  .table-wrap {
+    max-width: 1500px; margin: 0 auto; min-height: calc(100svh - 88px); position: relative;
+    background: var(--paper); padding: clamp(34px, 5vw, 78px);
+    box-shadow: 0 26px 70px -30px rgba(22,19,26,.68), inset 0 0 0 1px rgba(22,19,26,.08);
+    overflow: hidden;
+  }
+  .table-wrap::before {
+    content: ""; position: absolute; top: 46%; left: 0; right: 0; height: 1px;
+    background: rgba(22,19,26,.09); box-shadow: 0 1px rgba(255,255,255,.8); pointer-events: none;
+  }
+  .sheet-corner { position: absolute; width: 32px; height: 32px; border-color: var(--glaze); opacity: .55; }
+  .corner-a { top: 18px; left: 18px; border-top: 1px solid; border-left: 1px solid; }
+  .corner-b { right: 18px; bottom: 18px; border-right: 1px solid; border-bottom: 1px solid; }
+  .contact-intro { max-width: 1050px; position: relative; z-index: 1; }
+  .contact-intro h1 { font-size: clamp(3.3rem, 7.7vw, 7.6rem); line-height: .83; letter-spacing: -.04em; text-wrap: balance; }
+  .contact-intro h1 span { color: var(--glaze); }
+  .contact-intro > p { margin-top: clamp(22px, 3vw, 36px); max-width: 61ch; color: var(--ink-70); font-size: clamp(1rem, 1.35vw, 1.18rem); line-height: 1.7; }
+
+  .recipient {
+    width: min(100%, 470px); margin: clamp(36px, 5vw, 70px) 0 0 auto;
+    display: grid; grid-template-columns: 116px 1fr; align-items: stretch;
+    background: #c3c6c8; box-shadow: inset 0 1px rgba(255,255,255,.72), 0 16px 34px -28px var(--ink);
+  }
+  .recipient img { width: 116px; height: 158px; object-fit: cover; object-position: center 22%; filter: saturate(.82); }
+  .recipient div { padding: 17px 20px; position: relative; }
+  .recipient div::after { content:""; position:absolute; inset:7px; border:1px solid rgba(22,19,26,.14); pointer-events:none; }
+  .recipient span { display: block; font-size: 9px; font-weight: 700; letter-spacing: .15em; color: #494c51; }
+  .recipient h2 { margin-top: 8px; font-size: 1.55rem; }
+  .recipient p,.recipient b,.recipient small { display:block; position:relative; z-index:1; }
+  .recipient p { font-size: 11px; color: #4b4e53; }.recipient b { margin-top: 8px; font-size: 12px; }.recipient small { margin-top: 4px; color: #4b4e53; }
+
+  .after-send { background: var(--ink); color: var(--lime); padding: var(--band) 0; }
+  .after-send header { display: grid; grid-template-columns: minmax(0,1fr) minmax(260px,.55fr); gap: 36px; align-items: end; }
+  .after-send h2,.distribution h2 { font-size: clamp(2.8rem, 6vw, 6rem); letter-spacing: -.04em; line-height: .88; }
+  .after-send header p { color: #c7c1ca; max-width: 46ch; }
+  .after-send ol { list-style: none; margin-top: clamp(48px, 7vw, 96px); border-top: 1px solid #5a525e; }
+  .after-send li { display: grid; grid-template-columns: minmax(100px,.28fr) minmax(0,1fr); gap: 30px; padding: clamp(24px, 4vw, 48px) 0; border-bottom: 1px solid #4f4853; }
+  .after-send li > span { font-family: var(--disp); font-size: clamp(1.7rem, 3vw, 2.8rem); color: var(--glaze-rim); }
+  .after-send h3 { color: #fff; font-size: clamp(1.7rem, 3.2vw, 3rem); }
+  .after-send li p { margin-top: 10px; color: #bbb5be; max-width: 66ch; }
+
+  .distribution { background: var(--zinc); padding: var(--band) 0; }
+  .distribution-grid { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: clamp(40px, 7vw, 110px); }
+  .distribution h2 { max-width: 10ch; }.distribution-grid > div > p { margin-top: 24px; color: var(--ink-70); max-width: 44ch; }
+  .distribution dl { border-top: 2px solid var(--ink); }
+  .distribution dl > div { display: grid; grid-template-columns: minmax(150px,.55fr) 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid rgba(22,19,26,.22); }
+  .distribution dt { font-size: 10px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; color: #48434d; }
+  .distribution dd { font-family: var(--disp); font-size: clamp(1.1rem, 2.2vw, 1.8rem); font-weight: 600; text-align: right; }
+  .distribution dd a { text-decoration: none; border-bottom: 2px solid transparent; }.distribution dd a:hover { color: var(--glaze); border-color: var(--glaze); }
+  .distribution dd small { display:block; font-family:var(--text); font-size:11px; font-weight:500; color:#48434d; margin-top:3px; }
+  .distribution dd.address { font-size: 1.08rem; line-height: 1.45; }
+
+  @media (max-width: 800px) {
+    .drawing-table { padding: 10px; }
+    .table-wrap { padding: 42px 18px 56px; }
+    .contact-intro h1 { font-size: clamp(3.35rem, 16vw, 5.5rem); }
+    .recipient { margin-left: 0; }
+    .after-send header,.distribution-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .recipient { grid-template-columns: 94px 1fr; }.recipient img { width:94px;height:146px; }
+    .after-send li { grid-template-columns: 1fr; gap: 8px; }
+    .distribution dl > div { grid-template-columns: 1fr; gap: 5px; }
+    .distribution dd { text-align: left; }
+  }
+</style>
+
+<style is:global>
+  .drawing-composer { margin-top: clamp(50px, 7vw, 100px); position: relative; }
+  .sheet-meta { display:flex; justify-content:space-between; gap:20px; color:#5f5a64; font-size:9px; font-weight:700; letter-spacing:.13em; }
+  .drawing-line { display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:14px; margin:18px 0 clamp(30px,4vw,52px); }
+  .drawing-line .range { font-family:var(--disp); font-weight:600; color:var(--glaze); font-size:1.2rem; }
+  .line-base { height:2px; background:var(--zinc-deep); position:relative; overflow:hidden; }
+  .line-base b { display:block; width:100%; height:100%; transform-origin:left; background:var(--glaze); transition:transform 420ms cubic-bezier(.2,.7,.3,1); }
+
+  .title-block { border:2px solid var(--ink); background:rgba(243,242,237,.86); }
+  .block-head { display:flex; justify-content:space-between; align-items:stretch; border-bottom:1px solid var(--ink); }
+  .block-head > div:first-child { padding:18px 20px; }
+  .block-head p,.transmittal header p { font-size:9px; font-weight:700; letter-spacing:.15em; }
+  .block-head h2 { margin-top:4px; font-size:clamp(1.8rem,3.3vw,3rem); }
+  .revision { min-width:185px; border-left:1px solid var(--ink); padding:14px 18px; display:flex; flex-direction:column; justify-content:center; }
+  .revision span { font-size:9px; letter-spacing:.13em; color:var(--ink-70); }.revision b { margin-top:5px; font-family:var(--disp); font-size:1.2rem; color:var(--glaze); }
+  .mode-row { display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--ink); }
+  .mode-row button { border:0; background:transparent; color:var(--ink-70); font:600 1.05rem var(--disp); padding:15px 18px; cursor:pointer; text-align:left; transition:background 220ms cubic-bezier(.2,.7,.3,1),color 220ms cubic-bezier(.2,.7,.3,1); }
+  .mode-row button + button { border-left:1px solid var(--ink); }.mode-row button[aria-pressed="true"] { background:var(--glaze); color:#fff; }
+  .mode-row button:active { transform:scale(.985); }
+  .drawing-fields { display:grid; grid-template-columns:1.35fr .65fr; }
+  .field { padding:16px 20px 18px; border-bottom:1px solid var(--ink); position:relative; }
+  .field:nth-child(odd) { border-right:1px solid var(--ink); }.field span { display:block; font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#5a555e; }
+  .field select,.field input { display:block; width:100%; margin-top:8px; border:0; padding:0; background:transparent; color:var(--ink); font:600 clamp(1rem,1.7vw,1.3rem) var(--disp); border-radius:0; min-height:32px; }
+  .field select:focus,.field input:focus { outline:none; }.field:focus-within { background:rgba(88,14,143,.055); box-shadow:inset 0 -3px var(--glaze); }
+  .field input::placeholder { color:#696472; font-weight:500; }.field.filled::after { content:""; position:absolute; right:13px; top:13px; width:6px; height:6px; border-radius:50%; background:var(--glaze); }
+  .issued-to { display:flex; justify-content:space-between; align-items:center; gap:24px; padding:18px 20px; }
+  .issued-to span { display:block; font-size:9px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#5a555e; }
+  .issued-to b { display:block; margin-top:4px; font:600 1.5rem var(--disp); }.issued-to small { display:block; color:var(--ink-70); font-size:11px; }
+  .issue-mark { width:54px;height:54px;display:grid;place-items:center;border:2px solid var(--glaze);color:var(--glaze);font:700 1.25rem var(--disp);transform:rotate(-4deg); }
+
+  .transmittal { width:min(92%,1050px); margin:clamp(44px,6vw,80px) 0 0 auto; background:#e7e5de; box-shadow:0 24px 48px -38px rgba(22,19,26,.75); border-top:4px solid var(--glaze); }
+  .transmittal header { display:grid; grid-template-columns:1fr auto; gap:24px; padding:24px clamp(20px,3vw,36px); border-bottom:1px solid rgba(22,19,26,.25); }
+  .transmittal h2 { margin-top:5px; font-size:clamp(1.8rem,3vw,2.7rem); }.transmittal dl { display:grid; gap:5px; min-width:210px; }
+  .transmittal dl div { display:flex; justify-content:space-between; gap:16px; font-size:11px; }.transmittal dt { color:var(--ink-70); }.transmittal dd { font-weight:700; }
+  .transmittal pre { white-space:pre-wrap; word-break:break-word; padding:clamp(24px,4vw,46px); color:var(--ink-80); font:500 14px/1.75 var(--text); min-height:220px; border-bottom:1px solid rgba(22,19,26,.25); }
+  .send-row { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:22px clamp(20px,3vw,36px); }
+  .send-row p { font-weight:600; }.send-row div span { display:block; font-size:12px; color:var(--ink-70); margin-top:2px; }
+  .email-route { padding:0 clamp(20px,3vw,36px) 22px; color:var(--ink-70); font-size:12px; }.email-route a { color:var(--ink); text-underline-offset:3px; }
+
+  @media(max-width:700px){
+    .sheet-meta{display:none}.drawing-line{grid-template-columns:auto 1fr auto}.drawing-line .range{font-size:1rem}
+    .block-head{display:grid;grid-template-columns:1fr}.revision{border-left:0;border-top:1px solid var(--ink);min-width:0}
+    .drawing-fields{grid-template-columns:1fr}.field:nth-child(odd){border-right:0}.issued-to{align-items:flex-end}
+    .transmittal{width:100%}.transmittal header{grid-template-columns:1fr}.transmittal dl{min-width:0}.send-row{align-items:flex-start;flex-direction:column}.send-row .brass{width:100%;justify-content:space-between}
+  }
+  @media(max-width:430px){.mode-row{grid-template-columns:1fr}.mode-row button + button{border-left:0;border-top:1px solid var(--ink)}.issued-to small{max-width:24ch}}
+  @media(prefers-reduced-motion:reduce){.line-base b,.mode-row button{transition:none}}
+</style>

@@ -1,0 +1,86 @@
+---
+const PORCELAIN = [
+  'HT & LT power supply — sanction through to commissioning',
+  'Distribution transformers, 44 to 1000 KVA',
+  'Sub-stations at 66/11 KV and 110/33 KV',
+  'HT cubicles, VCB panels, LBS and ring main units',
+  'HT cable laying, runs to 500 metres',
+];
+const ZINC = [
+  'Single-pole, double-pole and spun-pole structures',
+  '11 KV overhead line erection and street lighting',
+  'Interior electrification and workstation distribution',
+  'Layout electrification for villas and apartments',
+  'Rate analysis, quantity take-off and billing',
+];
+---
+<section class="mat" id="firm">
+  <div class="wrap">
+    <h2 data-rise>Everything here is porcelain, zinc, or copper.</h2>
+    <p class="lede" data-rise>
+      Suchetana Electricals is a proprietorship, incorporated in 1969 by the late Shri
+      Subramanyappa M., a licensed electrical engineer from Mysore State, and
+      <strong>Class I from the outset</strong>. Fifty-seven years in continuous practice, under the
+      same family and the same licence class. The firm works alongside civil construction, EPC and
+      turnkey contractors, with the architect and electrical consultant of record on every job.
+    </p>
+
+    <div class="two">
+      <div class="spec">
+        <h4>What we take on<i data-charge></i></h4>
+        <ul>{PORCELAIN.map((s) => <li><s></s>{s}</li>)}</ul>
+      </div>
+      <div class="spec">
+        <h4>And the rest of it<i data-charge></i></h4>
+        <ul>{ZINC.map((s) => <li class="z"><s></s>{s}</li>)}</ul>
+      </div>
+    </div>
+
+    <p class="creed" data-rise>
+      Our first responsibility is to the customers who <em>use our services.</em>
+    </p>
+  </div>
+</section>
+
+<style>
+  .mat { background: var(--zinc-dark); color: var(--lime); padding: var(--band) 0; }
+  h2 { font-size: clamp(2rem, 4.4vw, 3.3rem); max-width: 22ch; color: #fff; }
+  .lede {
+    margin-top: 18px; max-width: var(--measure); color: #D2D5D8;
+    font-size: 16px; line-height: 1.68;
+  }
+  .lede strong { color: #fff; font-weight: 600; }
+
+  .two {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(18px, 3vw, 44px); margin-top: clamp(32px, 4.4vw, 58px);
+  }
+  @media (max-width: 800px) { .two { grid-template-columns: 1fr; gap: 26px; } }
+
+  .spec h4 {
+    font-size: 1.35rem; color: #fff; padding-bottom: 8px; position: relative;
+  }
+  .spec h4 i {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 1.5px;
+    background: rgba(243, 242, 237, .28); display: block;
+  }
+  .spec ul { list-style: none; margin-top: 4px; }
+  .spec li {
+    display: flex; gap: 14px; align-items: baseline;
+    padding: 11px 0; border-bottom: 1px solid rgba(243, 242, 237, .13);
+    font-size: 14.5px; color: #D2D5D8;
+  }
+  .spec li s {
+    text-decoration: none; flex: none; width: 11px; height: 11px;
+    border-radius: 50%; background: var(--glaze-hi); margin-top: 6px;
+  }
+  .spec li.z s { background: var(--zinc-lit); }
+
+  .creed {
+    margin-top: clamp(34px, 4.6vw, 64px);
+    font-family: var(--disp); font-weight: 500;
+    font-size: clamp(1.5rem, 3.4vw, 2.7rem); line-height: 1.06;
+    letter-spacing: -.022em; max-width: 26ch; color: #fff;
+  }
+  .creed em { font-style: normal; color: var(--brass-lit); }
+</style>

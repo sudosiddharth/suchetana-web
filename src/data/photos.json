@@ -1,0 +1,120 @@
+{
+  "attributed": [
+    {
+      "file": "image19.png",
+      "slug": "kle-institution",
+      "confidence": "signage",
+      "evidence": "Building signed KLE; diagram data4 contains 'KLE, Institution, Nagarbavi'.",
+      "alt": "The KLE Institution building at Nagarbhavi, Bengaluru, wired by Suchetana Electricals.",
+      "caption": "KLE Institution, Nagarbhavi",
+      "kind": "attributed",
+      "src": "/photos/image19.jpg",
+      "w": 1200,
+      "h": 400,
+      "sourceW": 1200,
+      "sourceH": 400
+    },
+    {
+      "file": "image34.png",
+      "slug": "venkateshwara-garments",
+      "confidence": "signage",
+      "evidence": "Illuminated signage reads SRI VENKATESWARA GARMENTS; diagram data12 client is Venkateshwara Garments.",
+      "alt": "The illuminated facade of Sri Venkateswara Garments at night, its lighting load carried by Suchetana Electricals.",
+      "caption": "Venkateshwara Garments — facade illumination",
+      "kind": "attributed",
+      "src": "/photos/image34.jpg",
+      "w": 1200,
+      "h": 1600,
+      "sourceW": 1728,
+      "sourceH": 2304
+    },
+    {
+      "file": "image17.png",
+      "slug": "adc-india-communication-krone",
+      "confidence": "subject",
+      "evidence": "Cable and accessory assembly floor; the only client in diagram data4 that manufactures telephone and Cat cables is ADC India Communication (Krone), Peenya.",
+      "alt": "The assembly floor at ADC India Communication, Peenya, under the lighting and power distribution installed by Suchetana Electricals.",
+      "caption": "ADC India Communication (Krone), Peenya",
+      "kind": "attributed",
+      "src": "/photos/image17.jpg",
+      "w": 680,
+      "h": 382,
+      "sourceW": 680,
+      "sourceH": 382
+    }
+  ],
+  "gallery": [
+    {
+      "file": "image10.png",
+      "caption": "Software campus floor, Sarjapura Road corridor",
+      "note": "One of three IT clients in diagram data1; ordering unproven, so no client named.",
+      "alt": "An open-plan software floor with continuous linear lighting and workstation power distribution.",
+      "kind": "gallery",
+      "src": "/photos/image10.jpg",
+      "w": 1600,
+      "h": 1200,
+      "sourceW": 1728,
+      "sourceH": 1296
+    },
+    {
+      "file": "image8.png",
+      "caption": "Workstation floor, Bengaluru",
+      "note": "Same unresolved group as image10.",
+      "alt": "An office floor of cubicles with ceiling fans and surface lighting.",
+      "kind": "gallery",
+      "src": "/photos/image8.jpg",
+      "w": 680,
+      "h": 331,
+      "sourceW": 680,
+      "sourceH": 331
+    },
+    {
+      "file": "image30.png",
+      "caption": "Commercial arcade, S.C. Road",
+      "note": "Either Swastik Complex or Tallam Arcade, both on S.C. Road in diagram data10.",
+      "alt": "A multi-storey commercial arcade on S.C. Road with shopfronts across several floors.",
+      "kind": "gallery",
+      "src": "/photos/image30.jpg",
+      "w": 1280,
+      "h": 720,
+      "sourceW": 1280,
+      "sourceH": 720
+    },
+    {
+      "file": "image18.png",
+      "caption": "Completed campus block, Bengaluru",
+      "note": "One of three clients in diagram data4; not resolvable.",
+      "alt": "A low campus building with a red tiled roof and a covered walkway.",
+      "kind": "gallery",
+      "src": "/photos/image18.jpg",
+      "w": 600,
+      "h": 400,
+      "sourceW": 600,
+      "sourceH": 400
+    },
+    {
+      "file": "image43.png",
+      "caption": "Residential and commercial block, Bengaluru",
+      "note": "Residential group; private residences are never named on this site regardless.",
+      "alt": "A four-storey residential and commercial building on a Bengaluru street.",
+      "kind": "gallery",
+      "src": "/photos/image43.jpg",
+      "w": 600,
+      "h": 900,
+      "sourceW": 600,
+      "sourceH": 900
+    },
+    {
+      "file": "image52.png",
+      "caption": "Residential block, Bengaluru",
+      "note": "Residential group; not named by policy.",
+      "alt": "A residential apartment block behind planting and a compound wall.",
+      "kind": "gallery",
+      "src": "/photos/image52.jpg",
+      "w": 600,
+      "h": 450,
+      "sourceW": 600,
+      "sourceH": 450
+    }
+  ]
+}

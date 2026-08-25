@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 760" role="img" aria-labelledby="tx-title tx-desc">
+<title id="tx-title">Monumental distribution transformer cutaway</title><desc id="tx-desc">A shallow-axonometric zinc transformer with three Oxford-purple bushings, cooling banks, conservator and a visible three-phase winding chamber.</desc>
+<defs>
+ <linearGradient id="tx-zinc" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d9dcdf"/><stop offset=".2" stop-color="#90969d"/><stop offset=".58" stop-color="#555b62"/><stop offset="1" stop-color="#2b2f34"/></linearGradient>
+ <linearGradient id="tx-side" x1="0" x2="1"><stop stop-color="#676d74"/><stop offset="1" stop-color="#30343a"/></linearGradient>
+ <radialGradient id="tx-purple" cx="32%" cy="20%" r="75%"><stop stop-color="#dfc0f4"/><stop offset=".25" stop-color="#9f55d4"/><stop offset=".68" stop-color="#580e8f"/><stop offset="1" stop-color="#24043f"/></radialGradient>
+ <linearGradient id="tx-live" x1="0" x2="1"><stop stop-color="#580e8f"/><stop offset=".72" stop-color="#c89bea"/><stop offset="1" stop-color="#e0b85b"/></linearGradient>
+ <filter id="tx-shadow" x="-30%" y="-30%" width="170%" height="190%"><feDropShadow dx="10" dy="28" stdDeviation="24" flood-color="#000" flood-opacity=".42"/></filter>
+ <filter id="tx-glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <g id="tx-disc"><ellipse rx="37" ry="10" fill="#24043f"/><ellipse cy="-5" rx="40" ry="11" fill="url(#tx-purple)"/><path d="M-23-8Q0-18 23-8" fill="none" stroke="#ead8f7" stroke-width="4" stroke-linecap="round" opacity=".65"/></g>
+</defs>
+<ellipse cx="500" cy="695" rx="390" ry="38" fill="#000" opacity=".28"/>
+<g id="transformer-cutaway" filter="url(#tx-shadow)">
+ <g id="tx-foundation"><path d="M170 620H808L865 675H118Z" fill="#24282d"/><path d="M176 603H808V642H176Z" fill="url(#tx-side)"/><path d="M226 642V680M760 642V680" stroke="#181b1e" stroke-width="24"/></g>
+ <g id="tx-cooling-left" fill="url(#tx-side)" stroke="#25292e" stroke-width="3"><path d="M137 284H209V574H137L112 548V310Z"/><path d="M96 300H142V558H96L76 536V322Z"/><path d="M61 324H101V534H61L44 516V342Z"/></g>
+ <g id="tx-tank"><path d="M230 236H719L790 291V581L719 620H230L177 578V284Z" fill="url(#tx-zinc)" stroke="#282c31" stroke-width="5"/><path d="M719 236L790 291V581L719 620Z" fill="#373c42"/><path d="M230 236L177 284V578L230 620Z" fill="#666c73"/><path d="M216 257H737V297H216Z" fill="url(#tx-side)"/><path d="M216 562H737V603H216Z" fill="url(#tx-side)"/></g>
+ <g id="tx-window"><path d="M300 337H648V540H300Z" fill="#151218" stroke="#858a91" stroke-width="5"/><path d="M320 358H628V519H320Z" fill="#09080b" stroke="#353039" stroke-width="3"/>
+  <g id="tx-windings" fill="none" stroke-linecap="round"><path d="M365 387V494M474 387V494M583 387V494" stroke="#2e0650" stroke-width="54"/><path d="M365 387V494M474 387V494M583 387V494" stroke="url(#tx-live)" stroke-width="31" stroke-dasharray="5 8" filter="url(#tx-glow)"/><path d="M333 376H615M333 504H615" stroke="#b5bac0" stroke-width="9"/></g>
+ </g>
+ <g id="tx-cooling-right" fill="url(#tx-side)" stroke="#25292e" stroke-width="3"><path d="M790 284H861L886 310V548L861 574H790Z"/><path d="M857 300H902L923 322V536L902 558H857Z"/><path d="M900 324H939L956 342V516L939 534H900Z"/></g>
+ <g id="tx-conservator"><path d="M342 105H661C698 105 728 135 728 172s-30 67-67 67H342c-37 0-67-30-67-67s30-67 67-67Z" fill="url(#tx-zinc)" stroke="#282c31" stroke-width="5"/><ellipse cx="342" cy="172" rx="67" ry="67" fill="#737980" stroke="#282c31" stroke-width="5"/><path d="M397 239V260M616 239V260" stroke="#35393e" stroke-width="18"/></g>
+ <g id="tx-bushings">
+  <g transform="translate(330 257)"><path d="M0 0V-121" stroke="#5d6268" stroke-width="17"/><use href="#tx-disc" y="-24"/><use href="#tx-disc" y="-52"/><use href="#tx-disc" y="-80"/><use href="#tx-disc" y="-108"/><circle cy="-139" r="10" fill="#e0b85b"/></g>
+  <g transform="translate(478 257)"><path d="M0 0V-121" stroke="#5d6268" stroke-width="17"/><use href="#tx-disc" y="-24"/><use href="#tx-disc" y="-52"/><use href="#tx-disc" y="-80"/><use href="#tx-disc" y="-108"/><circle cy="-139" r="10" fill="#e0b85b"/></g>
+  <g transform="translate(626 257)"><path d="M0 0V-121" stroke="#5d6268" stroke-width="17"/><use href="#tx-disc" y="-24"/><use href="#tx-disc" y="-52"/><use href="#tx-disc" y="-80"/><use href="#tx-disc" y="-108"/><circle cy="-139" r="10" fill="#e0b85b"/></g>
+ </g>
+</g>
+<path id="transformer-current-guide" d="M16 117H330V257C330 323 365 330 365 376V504C365 550 700 550 700 650H984" fill="none" stroke="#747a81" stroke-width="8" opacity=".35" stroke-linecap="round"/>
+<path id="transformer-current" d="M16 117H330V257C330 323 365 330 365 376V504C365 550 700 550 700 650H984" fill="none" stroke="url(#tx-live)" stroke-width="10" stroke-linecap="round" filter="url(#tx-glow)" opacity=".85"/>
+</svg>

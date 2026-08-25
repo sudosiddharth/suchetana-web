@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('projects');
+const projects = entries.map((entry) => ({ slug: entry.slug, ...entry.data }));
+const largest = projects.sort((a, b) => (b.loadKva ?? 0) - (a.loadKva ?? 0))[0];
+const commercial = projects.find((project) => project.slug === 'mro-tek-pvt-ltd')!;
+const home = projects.find((project) => project.slug === 'residential-bungalow-jayanagar') ??
+  projects.find((project) => project.sector === 'Apartments, villas & houses' && project.loadKva);
+const anchors = [largest, commercial, home].filter(Boolean);
+---
+<section class="work-proof" id="work" aria-labelledby="work-title">
+  <div class="proof-photo">
+    <img
+      src="/photos/image10.jpg"
+      width="1600"
+      height="1200"
+      alt="An open-plan software floor with continuous lighting and workstation power distribution installed by Suchetana Electricals."
+      loading="eager"
+      decoding="async"
+    />
+    <span aria-hidden="true"></span>
+    <div class="photo-copy">
+      <h2 id="work-title">The work,<br />before the register.</h2>
+      <p>The firm’s own surviving project photography leads into a verified index of 73 installations.</p>
+      <a href="/portfolio/">Enter the Portfolio Film</a>
+    </div>
+    <p class="photo-caption">Software campus floor · Sarjapura Road corridor</p>
+  </div>
+
+  <div class="wrap register-door">
+    <header>
+      <div>
+        <h2>Proof at both ends of the line.</h2>
+        <p>
+          The complete Project Index records loads, localities, sectors and consultants. These three
+          installations mark the range from state infrastructure to a single Bengaluru house.
+        </p>
+      </div>
+      <a href="/portfolio/#project-index">Open all 73 projects</a>
+    </header>
+
+    <div class="anchors">
+      {anchors.map((project, index) => (
+        <a href={`/work/${project.slug}`}>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <h3>{project.title}</h3>
+            <p>{project.locality}</p>
+          </div>
+          <b>{project.load}</b>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .work-proof { background:var(--lime); }
+  .proof-photo { min-height:92svh; position:relative; display:grid; align-items:center; overflow:hidden; background:#111; color:#fff; }
+  .proof-photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(.72) contrast(1.08) brightness(.58); }
+  .proof-photo>span { position:absolute; inset:0; background:linear-gradient(90deg,rgba(9,8,11,.94),rgba(9,8,11,.58) 52%,rgba(9,8,11,.05) 86%),linear-gradient(0deg,rgba(9,8,11,.6),transparent 45%); }
+  .photo-copy { position:relative; z-index:1; width:min(1400px,100%); margin:auto; padding:var(--band) var(--pad-x); }
+  .photo-copy h2 { font-size:clamp(4.5rem,11vw,11rem); line-height:.75; letter-spacing:-.04em; max-width:7ch; }
+  .photo-copy p { margin-top:clamp(28px,4vw,52px); max-width:48ch; color:#d1cdd4; font-size:clamp(1rem,1.25vw,1.15rem); }
+  .photo-copy a { display:inline-block; margin-top:28px; color:#fff; font:600 1.15rem var(--disp); text-decoration:none; border-bottom:2px solid var(--glaze-hi); padding-bottom:3px; }
+  .photo-copy a:hover { color:var(--glaze-rim); }
+  .photo-caption { position:absolute; z-index:1; right:var(--pad-x); bottom:28px; color:#d1cdd4; font-size:11px; letter-spacing:.1em; text-transform:uppercase; text-align:right; }
+
+  .register-door { padding-top:var(--band); padding-bottom:var(--band); }
+  .register-door header { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:36px; align-items:end; }
+  .register-door h2 { font-size:clamp(2.8rem,6vw,6rem); line-height:.88; letter-spacing:-.04em; max-width:11ch; }
+  .register-door header p { margin-top:24px; max-width:62ch; color:var(--ink-70); }
+  .register-door header>a { color:var(--ink); font:600 1.15rem var(--disp); text-decoration:none; border-bottom:2px solid var(--glaze); padding-bottom:4px; white-space:nowrap; }
+  .register-door header>a:hover { color:var(--glaze); }
+  .anchors { margin-top:clamp(50px,7vw,96px); border-top:2px solid var(--ink); }
+  .anchors>a { display:grid; grid-template-columns:60px minmax(0,1fr) auto; gap:clamp(18px,3vw,46px); align-items:center; padding:clamp(22px,3vw,38px) 0; color:inherit; text-decoration:none; border-bottom:1px solid rgba(22,19,26,.24); transition:color var(--t-fast) var(--ease); }
+  .anchors>a:hover { color:var(--glaze); }
+  .anchors>a>span { color:var(--glaze); font:600 1.15rem var(--disp); }
+  .anchors h3 { font-size:clamp(1.7rem,3.5vw,3.4rem); }.anchors p { margin-top:5px; color:var(--ink-45); font-size:12px; }
+  .anchors b { font:600 clamp(1.5rem,3.2vw,3rem) var(--disp); text-align:right; }
+
+  @media(max-width:760px){.proof-photo{min-height:80svh}.register-door header{grid-template-columns:1fr}.register-door header>a{justify-self:start}.anchors>a{grid-template-columns:36px minmax(0,1fr)}.anchors b{grid-column:2;text-align:left;color:var(--glaze)}.photo-caption{left:var(--pad-x);right:auto;text-align:left}}
+</style>

@@ -1,0 +1,111 @@
+---
+/**
+ * A disc insulator string. Real cap-and-pin strings grow with voltage class, so the
+ * number of discs IS the load figure, drawn rather than charted.
+ *
+ * mode="monumental"  the hero object; tapers with distance, pointer-tracked specular
+ * mode="row"         46px, crisp, one per register row
+ * mode="plate"       ~120px, for a single project page
+ *
+ * discs = 0 means the job was recorded by area, not by load: an empty ring on a bare pin.
+ */
+interface Props {
+  discs: number;
+  mode?: 'monumental' | 'row' | 'plate';
+  label?: string;
+  class?: string;
+}
+const { discs, mode = 'row', label, class: klass = '' } = Astro.props;
+
+const aria = label
+  ? { role: 'img', 'aria-label': label }
+  : { 'aria-hidden': 'true' as const };
+
+/* --- monumental: ten discs on a pin, tapering toward the cap --- */
+const big: { y: number; s: number }[] = [];
+if (mode === 'monumental') {
+  let y = 58;
+  for (let i = 0; i < 10; i++) {
+    big.push({ y, s: 0.74 + i * 0.029 });
+    y += 34 + i * 2.6;
+  }
+}
+
+/* --- row / plate: the same silhouette, drawn small and crisp --- */
+const step = discs > 0 ? Math.min(15.5, 78 / discs) : 0;
+const small = Array.from({ length: Math.max(0, discs) }, (_, i) => {
+  const y = 88 - i * step;
+  const ry = Math.max(2.2, step * 0.36);
+  return { y, ry };
+});
+const topY = discs > 0 ? 88 - (discs - 1) * step : 88;
+const pinTop = Math.max(2, topY - 13);
+---
+
+{mode === 'monumental' ? (
+  <svg class:list={['stack-big', klass]} viewBox="0 0 260 600" {...aria}>
+    <rect x="118" y="0" width="24" height="66" fill="url(#zn)" />
+    <rect x="104" y="58" width="52" height="12" fill="url(#zn)" />
+    <g class="discs">
+      {big.map(({ y, s }, i) => (
+        <g class="bd" style={`--d:${9 - i}`}>
+          <g transform={`translate(${(130 * (1 - s)).toFixed(1)} ${y.toFixed(1)}) scale(${s.toFixed(3)})`}>
+            <use href="#disc" />
+          </g>
+        </g>
+      ))}
+    </g>
+    <rect x="118" y="524" width="24" height="34" fill="url(#zn)" />
+    <rect x="104" y="552" width="52" height="12" fill="url(#zn)" />
+  </svg>
+) : (
+  <svg class:list={[`stack-${mode}`, klass]} viewBox="0 0 60 100" {...aria}>
+    {discs === 0 ? (
+      <Fragment>
+        <rect x="28" y="34" width="4" height="38" fill="var(--zinc-deep)" />
+        <ellipse cx="30" cy="76" rx="16" ry="6" fill="none" stroke="var(--zinc-deep)" stroke-width="2.5" />
+      </Fragment>
+    ) : (
+      <Fragment>
+        <rect x="28" y={pinTop.toFixed(1)} width="4" height={(topY - pinTop).toFixed(1)} fill="#8A8F96" />
+        {small.map(({ y, ry }) => (
+          <Fragment>
+            <ellipse cx="30" cy={(y + ry * 0.9).toFixed(1)} rx="14" ry={ry.toFixed(1)} fill="var(--glaze-lo)" />
+            <ellipse cx="30" cy={y.toFixed(1)} rx="15.5" ry={ry.toFixed(1)} fill="var(--glaze)" />
+            <ellipse cx="25" cy={(y - ry * 0.5).toFixed(1)} rx="5.2" ry={(ry * 0.42).toFixed(1)}
+                     fill="var(--glaze-hi)" opacity=".7" />
+          </Fragment>
+        ))}
+      </Fragment>
+    )}
+  </svg>
+)}
+
+<style>
+  .stack-big { width: min(100%, 320px); height: auto; display: block; overflow: visible; }
+
+  /* the string takes the charge from the ground up: the shackle end lights first, the cap last.
+     `--d` counts from the bottom, set in the loop above. Resting state is fully lit. */
+  @media (prefers-reduced-motion: no-preference) {
+    /* `backwards`, never `both`: the from-state applies only during the delay, and once the
+       animation ends the disc reverts to its ordinary style — which is the lit state. If
+       animations never run at all, no fill applies and the string is simply lit. And the
+       keyframes touch brightness only, never opacity, so the worst possible failure is a
+       slightly dim disc rather than a missing one. */
+    :global(html.lit) .stack-big .bd {
+      animation: takeCharge 560ms cubic-bezier(.25, .9, .3, 1) backwards;
+      animation-delay: calc(var(--d) * 62ms + 260ms);
+    }
+    :global(html.settled) .stack-big .bd { animation: none !important; filter: none; }
+
+    @keyframes takeCharge {
+      0%   { filter: brightness(.5); }
+      45%  { filter: brightness(1.55); }
+      100% { filter: brightness(1); }
+    }
+  }
+  .stack-row { height: 46px; width: auto; display: block; overflow: visible; }
+  .stack-plate { height: 128px; width: auto; display: block; overflow: visible; }
+  @media (max-width: 900px) { .stack-big { width: min(72%, 250px); } }
+  @media (max-width: 640px) { .stack-row { height: 38px; } }
+</style>

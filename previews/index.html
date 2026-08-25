@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suchetana Electricals — Lineage vs Energise</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1A1420;--dim:#615869;--faint:#968D9E;--hair:#E2DBE4;--paper:#F7F4F2;--purple:#580E8F;--lift:#8B2FD6;--amber:#E39A22;--void:#08040D;--spark:#F0B049}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;padding:clamp(22px,4vw,54px);line-height:1.55}
+header{max-width:1200px;margin:0 auto clamp(30px,4vw,46px)}
+.kick{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);margin-bottom:16px}
+.kick i{width:24px;height:2px;background:var(--amber);display:block}
+h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(2rem,4.2vw,3.2rem);letter-spacing:-.03em;line-height:1.02}
+h1 em{font-style:italic;color:var(--purple)}
+header p{color:var(--dim);margin-top:14px;max-width:72ch;font-size:15px}
+.note{margin-top:18px;border-left:2px solid var(--purple);padding:10px 0 10px 15px;font-size:13.5px;color:var(--dim);max-width:74ch}
+.note b{color:var(--ink);font-weight:600}
+.set{max-width:1200px;margin:0 auto}
+.setcap{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin:0 0 15px;display:flex;align-items:center;gap:12px}
+.setcap::after{content:"";flex:1;height:1px;background:var(--hair)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:clamp(34px,5vw,52px)}
+a.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--hair);padding:21px;transition:border-color .2s,transform .2s,box-shadow .2s}
+a.card:hover{border-color:var(--purple);transform:translateY(-3px);box-shadow:0 12px 32px -20px rgba(88,14,143,.55)}
+.tag{display:inline-block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;background:var(--purple);color:#fff;padding:4px 8px;margin-bottom:13px}
+a.card h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:1.42rem;letter-spacing:-.022em}
+a.card .g{font-size:10.5px;color:var(--faint);margin-top:5px;letter-spacing:.09em;text-transform:uppercase}
+a.card p{font-size:13.5px;color:var(--dim);margin-top:11px;line-height:1.6}
+a.card p b{color:var(--ink);font-weight:600}
+a.card .go{margin-top:15px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--purple)}
+/* lineage hero card */
+.lin{background:var(--purple);border-color:var(--purple);color:#fff}
+.lin h2,.lin .go{color:#fff}
+.lin .tag{background:#fff;color:var(--purple)}
+.lin p{color:#E4D6F2}.lin p b{color:#fff}.lin .g{color:#C3A6DC}
+.lin:hover{border-color:var(--amber)}
+/* energise cards */
+.en{background:var(--void);border-color:#2A1B3D;color:#FBF9FD}
+.en h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:700;letter-spacing:-.04em;color:#fff}
+.en .tag{background:var(--spark);color:var(--void);font-weight:700}
+.en p{color:#B6A8C6}.en p b{color:#fff}.en .g{color:#7D6E90}
+.en .go{color:var(--spark)}
+.en:hover{border-color:var(--spark);box-shadow:0 12px 32px -20px rgba(240,176,73,.5)}
+.old .tag{background:var(--faint)}
+.old a.card{opacity:.55}.old a.card:hover{opacity:1}
+</style>
+</head>
+<body>
+<header>
+  <div class="kick"><i></i>Two languages · same content, same 73 projects</div>
+  <h1>Lineage hero, <em>Energise everywhere else</em> — compare.</h1>
+  <p>You kept the Lineage hero and asked to see Energise carried across all sections. Both sets are
+     below, built from the same verified register and the same locked palette (Oxford purple
+     <b>#580E8F</b>). Energise runs on a near-black ground with Bricolage Grotesque and an amber
+     spark accent; every rule, busbar and card edge <em>charges</em> as it enters view.</p>
+  <div class="note"><b>Open full screen and scroll.</b> Energise Founder replaces the horizontal
+     travel with a vertical spine that charges as you scroll, lighting each generation as the charge
+     reaches it. Work and Contact are functionally identical across both — same 73 rows, same live
+     filter, same working WhatsApp composer — so you are judging the look, not the feature set.</div>
+</header>
+
+<div class="set">
+  <p class="setcap">Energise — all sections</p>
+  <div class="cards">
+    <a class="card en" href="m1-energise.html">
+      <span class="tag">E · Hero</span>
+      <h2>Energise</h2>
+      <div class="g">Bricolage Grotesque · near-black</div>
+      <p><b>The page powers up.</b> A charge crosses the screen and everything it passes comes alive.
+         Scroll pins the page and ramps the load 30 KVA → 16 MVA, captions changing as it climbs.</p>
+      <div class="go">Open ↗</div>
+    </a>
+    <a class="card en" href="e1-work.html">
+      <span class="tag">E · Work</span>
+      <h2>The Register</h2>
+      <div class="g">Dark · live filter · charging rules</div>
+      <p><b>All 73 projects</b>, each row's rule charging purple-to-amber as it enters. The busbar
+         under the filter chips fills to show what proportion of the register you are looking at.</p>
+      <div class="go">Open ↗</div>
+    </a>
+    <a class="card en" href="e2-about.html">
+      <span class="tag">E · About</span>
+      <h2>What the firm takes on</h2>
+      <div class="g">Dark · charging scope list</div>
+      <p>Four focus areas whose top rules charge in sequence, the ten-line scope where every rule
+         energises as you pass it, the five groups drawn off a busbar, mission on full purple.</p>
+      <div class="go">Open ↗</div>
+    </a>
+    <a class="card en" href="e3-founder.html">
+      <span class="tag">E · Founder</span>
+      <h2>Three generations</h2>
+      <div class="g">Dark · vertical charging spine</div>
+      <p><b>A spine charges down the page</b> and each generation's node ignites as the charge
+         reaches it — 1969, 1996, today. Madhusudan leads, with a light sweep across his portrait
+         frame. Site team closes it.</p>
+      <div class="go">Open ↗</div>
+    </a>
+    <a class="card en" href="e4-contact.html">
+      <span class="tag">E · Contact</span>
+      <h2>Let us look at your next project</h2>
+      <div class="g">Dark · WhatsApp composer</div>
+      <p><b>Project or home</b> switches the question set; the message composes live, then opens
+         WhatsApp prefilled. Each contact block's rule charges as you scroll past it.</p>
+      <div class="go">Open ↗</div>
+    </a>
+  </div>
+
+  <p class="setcap">Lineage — the hero you kept, plus its sections</p>
+  <div class="cards">
+    <a class="card lin" href="m3-lineage.html">
+      <span class="tag">L · Hero</span>
+      <h2>Lineage</h2>
+      <div class="g">Instrument Serif · purple ground</div>
+      <p><b>The hero you liked.</b> One family has signed for the work since 1969, then the page runs
+         sideways through the generations.</p>
+      <div class="go">Open ↗</div>
+    </a>
+    <a class="card" href="s1-work.html"><span class="tag">L · Work</span><h2>The Register</h2><div class="g">Bone ground</div><p>Same 73 projects on a light ground.</p><div class="go">Open ↗</div></a>
+    <a class="card" href="s2-about.html"><span class="tag">L · About</span><h2>What the firm takes on</h2><div class="g">Plum ground</div><p>Scope, groups, mission, credentials.</p><div class="go">Open ↗</div></a>
+    <a class="card" href="s3-founder.html"><span class="tag">L · Founder</span><h2>Three generations</h2><div class="g">Purple · horizontal travel</div><p>Runs sideways through 1969 → today.</p><div class="go">Open ↗</div></a>
+    <a class="card" href="s4-contact.html"><span class="tag">L · Contact</span><h2>Contact</h2><div class="g">Plum ground</div><p>Same WhatsApp composer.</p><div class="go">Open ↗</div></a>
+  </div>
+
+  <div class="old">
+    <p class="setcap">Earlier, not chosen</p>
+    <div class="cards">
+      <a class="card" href="m2-ignition.html"><span class="tag">M2</span><h2>Ignition</h2><p>73 squares ignite; sector sweep.</p><div class="go">Open ↗</div></a>
+      <a class="card" href="hero-a-register.html"><span class="tag">A</span><h2>The Register</h2><p>Editorial ledger, paper white.</p><div class="go">Open ↗</div></a>
+      <a class="card" href="hero-b-singleline.html"><span class="tag">B</span><h2>Single Line</h2><p>Wiring-diagram hero.</p><div class="go">Open ↗</div></a>
+      <a class="card" href="hero-c-plate.html"><span class="tag">C</span><h2>The Plate</h2><p>Dark cinematic night plate.</p><div class="go">Open ↗</div></a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

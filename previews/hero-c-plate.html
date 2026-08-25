@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suchetana Electricals — Direction C: The Plate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0E051A;
+  --night-2:#170A26;
+  --line:#2C1B3F;
+  --line-2:#3D2856;
+  --white:#F8F5FB;
+  --lilac:#C9A6E8;
+  --lilac-dim:#9C82B8;
+  --purple:#580E8F;
+  --purple-lift:#7A2AB8;
+  --disp:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--night);color:var(--white);
+  font-family:var(--sans);font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.mono{font-family:var(--sans);font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+
+/* top bar */
+.topbar{position:relative;z-index:5;border-bottom:1px solid var(--line)}
+.topbar .inner{
+  max-width:1560px;margin:0 auto;padding:0 clamp(18px,3.4vw,48px);
+  height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.lockup{display:flex;align-items:center;gap:13px}
+.lockup img{height:32px;width:auto;display:block;opacity:.96}
+.lockup b{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--white)}
+.topbar .meta{display:flex;align-items:center;gap:24px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac-dim)}
+.topbar .meta a{color:var(--white);text-decoration:none;border-bottom:1px solid var(--line-2);padding-bottom:2px}
+.topbar .meta a:hover{border-color:var(--lilac)}
+@media(max-width:880px){.topbar .meta .hide-sm{display:none}}
+
+/* hero */
+.hero{
+  display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
+  min-height:calc(100vh - 70px);align-items:stretch;
+}
+@media(max-width:1000px){.hero{grid-template-columns:1fr;min-height:0}}
+
+.pane{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(40px,6vw,92px) clamp(20px,4.4vw,84px) clamp(28px,4vw,56px);
+  max-width:840px;margin-left:auto;width:100%;
+}
+.kicker{
+  display:flex;align-items:center;gap:12px;
+  font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--lilac);
+  margin-bottom:clamp(22px,3vw,34px);
+}
+.kicker .bar{width:34px;height:2px;background:var(--purple-lift);display:block;flex:none}
+
+h1{
+  font-family:var(--disp);font-weight:300;
+  font-size:clamp(2.5rem,5.4vw,4.7rem);
+  line-height:1.02;letter-spacing:-.028em;
+  font-variation-settings:"SOFT" 0,"WONK" 0;
+}
+h1 i{font-style:italic;font-weight:300;color:var(--lilac)}
+
+.lede{
+  max-width:46ch;margin-top:clamp(22px,2.6vw,30px);
+  font-size:clamp(.98rem,1.2vw,1.1rem);line-height:1.65;color:#C4B8D2;
+}
+.lede b{color:var(--white);font-weight:500}
+
+.actions{margin-top:clamp(28px,3.4vw,40px);display:flex;flex-wrap:wrap;gap:10px}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+  font-size:14.5px;font-weight:500;padding:14px 20px;border-radius:2px;
+  transition:background .18s ease,border-color .18s ease,transform .18s ease,color .18s ease;
+}
+.btn svg{width:16px;height:16px;flex:none}
+.btn-p{background:var(--purple);color:#fff;border:1px solid var(--purple)}
+.btn-p:hover{background:var(--purple-lift);border-color:var(--purple-lift);transform:translateY(-1px)}
+.btn-s{background:transparent;color:var(--white);border:1px solid var(--line-2)}
+.btn-s:hover{border-color:var(--lilac);color:var(--lilac);transform:translateY(-1px)}
+
+/* stat baseline */
+.stats{
+  margin-top:clamp(38px,5vw,64px);border-top:1px solid var(--line);
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.stat{padding:20px 16px 4px 0}
+.stat + .stat{border-left:1px solid var(--line);padding-left:16px}
+.stat .n{
+  font-family:var(--disp);font-weight:400;font-size:clamp(1.5rem,2.5vw,2.05rem);
+  line-height:1;letter-spacing:-.025em;display:block;font-variant-numeric:tabular-nums;
+}
+.stat .n small{font-size:.44em;letter-spacing:.06em;color:var(--lilac-dim);margin-left:.28em;font-family:var(--sans);font-weight:500}
+.stat .k{display:block;margin-top:9px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac-dim);line-height:1.35}
+@media(max-width:620px){
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:0;padding-left:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--line);margin-top:14px}
+}
+
+/* plate */
+.plate{position:relative;overflow:hidden;min-height:420px;background:#0A0413}
+.plate img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 42%;
+  display:block;
+}
+.plate .scrim{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--night) 0%,rgba(14,5,26,.55) 22%,rgba(14,5,26,0) 55%);
+}
+.plate .cap{
+  position:absolute;left:0;bottom:0;right:0;padding:18px clamp(18px,2.4vw,30px);
+  display:flex;justify-content:space-between;align-items:flex-end;gap:14px;
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac);
+  background:linear-gradient(0deg,rgba(10,4,19,.86),rgba(10,4,19,0));
+}
+.plate .cap b{display:block;color:var(--white);font-weight:600;letter-spacing:.1em;margin-bottom:4px}
+.plate .rule{position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--line)}
+@media(max-width:1000px){
+  .plate{min-height:56vw;order:-1}
+  .plate .scrim{background:linear-gradient(0deg,var(--night) 0%,rgba(14,5,26,.2) 46%,rgba(14,5,26,.35) 100%)}
+  .plate .rule{display:none}
+}
+
+.badge{
+  position:fixed;left:16px;bottom:16px;z-index:50;background:var(--white);color:var(--night);
+  font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;border-radius:2px;
+}
+.note{
+  position:fixed;right:16px;bottom:16px;z-index:50;background:rgba(88,14,143,.9);color:#fff;
+  font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:7px 11px;border-radius:2px;max-width:46vw;
+}
+
+@media(prefers-reduced-motion:no-preference){
+  .rise{opacity:0;transform:translateY(16px);animation:rise .85s cubic-bezier(.2,.7,.3,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .d1{animation-delay:.06s}.d2{animation-delay:.16s}.d3{animation-delay:.26s}.d4{animation-delay:.36s}.d5{animation-delay:.48s}
+  .plate img{animation:settle 1.6s cubic-bezier(.2,.7,.3,1) backwards;animation-delay:.1s}
+  @keyframes settle{from{transform:scale(1.07)}to{transform:scale(1)}}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="inner">
+    <div class="lockup">
+      <img src="assets/se-logo-white.png" alt="Suchetana Electricals">
+      <b>Suchetana Electricals</b>
+    </div>
+    <nav class="meta">
+      <span class="hide-sm">Class I · Est. 1969</span>
+      <a href="tel:+919845013813">+91 98450 13813</a>
+    </nav>
+  </div>
+</header>
+
+<main class="hero">
+  <div class="pane">
+    <div class="kicker rise d1"><span class="bar"></span>Bengaluru · Since 1969</div>
+
+    <h1 class="rise d2">
+      Three generations<br>
+      have signed for<br>
+      <i>the work.</i>
+    </h1>
+
+    <p class="lede rise d3">
+      A Class I electrical contracting firm held by one family since 1969 — from sanctioned
+      HT supply through to final commissioning. <b>73 installations, 39 MVA, 42 localities</b>:
+      software campuses, hospitals, malls, factories, state sub-stations and private houses.
+    </p>
+
+    <div class="actions rise d4">
+      <a class="btn btn-p" href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.16c-.25.69-1.44 1.31-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.16-1.55-1.16-2.95 0-1.4.73-2.09 1-2.38.24-.27.55-.34.73-.34h.53c.17 0 .4-.06.62.48.25.6.85 2.08.92 2.23.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.35 1.45.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.65.78 1.94.92.29.14.48.22.55.34.07.12.07.7-.18 1.39Z"/></svg>
+        WhatsApp the proprietor
+      </a>
+      <a class="btn btn-s" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 20V9.2a1 1 0 0 1 .4-.8l7-5.2a1 1 0 0 1 1.2 0l7 5.2a1 1 0 0 1 .4.8V20"/><path d="M2 20h20M10 20v-5h4v5"/></svg>
+        Wiring a home?
+      </a>
+    </div>
+
+    <div class="stats rise d5">
+      <div class="stat"><span class="n">57</span><span class="k">Years in<br>practice</span></div>
+      <div class="stat"><span class="n">73</span><span class="k">Projects on<br>record</span></div>
+      <div class="stat"><span class="n">39<small>MVA</small></span><span class="k">Connected<br>load</span></div>
+      <div class="stat"><span class="n">42</span><span class="k">Localities<br>served</span></div>
+    </div>
+  </div>
+
+  <div class="plate">
+    <img src="assets/plate.jpg" alt="A completed installation lit at night">
+    <span class="scrim"></span>
+    <span class="rule"></span>
+    <div class="cap">
+      <span><b>Facade illumination</b>Completed installation · Bengaluru</span>
+      <span>Plate 01</span>
+    </div>
+  </div>
+</main>
+
+<div class="badge">Direction C — The Plate</div>
+<div class="note">Photo is a placeholder pulled from the profile PDF — attribution unconfirmed</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+---
+/**
+ * ENERGISING — the loader.
+ *
+ * A supply being switched on, not a spinner. The busbar fills on real progress (fonts +
+ * first paint), then the panel trips: a flash along the bar and the two halves retract along
+ * that line, handing the charge to the hero.
+ *
+ * Safety rules, because a loader is the one component that can take the whole site down:
+ *   · it only exists when JS runs and the visitor has not already seen it this session
+ *   · a pure-CSS failsafe clears it at 1.8s whatever the script does, so a thrown error
+ *     can never trap the page behind a panel
+ *   · `prefers-reduced-motion` skips it entirely
+ *   · it is aria-hidden and inert — screen readers and crawlers get the page, not the curtain
+ */
+---
+<div id="boot" aria-hidden="true">
+  <span class="half top"></span>
+  <span class="half bot"></span>
+  <div class="bootCore">
+    <img src="/assets/se-mark-white.png" alt="" width="88" height="48" />
+    <div class="bootBar"><i></i></div>
+    <p class="bootStage"><span data-stage>Sanctioned</span></p>
+  </div>
+</div>
+
+<style is:global>
+  /* the curtain exists only while the document is booting */
+  #boot { display: none; }
+  html.booting #boot {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    /* failsafe: clears itself even if the script never finishes */
+    animation: bootFailsafe 0s 1800ms forwards;
+  }
+  @keyframes bootFailsafe { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+
+  #boot .half {
+    position: absolute; left: 0; right: 0; height: 50.5%;
+    background: var(--zinc-dark);
+    transition: transform 720ms cubic-bezier(.7, 0, .2, 1);
+    will-change: transform;
+  }
+  #boot .half.top { top: 0; }
+  #boot .half.bot { bottom: 0; }
+
+  #boot .bootCore {
+    position: absolute; inset: 0; display: grid; place-content: center; justify-items: center;
+    gap: 20px; transition: opacity 260ms var(--ease);
+  }
+  #boot img { opacity: .96; }
+
+  #boot .bootBar {
+    width: min(42vw, 340px); height: 3px;
+    background: rgba(255, 255, 255, .18); overflow: hidden;
+  }
+  #boot .bootBar i {
+    display: block; height: 100%; width: 100%;
+    transform: scaleX(var(--p, 0)); transform-origin: left center;
+    background: linear-gradient(90deg, var(--glaze), var(--glaze-hi) 72%, var(--brass-lit));
+    transition: transform 320ms cubic-bezier(.3, .8, .2, 1);
+  }
+  #boot .bootStage {
+    font-family: var(--disp); font-size: 13px; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase; color: #C6C8CC;
+  }
+
+  /* the trip: a flash along the bar, then the halves retract along it */
+  html.tripped #boot .bootBar i { background: #fff; }
+  html.tripped #boot .bootCore { opacity: 0; }
+  html.tripped #boot .half.top { transform: translateY(-100%); }
+  html.tripped #boot .half.bot { transform: translateY(100%); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.booting #boot { display: none; }
+  }
+</style>
+
+<script is:inline>
+  /* Runs immediately, not deferred: the curtain has to be resolved before the page settles. */
+  (function () {
+    var el = document.documentElement;
+    if (!el.classList.contains('booting')) return;
+
+    var bar = document.querySelector('#boot .bootBar i');
+    var stage = document.querySelector('#boot [data-stage]');
+    var STAGES = ['Sanctioned', 'Erected', 'Energised'];
+    var started = Date.now();
+    var p = 0, done = false;
+
+    function set(v) {
+      p = Math.max(p, Math.min(1, v));
+      if (bar) bar.style.setProperty('--p', String(p));
+      if (stage) stage.textContent = STAGES[Math.min(2, Math.floor(p * 3))];
+    }
+
+    /* creeps while the real work happens, so the bar never sits still lying about progress */
+    var creep = setInterval(function () { set(p + (0.62 - p) * 0.14); }, 90);
+
+    function finish() {
+      if (done) return;
+      done = true;
+      clearInterval(creep);
+      set(1);
+      /* a floor of 450ms, or the panel strobes on a warm cache */
+      var wait = Math.max(0, 450 - (Date.now() - started));
+      setTimeout(function () {
+        el.classList.add('tripped');
+        el.classList.add('lit');           // the hero takes the charge from here
+        try { sessionStorage.setItem('se-booted', '1'); } catch (e) {}
+        setTimeout(function () {
+          el.classList.remove('booting', 'tripped');
+        }, 760);
+      }, wait + 180);
+    }
+
+    var fonts = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    Promise.race([
+      Promise.all([fonts, new Promise(function (r) {
+        if (document.readyState === 'complete') r();
+        else window.addEventListener('load', r, { once: true });
+      })]),
+      new Promise(function (r) { setTimeout(r, 1500); }),   // never wait on a slow font
+    ]).then(finish);
+
+    setTimeout(finish, 1700);              // belt and braces alongside the CSS failsafe
+  })();
+</script>

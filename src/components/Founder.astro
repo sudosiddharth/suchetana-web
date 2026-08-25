@@ -1,0 +1,350 @@
+---
+import Wa from './Wa.astro';
+
+const CREW = [
+  {
+    id: 'engineering',
+    name: 'Suchetan M.S.',
+    role: 'Electrical engineer · concept design and engineering support',
+    detail: 'Madhusudan’s brother. Graduate electrical engineer with 34 years in the trade, supporting concept design and engineering.',
+    mark: '34',
+    unit: 'years',
+  },
+  {
+    id: 'projects',
+    name: 'Jagadisha S.',
+    role: 'Project manager, supervisor and site in-charge',
+    detail: 'Government of Karnataka supervisor and wireman licence holder. Arranges manpower, equipment and logistics through installation and commissioning.',
+    mark: '38',
+    unit: 'years here',
+  },
+  {
+    id: 'implementation',
+    name: 'Yatish M.',
+    role: 'Implementation manager',
+    detail: 'Foreman Training Institute qualified, across construction and electrical servicing in industrial, commercial and domestic sectors.',
+    mark: '24',
+    unit: 'years',
+  },
+  {
+    id: 'technical',
+    name: 'Siddappa G.C.',
+    role: 'Technical support, supervisor and site in-charge',
+    detail: 'Diploma in Electrical Engineering. Supports plan execution, site charge, manpower and equipment planning.',
+    mark: '16',
+    unit: 'years',
+  },
+  {
+    id: 'quantity',
+    name: 'Vinod V.',
+    role: 'Technical support and quantity take-off',
+    detail: 'B.E. Electrical & Electronics. Supports plan execution, site charge, billing and quantity take-off.',
+    mark: 'B.E.',
+    unit: 'electrical & electronics',
+  },
+];
+---
+<div class="team-world">
+  <section class="holder" aria-labelledby="holder-title">
+    <div class="holder-current" aria-hidden="true"><i></i></div>
+    <div class="portrait">
+      <img
+        src="/people/madhusudan-ms.jpg"
+        alt="Madhusudan M.S., proprietor of Suchetana Electricals"
+        width="1023"
+        height="1537"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="portrait-shade" aria-hidden="true"></div>
+      <p class="portrait-caption">Madhusudan M.S. · proprietor</p>
+    </div>
+
+    <div class="holder-copy">
+      <p class="status"><span></span>Current licence holder</p>
+      <h1 id="holder-title">The licence holder is the person who answers.</h1>
+      <p class="lede">
+        Madhusudan M.S. owns and runs Suchetana Electricals. He has held its Class I contractor
+        licence since 1996—and reads every enquiry sent to the firm himself.
+      </p>
+
+      <div class="licence" aria-label="Madhusudan M.S. licence details">
+        <span class="bolt tl" aria-hidden="true"></span><span class="bolt tr" aria-hidden="true"></span>
+        <span class="bolt bl" aria-hidden="true"></span><span class="bolt br" aria-hidden="true"></span>
+        <div class="licence-head">
+          <span>PROPRIETOR · ACTIVE</span>
+          <strong>CLASS I</strong>
+        </div>
+        <b>Madhusudan M.S.</b>
+        <p>Dip. Electrical Engineering · BBM · 35 years in the trade</p>
+        <dl>
+          <div><dt>Contractor</dt><dd>1CL192563BNG</dd></div>
+          <div><dt>Supervisor</dt><dd>1SP191691BNG</dd></div>
+          <div><dt>Licence held since</dt><dd>1996</dd></div>
+        </dl>
+      </div>
+
+      <div class="holder-actions">
+        <a class="brass lg" href="https://wa.me/919845013813" target="_blank" rel="noopener">
+          Message Madhusudan
+          <span class="ico"><Wa /></span>
+        </a>
+        <a class="call" href="tel:+919845013813">+91 98450 13813</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="handover" aria-labelledby="handover-title">
+    <div class="wrap">
+      <header class="handover-head">
+        <h2 id="handover-title">Founded by the father.<br />Carried by the son.</h2>
+        <p>One handover. The same Class I responsibility.</p>
+      </header>
+
+      <div class="chain" data-chain>
+        <div class="bus" aria-hidden="true"><i></i></div>
+
+        <article class="origin nameplate" tabindex="0">
+          <span class="year">1969</span>
+          <div>
+            <p class="plate-label">FOUNDER</p>
+            <h3>Sri Subramanyappa M.</h3>
+            <p>Licensed electrical engineer who established Suchetana Electricals as a Class I contractor and directed it for twenty-seven years.</p>
+          </div>
+        </article>
+
+        <div class="transfer" aria-label="Responsibility handed over in 1996">
+          <span>1996</span><i aria-hidden="true"></i><b>Responsibility handed over</b>
+        </div>
+
+        <article class="present nameplate" tabindex="0">
+          <span class="year">Now</span>
+          <div>
+            <p class="plate-label">CURRENT PROPRIETOR</p>
+            <h3>Madhusudan M.S.</h3>
+            <p>Took responsibility on his father’s retirement in 1996 and continues to own, license and run the firm today.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="network" aria-labelledby="network-title">
+    <div class="wrap">
+      <header class="network-head">
+        <div>
+          <h2 id="network-title">One licence.<br />A team measured in decades.</h2>
+          <p>Engineering, supervision and site execution branch from one accountable proprietor.</p>
+        </div>
+        <div class="incomer" aria-hidden="true"><span>M.M.S.</span><i></i></div>
+      </header>
+
+      <div class="circuits" data-circuits>
+        {CREW.map((person, index) => (
+          <article class="circuit" tabindex="0" style={`--i:${index}; --reach:${96 - index * 9}%`}>
+            <div class="wire" aria-hidden="true"><i></i><span></span></div>
+            <div class="crew-plate">
+              <p>{person.role}</p>
+              <h3>{person.name}</h3>
+              <span>{person.detail}</span>
+            </div>
+            <div class="tenure" aria-label={`${person.mark} ${person.unit}`}>
+              <b>{person.mark}</b><span>{person.unit}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="registration" aria-labelledby="registration-title">
+    <div class="wrap reg-grid">
+      <div>
+        <h2 id="registration-title">The registration behind the name.</h2>
+        <p>Formal details remain visible because accountability is more useful than an abstract promise.</p>
+      </div>
+      <dl>
+        <div><dt>Firm</dt><dd>Suchetana Electricals · proprietorship</dd></div>
+        <div><dt>Supervisor</dt><dd>2ESG00161BNG · S. Jagadish</dd></div>
+        <div><dt>Wireman</dt><dd>2WP02072BNG · S. Jagadish</dd></div>
+        <div><dt>GST</dt><dd>29ACGPM4809H1ZE</dd></div>
+        <div><dt>PAN</dt><dd>ACGPM4809H</dd></div>
+        <div><dt>Registered office</dt><dd>G 4/5, No. 139, Shalimar Galaxy, Sheshadripuram, Bengaluru 560 020</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="team-close">
+    <div class="wrap close-grid">
+      <h2>Send the project to the person whose name is on the licence.</h2>
+      <div>
+        <p>Madhusudan reads the message himself.</p>
+        <a class="brass lg" href="https://wa.me/919845013813" target="_blank" rel="noopener">
+          Send the drawings
+          <span class="ico"><Wa /></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .team-world { --night: #121015; --night-2: #1b171e; background: var(--lime); }
+
+  .holder {
+    min-height: min(940px, calc(100svh - 70px));
+    display: grid; grid-template-columns: minmax(360px, .9fr) minmax(480px, 1.1fr);
+    background: var(--night); color: var(--lime); position: relative; overflow: hidden;
+  }
+  .holder::after {
+    content: ""; position: absolute; inset: 0 0 auto; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,155,234,.6), transparent);
+  }
+  .portrait { min-height: inherit; position: relative; overflow: hidden; background: #343036; }
+  .portrait img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; object-position: center 28%; }
+  .portrait-shade {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent 55%, var(--night) 100%),
+                linear-gradient(0deg, rgba(18,16,21,.78), transparent 35%);
+  }
+  .portrait-caption {
+    position: absolute; left: var(--pad-x); bottom: 24px; z-index: 1;
+    font-size: 11px; text-transform: uppercase; letter-spacing: .14em; color: #e7e3e9;
+  }
+  .holder-copy {
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+    padding: clamp(70px, 8vw, 130px) var(--pad-x) clamp(54px, 7vw, 100px);
+    position: relative; z-index: 2;
+  }
+  .status { display: flex; gap: 10px; align-items: center; color: #c8c2cc; font-size: 12px; letter-spacing: .13em; text-transform: uppercase; }
+  .status span { width: 9px; height: 9px; border-radius: 50%; background: var(--glaze-hi); box-shadow: 0 0 0 5px rgba(162,91,216,.12), 0 0 24px var(--glaze-hi); }
+  .holder h1 { margin-top: 24px; color: #fff; font-size: clamp(3.5rem, 7.4vw, 7.7rem); line-height: .85; letter-spacing: -.045em; max-width: 8.4ch; }
+  .lede { max-width: 54ch; margin-top: clamp(24px, 3vw, 38px); color: #cbc6cf; font-size: clamp(1rem, 1.2vw, 1.15rem); line-height: 1.7; }
+
+  .licence {
+    width: min(100%, 660px); margin-top: clamp(30px, 4vw, 52px); padding: clamp(22px, 3vw, 34px);
+    color: #202126; background: linear-gradient(145deg, #d5d7d8, #9fa3a8 62%, #c4c7c9);
+    border: 1px solid #777c82; position: relative;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.75), 0 24px 60px -30px #000;
+  }
+  .licence::before { content: ""; position: absolute; inset: 7px; border: 1px solid rgba(32,33,38,.2); pointer-events: none; }
+  .bolt { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #f5f5f5, #666b71 72%); z-index: 1; }
+  .bolt.tl,.bolt.tr { top: 12px; }.bolt.bl,.bolt.br { bottom: 12px; }.bolt.tl,.bolt.bl { left: 12px; }.bolt.tr,.bolt.br { right: 12px; }
+  .licence-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(32,33,38,.28); }
+  .licence-head span { font-size: 10px; font-weight: 700; letter-spacing: .16em; }
+  .licence-head strong { font-family: var(--disp); font-size: 1.3rem; }
+  .licence > b { display: block; margin-top: 18px; font-family: var(--disp); font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1; }
+  .licence > p { margin-top: 7px; font-size: 12px; color: #3e4146; }
+  .licence dl { margin-top: 22px; }
+  .licence dl div { display: flex; justify-content: space-between; gap: 24px; padding: 7px 0; border-top: 1px solid rgba(32,33,38,.18); font-size: 12px; }
+  .licence dt { color: #4b4e53; }.licence dd { font-weight: 700; }
+  .holder-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 18px 24px; margin-top: 30px; }
+  .call { color: #fff; text-decoration: none; border-bottom: 1px solid #77717d; font-family: var(--disp); font-size: 1.15rem; }
+  .call:hover { border-color: var(--glaze-hi); color: var(--glaze-rim); }
+  .holder-current { position: absolute; left: calc(45% - 2px); top: 0; bottom: 0; width: 4px; z-index: 3; background: #4f4654; pointer-events: none; }
+  .holder-current i { display: block; width: 100%; height: 24%; background: var(--glaze-hi); box-shadow: 0 0 18px var(--glaze-hi); animation: currentDown 4.8s linear infinite; }
+
+  .handover { background: var(--lime); padding: var(--band) 0; }
+  .handover-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; }
+  .handover h2, .network h2, .registration h2, .team-close h2 { font-size: clamp(2.8rem, 6.4vw, 6.4rem); letter-spacing: -.04em; line-height: .88; }
+  .handover-head > p { max-width: 28ch; color: var(--ink-70); text-align: right; }
+  .chain { position: relative; margin-top: clamp(60px, 8vw, 120px); padding: 0 5%; display: grid; grid-template-columns: 1fr minmax(140px,.45fr) 1fr; align-items: center; gap: clamp(22px, 4vw, 64px); }
+  .bus { position: absolute; height: 4px; left: 8%; right: 8%; top: 50%; background: var(--zinc-deep); transform: translateY(-50%); }
+  .bus i { display: block; height: 100%; width: 20%; background: var(--glaze); box-shadow: 0 0 20px rgba(88,14,143,.7); animation: currentAcross 4s ease-in-out infinite; }
+  .nameplate { position: relative; display: grid; grid-template-columns: auto 1fr; gap: clamp(18px, 3vw, 38px); background: #c1c4c6; border: 1px solid #747a80; padding: clamp(24px, 3.2vw, 42px); box-shadow: inset 0 1px rgba(255,255,255,.65), 0 25px 45px -38px var(--ink); transition: transform var(--t-mid) var(--ease), box-shadow var(--t-mid) var(--ease); }
+  .nameplate:focus-visible, .nameplate:hover { transform: translateY(-5px); box-shadow: inset 0 1px rgba(255,255,255,.65), 0 35px 55px -34px var(--glaze); }
+  .nameplate::before,.nameplate::after { content:""; position:absolute; top:12px; width:8px; height:8px; border-radius:50%; background:#73787e; box-shadow:inset 1px 1px #e4e5e6; }.nameplate::before{left:12px}.nameplate::after{right:12px}
+  .year { font-family: var(--disp); color: var(--glaze); font-size: clamp(2.6rem, 5vw, 5rem); font-weight: 600; line-height: .85; }
+  .plate-label { font-size: 10px; font-weight: 700; letter-spacing: .16em; color: #4c5055; }
+  .nameplate h3 { margin-top: 8px; font-size: clamp(1.6rem, 2.6vw, 2.6rem); }
+  .nameplate div > p:last-child { margin-top: 10px; color: #41444a; font-size: 13px; line-height: 1.65; }
+  .transfer { position: relative; z-index: 1; text-align: center; color: var(--ink-70); background: var(--lime); padding: 20px 4px; }
+  .transfer span { display: block; font-family: var(--disp); color: var(--glaze); font-weight: 600; font-size: 2rem; }
+  .transfer i { display: block; width: 13px; height: 13px; margin: 10px auto; border-radius: 50%; background: var(--glaze); box-shadow: 0 0 0 7px rgba(88,14,143,.12); }
+  .transfer b { display: block; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+
+  .network { padding: var(--band) 0; background: var(--night-2); color: var(--lime); }
+  .network-head { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 30px; }
+  .network h2 { color: #fff; max-width: 13ch; }
+  .network-head p { margin-top: 22px; max-width: 52ch; color: #bdb7c1; }
+  .incomer { display: grid; justify-items: center; color: #fff; font-family: var(--disp); font-size: 1.4rem; }
+  .incomer span { display: grid; place-items: center; width: 82px; height: 52px; background: var(--glaze); border: 1px solid var(--glaze-hi); box-shadow: 0 0 30px rgba(88,14,143,.45); }
+  .incomer i { width: 3px; height: 64px; background: var(--glaze-hi); }
+  .circuits { margin-top: clamp(36px, 5vw, 72px); border-top: 1px solid #5a505f; }
+  .circuit { min-height: 148px; display: grid; grid-template-columns: minmax(130px,.55fr) minmax(0,1.8fr) minmax(90px,.35fr); align-items: center; gap: clamp(18px, 3vw, 44px); border-bottom: 1px solid #4c444f; position: relative; cursor: default; }
+  .wire { height: 3px; background: #5c5260; position: relative; width: var(--reach); transition: background var(--t-mid) var(--ease), box-shadow var(--t-mid) var(--ease); }
+  .wire::before { content: ""; position: absolute; left: 0; top: 50%; width: 12px; height: 12px; transform: translateY(-50%); border-radius: 50%; background: #84788a; }
+  .wire span { position: absolute; width: 9px; height: 9px; right: 0; top: 50%; transform: translateY(-50%); background: var(--night-2); border: 2px solid #7d7182; border-radius: 50%; }
+  .wire i { display: block; height: 100%; width: 100%; transform: scaleX(0); transform-origin: left; background: var(--glaze-hi); box-shadow: 0 0 18px var(--glaze-hi); transition: transform 650ms var(--ease); }
+  .circuit:hover .wire, .circuit:focus-visible .wire { background: var(--glaze); box-shadow: 0 0 15px rgba(162,91,216,.5); }
+  .circuit:hover .wire i, .circuit:focus-visible .wire i { transform: scaleX(1); }
+  .crew-plate { padding: 20px 0; }
+  .crew-plate > p { color: #aaa2ae; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+  .crew-plate h3 { margin-top: 7px; color: #fff; font-size: clamp(1.7rem, 3vw, 2.8rem); }
+  .crew-plate > span { display: block; margin-top: 8px; color: #bfb9c3; font-size: 13px; line-height: 1.6; max-width: 72ch; }
+  .tenure { text-align: right; color: #fff; }
+  .tenure b { display: block; font-family: var(--disp); font-size: clamp(2rem, 4.2vw, 4.2rem); line-height: .8; color: var(--glaze-rim); }
+  .tenure span { display: block; margin-top: 10px; color: #aaa2ae; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+
+  .registration { padding: var(--band) 0; background: var(--zinc); }
+  .reg-grid { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: clamp(36px, 7vw, 110px); align-items: start; }
+  .registration h2 { max-width: 10ch; }
+  .registration p { margin-top: 22px; max-width: 44ch; color: var(--ink-70); }
+  .registration dl { border-top: 2px solid var(--ink); }
+  .registration dl div { display: grid; grid-template-columns: minmax(110px,.4fr) 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid rgba(22,19,26,.24); }
+  .registration dt { color: #48434d; font-size: 11px; letter-spacing: .11em; text-transform: uppercase; }
+  .registration dd { font-family: var(--disp); font-size: clamp(1rem, 1.7vw, 1.35rem); font-weight: 600; line-height: 1.25; }
+
+  .team-close { padding: clamp(70px, 9vw, 140px) 0; background: var(--glaze); color: #fff; }
+  .close-grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: clamp(30px, 7vw, 110px); align-items: end; }
+  .team-close h2 { max-width: 12ch; }
+  .team-close p { margin-bottom: 24px; color: #e4d5ee; }
+
+  @keyframes currentDown { from { transform: translateY(-100%); } to { transform: translateY(520%); } }
+  @keyframes currentAcross { 0% { transform: translateX(-100%); } 60%,100% { transform: translateX(500%); } }
+
+  @media (max-width: 980px) {
+    .holder { grid-template-columns: .9fr 1.1fr; }
+    .holder h1 { font-size: clamp(3.2rem, 7vw, 5.2rem); }
+    .holder-current { left: calc(45% - 2px); }
+    .chain { padding: 0; grid-template-columns: 1fr; }
+    .bus { width: 4px; height: auto; top: 4%; bottom: 4%; left: 50%; right: auto; transform: translateX(-50%); }
+    .bus i { width: 100%; height: 22%; animation: currentDown 4.8s linear infinite; }
+    .transfer { justify-self: center; padding: 24px; }
+  }
+  @media (max-width: 760px) {
+    .holder { display: block; min-height: auto; }
+    .portrait { min-height: 68svh; }
+    .portrait img { object-position: center 24%; }
+    .portrait-shade { background: linear-gradient(0deg, var(--night), transparent 48%); }
+    .portrait-caption { bottom: 18px; }
+    .holder-copy { padding-top: 54px; }
+    .holder h1 { font-size: clamp(3.6rem, 16vw, 5.6rem); max-width: 8ch; }
+    .holder-current { display: none; }
+    .licence dl div { align-items: baseline; }
+    .handover-head { display: block; }
+    .handover-head > p { margin-top: 20px; text-align: left; }
+    .nameplate { grid-template-columns: 1fr; }
+    .network-head { grid-template-columns: 1fr; }
+    .incomer { justify-self: start; margin-top: 10px; }
+    .circuit { grid-template-columns: 46px minmax(0,1fr) 74px; gap: 14px; padding: 12px 0; }
+    .wire { width: 100%; transform: rotate(90deg); }
+    .crew-plate > span { font-size: 12px; }
+    .tenure b { font-size: 2.2rem; }
+    .reg-grid, .close-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .holder-actions { align-items: flex-start; flex-direction: column; }
+    .licence dl div { display: block; }
+    .licence dd { margin-top: 2px; }
+    .circuit { grid-template-columns: 30px minmax(0,1fr); }
+    .tenure { grid-column: 2; text-align: left; display: flex; gap: 8px; align-items: baseline; padding-bottom: 14px; }
+    .tenure span { margin-top: 0; }
+    .registration dl div { grid-template-columns: 1fr; gap: 5px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .holder-current i, .bus i { animation: none; height: 100%; width: 100%; opacity: .5; }
+    .wire i { transition: none; }
+    .nameplate { transition: none; }
+  }
+</style>

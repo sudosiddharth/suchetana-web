@@ -1,0 +1,202 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Stack from '../../components/Stack.astro';
+import Contact from '../../components/Contact.astro';
+import photos from '../../data/photos.json';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('projects');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry, all: entries },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'projects'>;
+  all: CollectionEntry<'projects'>[];
+}
+const { entry, all } = Astro.props;
+const d = entry.data;
+
+/* Same sector, nearest in load — a real relationship, not a random "related" shelf. */
+const siblings = all
+  .filter((e) => e.slug !== entry.slug && e.data.sector === d.sector)
+  .sort((a, b) => {
+    const base = d.loadKva ?? 0;
+    return Math.abs((a.data.loadKva ?? 0) - base) - Math.abs((b.data.loadKva ?? 0) - base);
+  })
+  .slice(0, 4);
+
+/* Where this job sits on the whole register — factual, computed, not asserted. */
+const withLoad = all.filter((e) => e.data.loadKva !== null);
+const rank = d.loadKva === null
+  ? null
+  : withLoad.filter((e) => (e.data.loadKva ?? 0) > (d.loadKva ?? 0)).length + 1;
+
+/* A photograph only appears where it can be attributed on evidence — see tools/photos.json.
+   Sixty-three of the seventy-three have none yet, so the no-photo state is the normal one. */
+const photo = (photos.attributed as any[]).find((p) => p.slug === entry.slug) ?? null;
+
+const loadLabel = d.load || 'Recorded by area';
+const title = `${d.title} — ${loadLabel} · Suchetana Electricals`;
+const description = `${d.title}, ${d.locality}. ${d.load ? `${d.load} — ` : ''}${d.classNote} Executed by Suchetana Electricals, Class I electrical contractors, Bengaluru.`;
+---
+<Base title={title} description={description} path={`/work/${entry.slug}`}>
+  <article class="job-page">
+    <div class="head">
+      <div class="wrap hgrid">
+        <div>
+          <a class="back" href="/#register">← The register</a>
+          <h1>{d.title}</h1>
+          <p class="loc">{d.locality}</p>
+          <p class="note">{d.classNote}</p>
+        </div>
+        <div class="obj">
+          <Stack
+            discs={d.discs}
+            mode="plate"
+            label={d.discs > 0
+              ? `An insulator string of ${d.discs} disc${d.discs > 1 ? 's' : ''} — the class this supply needed.`
+              : 'An empty ring on a bare pin — this job is recorded by area, not by connected load.'}
+          />
+          <span class="objk">{d.discs > 0 ? `${d.discs} disc${d.discs > 1 ? 's' : ''}` : 'By area'}</span>
+        </div>
+      </div>
+    </div>
+
+    {photo && (
+      <figure class="shot">
+        <span class="tray"><span class="plate-in">
+          <img src={photo.src} width={photo.w} height={photo.h} alt={photo.alt} />
+        </span></span>
+        <figcaption>
+          <b>{photo.caption}</b>
+          <span>The firm's own photograph · {photo.w} × {photo.h}</span>
+        </figcaption>
+      </figure>
+    )}
+
+    <div class="wrap facts">
+      <dl>
+        <div><dt>Connected load</dt><dd class="big">{loadLabel}</dd></div>
+        <div><dt>Sector</dt><dd>{d.sectorName}</dd></div>
+        <div><dt>Recorded as</dt><dd>{d.recordedAs}</dd></div>
+        {rank !== null && (
+          <div><dt>On the register</dt><dd>{rank} of {withLoad.length} by connected load</dd></div>
+        )}
+      </dl>
+      <p class="blurb">{d.sectorBlurb}</p>
+    </div>
+
+    {siblings.length > 0 && (
+      <div class="wrap near">
+        <h2>Nearest jobs in {d.sectorName.toLowerCase()}<i data-charge></i></h2>
+        <div class="nearGrid" data-stagger>
+          {siblings.map((s) => (
+            <a href={`/work/${s.slug}`}>
+              <Stack discs={s.data.discs} mode="row" />
+              <b>{s.data.title}</b>
+              <span>{s.data.locality}</span>
+              <u>{s.data.load || 'By area'}</u>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </article>
+
+  <Contact about={`${d.title} (${d.locality})`} />
+</Base>
+
+<style>
+  .head { background: var(--zinc); padding: clamp(38px, 6vw, 78px) 0 clamp(30px, 4vw, 56px); }
+  .hgrid {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto;
+    gap: clamp(20px, 4vw, 56px); align-items: end;
+  }
+  @media (max-width: 760px) { .hgrid { grid-template-columns: 1fr; gap: 26px; } }
+
+  .back {
+    display: inline-block; font-family: var(--disp); font-size: 15px; font-weight: 500;
+    text-decoration: none; color: var(--ink-80); margin-bottom: clamp(16px, 2.4vw, 26px);
+    border-bottom: 2px solid transparent;
+  }
+  .back:hover { border-color: var(--glaze); color: var(--glaze); }
+
+  h1 { font-size: clamp(2.2rem, 6vw, 4.4rem); letter-spacing: -.032em; max-width: 18ch; }
+  .loc { margin-top: 12px; font-size: clamp(1rem, 1.4vw, 1.15rem); color: var(--ink-80); }
+  .note { margin-top: 16px; max-width: 58ch; color: var(--ink-80); line-height: 1.62; }
+
+  .obj { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .objk {
+    font-family: var(--disp); font-size: 14px; font-weight: 600;
+    letter-spacing: .02em; color: var(--ink-80);
+  }
+
+  /* the photograph sits at its own true size, centred — never stretched to fill a band */
+  .shot {
+    margin: 0 auto; padding: clamp(26px, 4vw, 52px) var(--pad-x) 0;
+    max-width: 1400px; display: flex; flex-direction: column; align-items: flex-start;
+  }
+  .shot .tray { display: inline-block; }
+  .shot img { display: block; width: auto; max-width: 100%; height: auto; }
+  .shot figcaption { padding-top: 12px; }
+  .shot figcaption b {
+    display: block; font-family: var(--disp); font-size: 1.1rem; font-weight: 600; letter-spacing: -.012em;
+  }
+  .shot figcaption span {
+    display: block; margin-top: 4px; font-size: 11px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-45);
+  }
+
+  .facts { padding: clamp(34px, 5vw, 64px) var(--pad-x); display: grid;
+           grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(20px, 4vw, 60px); }
+  @media (max-width: 860px) { .facts { grid-template-columns: 1fr; gap: 24px; } }
+  dl { display: grid; gap: 0; }
+  dl > div {
+    display: flex; justify-content: space-between; gap: 18px; align-items: baseline;
+    padding: 14px 0; border-bottom: 1px solid var(--lime-2);
+  }
+  dt {
+    font-size: 11.5px; font-weight: 600; letter-spacing: .09em;
+    text-transform: uppercase; color: var(--ink-45); flex: none;
+  }
+  dd { text-align: right; font-size: 15px; }
+  dd.big {
+    font-family: var(--disp); font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 600; letter-spacing: -.025em; color: var(--glaze);
+  }
+  .blurb { color: var(--ink-70); line-height: 1.7; max-width: 52ch; }
+
+  .near { padding: 0 var(--pad-x) clamp(44px, 6vw, 82px); }
+  .near h2 { font-size: clamp(1.3rem, 2.4vw, 1.9rem); padding-bottom: 9px; position: relative; }
+  .near h2 i {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 1.5px;
+    background: var(--zinc-deep); display: block;
+  }
+  .nearGrid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: clamp(12px, 2vw, 24px); margin-top: clamp(18px, 2.4vw, 28px);
+  }
+  @media (max-width: 900px) { .nearGrid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .nearGrid { grid-template-columns: 1fr; } }
+  .nearGrid a {
+    display: block; text-decoration: none; color: inherit;
+    border-top: 1.5px solid var(--zinc-deep); padding-top: 14px;
+    transition: border-color var(--t-fast) var(--ease);
+  }
+  .nearGrid a:hover { border-color: var(--glaze); }
+  .nearGrid a:hover b { color: var(--glaze); }
+  .nearGrid b {
+    display: block; font-family: var(--disp); font-size: 1.15rem; font-weight: 600;
+    letter-spacing: -.015em; margin-top: 10px; line-height: 1.1;
+    transition: color var(--t-fast) var(--ease);
+  }
+  .nearGrid span { display: block; font-size: 12.5px; color: var(--ink-45); margin-top: 4px; }
+  .nearGrid u {
+    display: block; text-decoration: none; font-family: var(--disp);
+    font-size: 1.2rem; font-weight: 600; color: var(--ink-80); margin-top: 8px;
+  }
+</style>

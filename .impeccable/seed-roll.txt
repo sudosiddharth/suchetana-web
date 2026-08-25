@@ -1,0 +1,129 @@
+DIRECTION CONCEPT SEED (key: 5c5da9b3; mode: persuade; source: api; approved pool: c3b204a1eed6; 306/564 human-approved; rerun with --scope direction --mode persuade --from 5c5da9b3 --candidate-count 7 to reproduce this roll against this catalog revision)
+ASSIGNED INDEX: 6
+  After ordering the grounded directions by resonance, build candidate
+  6 of your own grounded list; the assignment never points at a
+  challenger. The assignment is the roll, not a suggestion: your top-ranked
+  direction is what every run would ship, so the script decides which grounded
+  direction gets built. Each direction joins a durable visual system to a
+  concrete expression for the requested first surface, decided as one. It must
+  survive the current task plus navigation, quiet and dense content,
+  interaction and state, and a substantially different future surface. In an
+  attended run, present the assigned direction fully committed and offer
+  re-roll. You may add ONE card for your top-ranked grounded candidate when
+  it is not the assigned direction, kicker IMPECCABLE’S PICK, with an honest risk line
+  naming its familiarity; one pick card, never a ranked lineup, and the pick
+  never takes the lead position. When the assignment IS your top candidate,
+  there is no pick card. Re-roll yourself only
+  on named factual grounds, when the assignment cannot carry the product's
+  truth or task; taste is never grounds.
+  The assignment exists to refuse the model's ranking rut, never to outrank
+  the user or the brief. Never expose assignment metadata in user-facing labels.
+CHALLENGERS:
+  1. a japanese street-fashion magazine spread packed to the edges, cut-out figures overlapping with handwritten price call-outs, glitter-outlined headlines and speech bubbles annotating every garment on the page
+     SOURCE ID: pop-culture-shelf-gyaru-magazine-density
+     CREATIVE SPARK: eleven girls cut out and shingled across two pages, every single item on them labelled by hand with a price and an arrow, and the headline outlined so many times it has its own gravity.
+     SYSTEM GRAMMAR:
+       - Palette/material: hot pink, gold and tanned skin over white, with glitter outlines and star bursts printed as flat spot shapes
+       - Type/composition: multiply outlined headlines, cut-out figures overlapping in a shingle, and handwritten price call-outs on leader lines to each garment
+       - Topology/navigation: the spread is a crowd, so navigation is pulling one figure forward while the others keep overlapping behind
+       - Controls/state: controls are call-out tags, the active one gains a second outline, and priced items keep a small star burst
+       - Responsive/motion: the shingle restacks vertically on narrow frames, and motion is a figure lifting free of the overlap
+     WEB LEVERAGE: responsive shingle restacking, svg leader-line call-outs bound to hover state, and lift transforms on figure focus
+     QUALITY BAR: board https://impeccable.style/worlds/cards/pop-culture-shelf-gyaru-magazine-density.webp · hero https://impeccable.style/worlds/cards/pop-culture-shelf-gyaru-magazine-density-hero.webp
+  2. a Constructivist agit-train stopped at a village platform, where diagonal red wedges, stencil type, and photomontage turn railcars into moving broadsides
+     SOURCE ID: design-canon-constructivist-agit-train
+     CREATIVE SPARK: A red wedge drives across a railcar; stenciled slogans and pasted photographs angle forward as if the train were still moving.
+     SYSTEM GRAMMAR:
+       - Palette/material: unbleached newsprint cream ground, soot-black stencil ink for body, revolutionary red rationed to the wedge that drives the action
+       - Type/composition: stenciled wood-type caps and heavy numerals angled with the line of travel, photomontage fragments locked into the wedge's thrust, slogans banding each car
+       - Topology/navigation: content advances car by car along one strong diagonal axis of travel.
+       - Controls/state: calls to action are wedges that physically enter the composition; pressed states drive deeper.
+       - Responsive/motion: diagonals steepen on tall screens and relax on wide; scroll advances the train
+     WEB LEVERAGE: Scroll-driven horizontal travel with clip-path wedges keeps the diagonal grammar live in the browser.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/design-canon-constructivist-agit-train.webp · hero https://impeccable.style/worlds/cards/design-canon-constructivist-agit-train-hero.webp
+  3. a data-sublime field, where dense barcode columns and sine lattices strobe in pure black and white
+     SOURCE ID: ikeda-datamatics
+     CREATIVE SPARK: A wall of hairline vertical bars, some black, some white, holds like a frozen barcode. Dense monospace numbers pack the margin. A single sine curve traces the lattice, and for one frame the whole field snaps to its negative.
+     SYSTEM GRAMMAR:
+       - Palette/material: Pure black and pure white only, no grey and no color; flat pixel-crisp bars, hairline rules, and monospace numerics; the occasional full-frame inversion.
+       - Type/composition: One monospace face at data density, set in tight tabular columns; barcode bar-fields and sine curves structure the page
+       - Topology/navigation: Move by data column, by frequency band, and by frame index.
+       - Controls/state: Scan, sample, and invert; selecting a column pulls its numbers into focus while the surrounding field drops to a faint bar pattern.
+       - Responsive/motion: Columns thin and drop from the edges as width shrinks; reduced-motion disables all strobing and holds a single high-contrast still.
+     WEB LEVERAGE: Render the barcode and sine lattice on canvas from a seeded sequence, stepping frames on requestAnimationFrame that halts entirely under prefers-reduced-motion.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/ikeda-datamatics.webp · hero https://impeccable.style/worlds/cards/ikeda-datamatics-hero.webp
+  4. a crt oscilloscope on a signal bench, phosphor trace riding an etched graticule while detented knobs set channel, timebase, and trigger
+     SOURCE ID: scientific-notation-oscilloscope-signal-bench
+     CREATIVE SPARK: You clip the probe to the pin and a green line snaps out of the noise; a nudge of the trigger knob and the waveform stands still, breathing in phosphor over the etched grid, ten divisions wide, every one meaning something.
+     SYSTEM GRAMMAR:
+       - Palette/material: phosphor green blazing on near-black glass, graticule gray etched beneath, a second channel in dimmer trace; amber readouts for armed and warning states
+       - Type/composition: condensed instrument caps on knob skirts and bezels, glowing seven-segment readouts; everything on screen is measured against the ten-division graticule
+       - Topology/navigation: one screen, many signals; you travel by timebase and vertical scale, and channels overlay in the same graticule space rather than separate views
+       - Controls/state: detented knobs set scale and trigger level; an untriggered trace rolls free, a triggered one locks still, and freeze holds the waveform for cursors
+       - Responsive/motion: the graticule stays square while readouts drop below on narrow screens; the sweep is continuous
+     WEB LEVERAGE: canvas draws the persistent phosphor trace from live Web Audio or sensor input, with pointer-dragged trigger level and keyboard-stepped cursors
+     QUALITY BAR: board https://impeccable.style/worlds/cards/scientific-notation-oscilloscope-signal-bench.webp · hero https://impeccable.style/worlds/cards/scientific-notation-oscilloscope-signal-bench-hero.webp
+  5. a kiln shelf beneath a row of heavily glazed cups, where molten color pools, runs, stops, and sometimes welds the vessel to the floor
+     SOURCE ID: clay-ceramics-fracture-glaze-river-shelf
+     CREATIVE SPARK: A cobalt glaze reaches the foot in one thick tear, freezes a millimeter above the shelf, while the cup beside it spills into a glassy blue puddle.
+     SYSTEM GRAMMAR:
+       - Palette/material: chalk-white kiln shelf as the ground, cobalt glaze runs as the accent flow, fused puddles hardening to glassy sapphire for the warning state
+       - Type/composition: monospaced batch numerals on recipe cards beside each cup, samples ranked in one shelf row, gravity setting the vertical reading order
+       - Topology/navigation: Connect recipe, thickness, kiln position, vertical path, and final pool for each sample.
+       - Controls/state: Apply, fire, flow, arrest, and compare with dry, melting, running, pooled, and fused states.
+       - Responsive/motion: Replace molten flow with registered stage overlays and keep recipe and risk visible beside every sample.
+     WEB LEVERAGE: A viscosity-and-slope model can predict meaningful thresholds while remaining bounded to selected samples.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/clay-ceramics-fracture-glaze-river-shelf.webp · hero https://impeccable.style/worlds/cards/clay-ceramics-fracture-glaze-river-shelf-hero.webp
+  6. a brick build-instruction book, numbered exploded steps on sky-blue pages, 1:1 piece call-outs in a cornered box, a stud grid ruling every alignment, wordless arrows teaching assembly
+     SOURCE ID: games-toys-physics-play-brick-build-instructions
+     CREATIVE SPARK: You flatten the booklet on the carpet, tip the numbered bag out, and match a red brick to its 1:1 call-out against the page; the arrow shows the seat, the stud grid agrees, and the piece clicks down exactly where it must.
+     SYSTEM GRAMMAR:
+       - Palette/material: instruction-page sky blue as the ground, black keyline ink outlining every piece, brick red for the new part in each step, yellow held in the inventory
+       - Type/composition: oversized step numerals are almost the only text, wordless arrows do the teaching, and every element aligns to the stud grid module
+       - Topology/navigation: numbered spreads in strict sequence, a parts inventory up front, 1:1 call-out boxes zooming the pieces a step introduces
+       - Controls/state: prior assembly renders ghosted, the new pieces arrive bright with an arrow to their seat, done means clicked down flush on the studs
+       - Responsive/motion: spreads split into single step frames on small screens, call-outs pin to a corner; pieces animate down along their arrows
+     WEB LEVERAGE: svg exploded-step diagrams with dashed guide arrows, css grid locked to a stud-module unit, animation dropping new pieces along their arrows
+     QUALITY BAR: board https://impeccable.style/worlds/cards/games-toys-physics-play-brick-build-instructions.webp · hero https://impeccable.style/worlds/cards/games-toys-physics-play-brick-build-instructions-hero.webp
+Fuse each challenger before judging it: the challenger supplies the form
+  and its system grammar, the product supplies every fact, and clarity wins
+  conflicts. Weigh the fused result against the assigned direction on exactly
+  two axes, audience identification and product clarity. Losing to strong
+  grounded material is a valid outcome; beating a thin or tool-monoculture
+  list is the point. A fused challenger that wins both axes becomes the build.
+  Close the weighing with a verdict per challenger, decided before any
+  borrowing is considered: wins (beats the assigned direction on both axes),
+  competitive (holds one axis), or declined (loses both). A declined
+  challenger is not spent: name the one discipline of its system the assigned
+  direction lacks, and raise the assigned direction to match before
+  presenting it. A donation transfers ambition and system discipline, never
+  the challenger's clothes; one world owns the page. Write each raise as its
+  own named line on the presented direction, and carry every verdict, kept
+  line, and raise into the decision page payload.
+When you can view images, open the QUALITY BAR board and hero for any
+challenger you weigh seriously and for the world you build. They exist as a
+craft bar, the finish level and commitment the build is expected to reach,
+never as a mockup to copy; your surface serves this product, not that render.
+PRODUCT.md and explicit incumbent brand commitments constrain every direction.
+The seed never chooses exact colors, fonts, tokens, or a user preference, and
+it never permits the world and first surface to be selected independently.
+The CREATIVE SPARK is a complete visual system, not a theme or decorative
+reference. Translate every supplied system rule into the product: palette and
+material, type and composition, topology, controls and states, and adaptation.
+Keep the source's visible character, scale, rhythm, and interaction instead of
+reducing vivid grammar to generic nouns. When the source is already a credible
+interface language, commit to it across navigation, content, controls, and
+states. Otherwise keep a literal carrier only when it becomes functional.
+Ambitious motion, spatial media, or interaction is welcome when it strengthens
+the product without weakening semantics, performance, or fallback behavior.
+TELEMETRY: after the user's choice resolves, rerun this script once with
+  --kind <assigned|pick|challenger|canon> --from 5c5da9b3 --scope direction --mode persuade,
+  adding --chosen <challenger-id> when a dealt challenger won and keeping
+  --register <safer|bolder> when the resolved round came from a steered hand.
+  One ping per resolved attended round. The ping is anonymous, the card kind
+  plus the catalog id when one won; your grounded candidates' names never
+  leave the machine, and the ping is skipped automatically when DO_NOT_TRACK
+  or IMPECCABLE_NO_TELEMETRY is set.
+A user- or brief-pinned decision beats the roll, always.
+ASSIGNED INDEX (restated for truncated readers): 6. Build candidate
+6 of your own grounded list; seed key 5c5da9b3.

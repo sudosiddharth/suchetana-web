@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" role="img" aria-labelledby="title desc">
+  <title id="title">Three-phase distribution transformer</title>
+  <desc id="desc">A detailed front three-quarter vector drawing of a distribution transformer with high-voltage bushings, conservator, cooling fins, cable box, earthing terminals and animation-ready primary and secondary current paths.</desc>
+  <defs>
+    <linearGradient id="zn" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d4d6d9"/><stop offset=".28" stop-color="#777d84"/><stop offset=".58" stop-color="#b8bcc1"/><stop offset="1" stop-color="#4e5359"/></linearGradient>
+    <linearGradient id="znDark" x1="0" x2="1"><stop stop-color="#34383d"/><stop offset=".5" stop-color="#7c8189"/><stop offset="1" stop-color="#2a2d31"/></linearGradient>
+    <radialGradient id="porcelain" cx="34%" cy="20%" r="78%"><stop stop-color="#c89bea"/><stop offset=".33" stop-color="#7a22c4"/><stop offset=".74" stop-color="#580e8f"/><stop offset="1" stop-color="#2e0650"/></radialGradient>
+    <linearGradient id="current" x1="0" x2="1"><stop stop-color="#580e8f"/><stop offset=".78" stop-color="#c89bea"/><stop offset="1" stop-color="#e0b85b"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#16131a" flood-opacity=".3"/></filter>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <g id="hv-disc"><ellipse cx="0" cy="0" rx="31" ry="9" fill="#24043f" opacity=".55"/><ellipse cx="0" cy="-4" rx="34" ry="10" fill="url(#porcelain)"/><ellipse cx="-9" cy="-7" rx="10" ry="3" fill="#ead8f7" opacity=".55"/></g>
+    <style>
+      .outline{stroke:#383c41;stroke-width:3;stroke-linejoin:round}.detail{fill:none;stroke:#555b62;stroke-width:2}.bolt{fill:#34383d}.route{fill:none;stroke:url(#current);stroke-width:8;stroke-linecap:round;stroke-linejoin:round;filter:url(#glow);opacity:0}.route-guide{fill:none;stroke:#4e5359;stroke-width:7;stroke-linecap:round;opacity:.28}.label{font:600 16px system-ui,sans-serif;letter-spacing:.14em;fill:#4e5359}.tiny{font:600 12px system-ui,sans-serif;letter-spacing:.09em;fill:#656b72}
+    </style>
+  </defs>
+
+  <ellipse id="ground-shadow" cx="492" cy="688" rx="370" ry="34" fill="#16131a" opacity=".13"/>
+
+  <g id="foundation" filter="url(#shadow)">
+    <path d="M166 628H804L842 674H128Z" fill="url(#znDark)" class="outline"/>
+    <path d="M190 604H782V644H190Z" fill="url(#zn)" class="outline"/>
+    <path d="M236 644V674M732 644V674" class="detail"/>
+    <circle cx="220" cy="625" r="8" class="bolt"/><circle cx="752" cy="625" r="8" class="bolt"/>
+  </g>
+
+  <g id="tank">
+    <path d="M244 228H710L766 274V596L710 628H244L194 590V272Z" fill="url(#zn)" class="outline"/>
+    <path d="M244 228L194 272V590L244 628Z" fill="#666c73" class="outline"/>
+    <path d="M710 228L766 274V596L710 628Z" fill="#4e5359" class="outline"/>
+    <path d="M244 228H710V628H244Z" fill="#9ca1a7" opacity=".24"/>
+    <rect x="224" y="248" width="506" height="34" rx="4" fill="url(#znDark)" class="outline"/>
+    <rect x="224" y="568" width="506" height="35" rx="4" fill="url(#znDark)" class="outline"/>
+    <path d="M262 306H690M262 546H690" class="detail" opacity=".65"/>
+    <g id="tank-bolts">
+      <circle cx="248" cy="265" r="6" class="bolt"/><circle cx="706" cy="265" r="6" class="bolt"/><circle cx="248" cy="585" r="6" class="bolt"/><circle cx="706" cy="585" r="6" class="bolt"/>
+    </g>
+    <g id="nameplate">
+      <rect x="384" y="405" width="184" height="103" rx="3" fill="#25282c" stroke="#c4c7cb" stroke-width="2"/>
+      <text x="476" y="433" text-anchor="middle" fill="#c89bea" font-family="system-ui,sans-serif" font-size="12" font-weight="700" letter-spacing="2">DISTRIBUTION</text>
+      <text x="476" y="457" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="20" font-weight="700">TRANSFORMER</text>
+      <path d="M404 471H548" stroke="#777d84"/>
+      <text x="404" y="491" fill="#c4c7cb" font-family="system-ui,sans-serif" font-size="10">PRIMARY</text><text x="548" y="491" text-anchor="end" fill="#fff" font-family="system-ui,sans-serif" font-size="10">HT</text>
+    </g>
+  </g>
+
+  <g id="cooling-fins">
+    <g fill="url(#znDark)" stroke="#383c41" stroke-width="2">
+      <path d="M156 305H196V552H156L137 527V330Z"/><path d="M122 318H155V539H122L105 517V340Z"/><path d="M90 334H121V523H90L76 505V352Z"/>
+      <path d="M766 304H810L831 330V527L810 553H766Z"/><path d="M810 318H844L862 340V517L844 540H810Z"/><path d="M844 334H875L890 352V505L875 523H844Z"/>
+    </g>
+    <path d="M104 365H194M104 493H194M766 365H862M766 493H862" class="detail"/>
+  </g>
+
+  <g id="conservator">
+    <path d="M350 115H646C671 115 692 136 692 161s-21 46-46 46H350c-25 0-46-21-46-46s21-46 46-46Z" fill="url(#zn)" class="outline"/>
+    <ellipse cx="350" cy="161" rx="46" ry="46" fill="#777d84" class="outline"/><ellipse cx="646" cy="161" rx="46" ry="46" fill="#585e65" class="outline"/>
+    <path d="M402 207V229M592 207V229" stroke="#383c41" stroke-width="10"/>
+    <circle cx="646" cy="161" r="12" fill="#2d3034"/><path d="M657 161H730V190" class="detail"/>
+    <g id="breather" transform="translate(730 190)"><path d="M-14 0H14L20 58L10 78H-10L-20 58Z" fill="#c9c6b8" class="outline"/><path d="M-17 45H17" stroke="#580e8f" stroke-width="8" opacity=".75"/><path d="M-12 64H12" stroke="#580e8f" stroke-width="5" opacity=".45"/></g>
+  </g>
+
+  <g id="ht-bushings">
+    <g id="hv-a" transform="translate(330 229)"><path d="M0 0V-116" stroke="#4e5359" stroke-width="13"/><use href="#hv-disc" y="-18"/><use href="#hv-disc" y="-42"/><use href="#hv-disc" y="-66"/><use href="#hv-disc" y="-90"/><circle cy="-124" r="10" fill="#d6a84c"/></g>
+    <g id="hv-b" transform="translate(478 229)"><path d="M0 0V-116" stroke="#4e5359" stroke-width="13"/><use href="#hv-disc" y="-18"/><use href="#hv-disc" y="-42"/><use href="#hv-disc" y="-66"/><use href="#hv-disc" y="-90"/><circle cy="-124" r="10" fill="#d6a84c"/></g>
+    <g id="hv-c" transform="translate(626 229)"><path d="M0 0V-116" stroke="#4e5359" stroke-width="13"/><use href="#hv-disc" y="-18"/><use href="#hv-disc" y="-42"/><use href="#hv-disc" y="-66"/><use href="#hv-disc" y="-90"/><circle cy="-124" r="10" fill="#d6a84c"/></g>
+  </g>
+
+  <g id="lt-bushings">
+    <g transform="translate(292 305)"><rect x="-18" y="-32" width="36" height="34" rx="7" fill="url(#porcelain)" class="outline"/><circle cy="-38" r="8" fill="#d6a84c"/></g>
+    <g transform="translate(370 305)"><rect x="-18" y="-32" width="36" height="34" rx="7" fill="url(#porcelain)" class="outline"/><circle cy="-38" r="8" fill="#d6a84c"/></g>
+    <g transform="translate(448 305)"><rect x="-18" y="-32" width="36" height="34" rx="7" fill="url(#porcelain)" class="outline"/><circle cy="-38" r="8" fill="#d6a84c"/></g>
+    <g transform="translate(526 305)"><rect x="-18" y="-32" width="36" height="34" rx="7" fill="#5d6268" class="outline"/><circle cy="-38" r="8" fill="#d6a84c"/></g>
+  </g>
+
+  <g id="cable-box">
+    <path d="M570 500H706V614H570Z" fill="#666c73" class="outline"/><path d="M588 520H688V573H588Z" fill="#26292d" stroke="#a9adb2" stroke-width="2"/>
+    <circle cx="610" cy="587" r="10" fill="#2e0650"/><circle cx="638" cy="587" r="10" fill="#580e8f"/><circle cx="666" cy="587" r="10" fill="#7a22c4"/>
+    <path d="M610 597V650M638 597V650M666 597V650" stroke="#34383d" stroke-width="8"/>
+  </g>
+
+  <g id="earthing">
+    <circle cx="222" cy="562" r="11" fill="#d6a84c" class="outline"/><path d="M222 573V650H116" fill="none" stroke="#5d8a63" stroke-width="8"/><path d="M90 650H142M98 663H134M108 675H124" stroke="#5d8a63" stroke-width="5"/>
+    <text x="82" y="716" class="label">EARTH</text>
+  </g>
+
+  <g id="internal-windings" opacity=".36">
+    <path d="M318 363c55-56 55 112 110 56s55-112 110-56 55 112 110 56" fill="none" stroke="#580e8f" stroke-width="5"/>
+    <path d="M318 381c55-56 55 112 110 56s55-112 110-56 55 112 110 56" fill="none" stroke="#c89bea" stroke-width="3"/>
+  </g>
+
+  <path id="current-primary-guide" class="route-guide" d="M44 105H330V105V229C330 310 398 322 478 350"/>
+  <path id="current-primary" class="route" d="M44 105H330V105V229C330 310 398 322 478 350"/>
+  <path id="current-secondary-guide" class="route-guide" d="M478 456C530 456 540 466 588 466V520H638V650H916"/>
+  <path id="current-secondary" class="route" d="M478 456C530 456 540 466 588 466V520H638V650H916"/>
+
+  <g id="callouts">
+    <path d="M94 150H244" class="detail"/><text x="92" y="142" text-anchor="end" class="label">HT IN</text>
+    <path d="M717 466H850" class="detail"/><text x="858" y="472" class="label">LT OUT</text>
+    <text x="476" y="742" text-anchor="middle" class="tiny">THREE-PHASE DISTRIBUTION TRANSFORMER · ANIMATION-READY ASSET</text>
+  </g>
+</svg>

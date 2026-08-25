@@ -1,0 +1,134 @@
+---
+import Wa from './Wa.astro';
+---
+<section class="power-journey" aria-labelledby="home-title" data-power-journey>
+  <div class="journey-stage">
+    <canvas class="field-canvas" aria-hidden="true"></canvas>
+    <div class="field-fallback" aria-hidden="true"></div>
+
+    <svg class="single-line" viewBox="0 0 1600 900" role="img" aria-label="A single-line electrical diagram moving from utility supply through metering, transformation, protection, distribution and commissioned load.">
+      <defs>
+        <linearGradient id="liveStroke" x1="0" x2="1">
+          <stop offset="0" stop-color="#580E8F" />
+          <stop offset=".72" stop-color="#C89BEA" />
+          <stop offset="1" stop-color="#D6A84C" />
+        </linearGradient>
+        <filter id="liveGlow" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="7" result="blur" />
+          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+        </filter>
+        <clipPath id="photoWindow"><circle class="photo-aperture" cx="1390" cy="450" r="0" /></clipPath>
+      </defs>
+
+      <g class="diagram-map">
+        <path class="route route-ghost" d="M-80 450H210H350H535H720H900H1075H1245H1660" />
+        <path id="journeyPath" class="route route-live" d="M-80 450H210H350H535H720H900H1075H1245H1660" />
+
+        <g class="device utility" transform="translate(115 450)">
+          <path d="M-58 0H-20M20 0H58M-20-52V52M20-52V52M-20-32H20M-20 0H20M-20 32H20" />
+          <text y="88">UTILITY</text>
+        </g>
+
+        <g class="device meter" transform="translate(280 450)">
+          <circle r="52" /><path d="M-22 18L20-20M0-34V-18" />
+          <text y="88">METERING</text>
+        </g>
+
+        <g class="device breaker" transform="translate(438 450)">
+          <circle cx="-40" r="7" /><circle cx="40" r="7" /><path class="switch-arm" d="M-33-4L29-42" />
+          <text y="88">INCOMER</text>
+        </g>
+
+        <g class="device transformer" transform="translate(625 450)">
+          <circle cx="-25" r="48" /><circle cx="25" r="48" />
+          <path d="M-25-24V24M25-24V24" />
+          <text y="102">TRANSFORM</text>
+        </g>
+
+        <g class="device protection" transform="translate(810 450)">
+          <rect x="-48" y="-48" width="96" height="96" rx="4" /><path d="M-28 26L0-30L28 26M-20 8H20" />
+          <text y="88">PROTECTION</text>
+        </g>
+
+        <g class="device busbar" transform="translate(986 450)">
+          <path class="bus" d="M-62-38H62M-62 0H62M-62 38H62" />
+          <text y="88">DISTRIBUTE</text>
+        </g>
+
+        <g class="branches" transform="translate(1110 450)">
+          <path d="M0 0C70 0 72-190 148-190H235" />
+          <path d="M0 0H235" />
+          <path d="M0 0C70 0 72 190 148 190H235" />
+          <circle cx="244" cy="-190" r="9" /><circle cx="244" cy="0" r="9" /><circle cx="244" cy="190" r="9" />
+          <text x="260" y="-184">STATE INFRASTRUCTURE</text>
+          <text x="260" y="6">COMMERCIAL</text>
+          <text x="260" y="196">RESIDENTIAL</text>
+        </g>
+
+        <g class="load" transform="translate(1390 450)">
+          <circle r="62" /><path d="M-28-28L28 28M28-28L-28 28" />
+          <text y="102">COMMISSIONED LOAD</text>
+        </g>
+      </g>
+
+      <circle class="charge" r="10" />
+    </svg>
+
+    <div class="journey-copy">
+      <article class="journey-scene scene-intro is-active" data-scene="0">
+        <p class="kicker">Class I electrical contractors · Bengaluru · Since 1969</p>
+        <h1 id="home-title">Follow the supply<br />to <em>switch-on.</em></h1>
+        <p class="lede">One firm carries the line from sanctioned load through transformation, protection, distribution and commissioning.</p>
+        <div class="hero-actions">
+          <a class="brass lg" href="/contact/">Send a project to Madhusudan <span class="ico"><Wa /></span></a>
+          <a class="plain-action" href="/portfolio/">Enter the Portfolio Film</a>
+        </div>
+      </article>
+
+      <article class="journey-scene scene-sanction" data-scene="1">
+        <p class="scene-no">01 · SANCTION</p>
+        <h2>The line begins with the load it is allowed to carry.</h2>
+        <div class="range-lockup"><b>30 <small>KVA</small></b><span>through</span><b>2 × 8 <small>MW</small></b></div>
+        <p>From a residential bungalow in Jayanagar to a 66/11 KV state sub-station in Chitradurga.</p>
+      </article>
+
+      <article class="journey-scene scene-transform" data-scene="2">
+        <p class="scene-no">02 · TRANSFORM + PROTECT</p>
+        <h2>Voltage becomes usable power.</h2>
+        <p>Transformer, metering, incoming protection, panel and cable are resolved as one installation—not disconnected packages.</p>
+      </article>
+
+      <article class="journey-scene scene-distribute" data-scene="3">
+        <p class="scene-no">03 · ERECT + DISTRIBUTE</p>
+        <h2>One busbar. Many kinds of work.</h2>
+        <dl><div><dt>73</dt><dd>verified installations</dd></div><div><dt>39 MVA</dt><dd>connected load</dd></div><div><dt>42</dt><dd>localities</dd></div></dl>
+      </article>
+
+      <article class="journey-scene scene-commission" data-scene="4">
+        <p class="scene-no">04 · COMMISSION</p>
+        <h2>Tested. Energised. Entered on the register.</h2>
+        <p>The diagram ends where the evidence begins.</p>
+        <div class="hero-actions"><a class="photo-action" href="/portfolio/">See the completed work</a><a class="plain-action" href="/portfolio/#project-index">Open all 73 records</a></div>
+      </article>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true"><span>Scroll to energise</span><i></i></div>
+    <div class="journey-progress" aria-hidden="true"><i></i><span>00 / 04</span></div>
+    <img class="commission-photo" src="/photos/image10.jpg" width="1600" height="1200" alt="" aria-hidden="true" />
+  </div>
+</section>
+
+<script>
+  import { initHomeJourney } from '../scripts/homeJourney';
+  initHomeJourney();
+</script>
+
+<style>
+  .power-journey{height:520svh;background:#09080b;color:#fff;position:relative}.journey-stage{height:100svh;position:sticky;top:0;overflow:hidden;isolation:isolate;background:#09080b}.field-canvas,.field-fallback,.commission-photo{position:absolute;inset:0;width:100%;height:100%}.field-canvas{z-index:-3}.field-fallback{z-index:-4;background:radial-gradient(circle at 50% 54%,rgba(88,14,143,.18),transparent 34%),linear-gradient(135deg,#08070a,#17131b)}.commission-photo{z-index:-2;object-fit:cover;opacity:0;filter:saturate(.72) contrast(1.08) brightness(.45);clip-path:circle(0% at 87% 50%)}
+  .single-line{position:absolute;z-index:1;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}.route{fill:none;stroke-width:5}.route-ghost{stroke:#5f5864;opacity:.35}.route-live{stroke:url(#liveStroke);filter:url(#liveGlow)}.device,.branches,.load{fill:none;stroke:#bcb4c0;stroke-width:3;opacity:.28}.device text,.branches text,.load text{fill:#d8d3da;stroke:none;font:600 13px var(--text);letter-spacing:.14em}.charge{fill:#fff4cf;filter:url(#liveGlow);opacity:0}.diagram-map{transform-origin:50% 50%}.switch-arm{transform-origin:-33px -4px}.branches{opacity:0}
+  .journey-copy{position:absolute;z-index:3;inset:0;pointer-events:none}.journey-scene{position:absolute;left:var(--pad-x);top:50%;width:min(680px,calc(100% - var(--pad-x)*2));transform:translateY(-46%);opacity:0;visibility:hidden;pointer-events:none}.journey-scene.is-active{opacity:1;visibility:visible;pointer-events:auto}.journey-scene[data-scene="0"]{visibility:visible;opacity:1}.kicker,.scene-no{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--glaze-rim)}h1{font-size:clamp(4.6rem,10vw,10.5rem);line-height:.77;letter-spacing:-.045em;max-width:8ch;margin-top:18px}h1 em{color:var(--glaze-hi);font-style:normal}.lede,.journey-scene>p:last-child{max-width:56ch;margin-top:28px;color:#c9c3cc;line-height:1.7}.hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:18px 28px;margin-top:30px}.plain-action,.photo-action{color:#fff;font:600 1.05rem var(--disp);text-decoration:none;border-bottom:2px solid var(--glaze-hi);padding-bottom:4px}.journey-scene h2{font-size:clamp(3.4rem,7.5vw,8rem);line-height:.82;letter-spacing:-.042em;max-width:9ch;margin-top:18px}.range-lockup{display:flex;align-items:baseline;gap:18px;margin-top:28px}.range-lockup b{font:600 clamp(2.6rem,6vw,6.4rem)/.8 var(--disp)}.range-lockup small{font:600 .24em var(--text);color:var(--glaze-rim);letter-spacing:.08em}.range-lockup span{color:#8f8792;font-size:11px;text-transform:uppercase;letter-spacing:.12em}.scene-distribute dl{display:flex;gap:clamp(20px,4vw,54px);margin-top:34px}.scene-distribute dt{font:600 clamp(2rem,4vw,4.4rem)/1 var(--disp)}.scene-distribute dd{margin-top:8px;color:#aaa2ad;font-size:9px;letter-spacing:.12em;text-transform:uppercase}.scene-commission{left:auto;right:var(--pad-x);text-align:right}.scene-commission h2,.scene-commission>p{margin-left:auto}.scene-commission .hero-actions{justify-content:flex-end}
+  .scroll-cue{position:absolute;z-index:4;left:var(--pad-x);bottom:28px;display:flex;align-items:center;gap:14px;color:#918a94;font-size:9px;letter-spacing:.14em;text-transform:uppercase}.scroll-cue i{display:block;width:72px;height:1px;background:#67606a;position:relative;overflow:hidden}.scroll-cue i::after{content:"";position:absolute;inset:0;background:var(--glaze-hi);transform:translateX(-100%);animation:cue 1.8s linear infinite}.journey-progress{position:absolute;z-index:4;right:var(--pad-x);bottom:28px;display:flex;align-items:center;gap:12px;color:#aaa2ad;font:600 10px var(--text);letter-spacing:.12em}.journey-progress i{display:block;width:120px;height:2px;background:#423d45;transform-origin:left}.journey-progress i::after{content:"";display:block;width:100%;height:100%;background:var(--glaze-hi);transform:scaleX(var(--journey-progress,0));transform-origin:left}.journey-progress span{min-width:48px}
+  @keyframes cue{to{transform:translateX(100%)}}
+  @media(max-width:760px){.power-journey{height:440svh}.single-line{width:185%;left:-42%;height:58%;top:34%}.journey-scene{top:34%;transform:none}.journey-scene h2{font-size:clamp(3rem,14vw,5rem)}h1{font-size:clamp(4rem,20vw,6.2rem)}.lede{max-width:37ch}.scene-distribute dl{flex-wrap:wrap}.scene-commission{left:var(--pad-x);right:auto;text-align:left}.scene-commission h2,.scene-commission>p{margin-left:0}.scene-commission .hero-actions{justify-content:flex-start}.scroll-cue{display:none}.journey-progress i{width:72px}}
+  @media(prefers-reduced-motion:reduce){.power-journey{height:auto}.journey-stage{height:auto;position:relative;padding:80px 0;background:#0c0a0e}.field-canvas,.single-line,.scroll-cue,.journey-progress,.commission-photo{display:none}.journey-copy{position:relative;inset:auto}.journey-scene,.journey-scene.is-active{position:relative;left:auto;right:auto;top:auto;width:auto;transform:none;opacity:1;visibility:visible;padding:64px var(--pad-x);border-bottom:1px solid #4a434e;text-align:left}.journey-scene h2,.journey-scene>p{margin-left:0}.journey-scene .hero-actions{justify-content:flex-start}}
+</style>

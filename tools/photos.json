@@ -1,0 +1,91 @@
+{
+  "_README": [
+    "Photo attribution, hand-authored from evidence, not guessed.",
+    "Source: ppt/diagrams/dataN.xml inside 'KEY CUSTOMERS LIST SUCHETANA ELECTRICALS.pptx'.",
+    "Each SmartArt diagram groups 2-3 register entries with 2-3 photos, and the media order is",
+    "NOT guaranteed to match the entry order. So a photo is attached to a project only when the",
+    "evidence is independent of that ordering: visible signage in the frame, or subject matter that",
+    "only one client in the group can be. Everything else goes to 'gallery' with a caption describing",
+    "what is actually visible and no client name. Putting the wrong client's name on a building is",
+    "the one mistake this register cannot survive.",
+    "",
+    "confidence: 'signage' = the client's name is legible in the photo.",
+    "            'subject'  = only one client in the diagram group matches what the photo shows.",
+    "To attribute more, the client must label the originals; then move entries out of 'gallery'."
+  ],
+
+  "attributed": [
+    {
+      "file": "image19.png",
+      "slug": "kle-institution",
+      "confidence": "signage",
+      "evidence": "Building signed KLE; diagram data4 contains 'KLE, Institution, Nagarbavi'.",
+      "alt": "The KLE Institution building at Nagarbhavi, Bengaluru, wired by Suchetana Electricals.",
+      "caption": "KLE Institution, Nagarbhavi"
+    },
+    {
+      "file": "image34.png",
+      "slug": "venkateshwara-garments",
+      "confidence": "signage",
+      "evidence": "Illuminated signage reads SRI VENKATESWARA GARMENTS; diagram data12 client is Venkateshwara Garments.",
+      "alt": "The illuminated facade of Sri Venkateswara Garments at night, its lighting load carried by Suchetana Electricals.",
+      "caption": "Venkateshwara Garments — facade illumination"
+    },
+    {
+      "file": "image17.png",
+      "slug": "adc-india-communication-krone",
+      "confidence": "subject",
+      "evidence": "Cable and accessory assembly floor; the only client in diagram data4 that manufactures telephone and Cat cables is ADC India Communication (Krone), Peenya.",
+      "alt": "The assembly floor at ADC India Communication, Peenya, under the lighting and power distribution installed by Suchetana Electricals.",
+      "caption": "ADC India Communication (Krone), Peenya"
+    }
+  ],
+
+  "gallery": [
+    {
+      "file": "image10.png",
+      "caption": "Software campus floor, Sarjapura Road corridor",
+      "note": "One of three IT clients in diagram data1; ordering unproven, so no client named.",
+      "alt": "An open-plan software floor with continuous linear lighting and workstation power distribution."
+    },
+    {
+      "file": "image8.png",
+      "caption": "Workstation floor, Bengaluru",
+      "note": "Same unresolved group as image10.",
+      "alt": "An office floor of cubicles with ceiling fans and surface lighting."
+    },
+    {
+      "file": "image30.png",
+      "caption": "Commercial arcade, S.C. Road",
+      "note": "Either Swastik Complex or Tallam Arcade, both on S.C. Road in diagram data10.",
+      "alt": "A multi-storey commercial arcade on S.C. Road with shopfronts across several floors."
+    },
+    {
+      "file": "image18.png",
+      "caption": "Completed campus block, Bengaluru",
+      "note": "One of three clients in diagram data4; not resolvable.",
+      "alt": "A low campus building with a red tiled roof and a covered walkway."
+    },
+    {
+      "file": "image43.png",
+      "caption": "Residential and commercial block, Bengaluru",
+      "note": "Residential group; private residences are never named on this site regardless.",
+      "alt": "A four-storey residential and commercial building on a Bengaluru street."
+    },
+    {
+      "file": "image52.png",
+      "caption": "Residential block, Bengaluru",
+      "note": "Residential group; not named by policy.",
+      "alt": "A residential apartment block behind planting and a compound wall."
+    }
+  ],
+
+  "rejected": [
+    { "file": "image2.jpeg", "why": "A wood-grain texture, not a photograph of work." },
+    { "file": "image3.png",  "why": "Blank white frame." },
+    { "file": "image5.png",  "why": "Blank white frame." },
+    { "file": "image12.png", "why": "A gate and signboard only; sits in a diagram group that does not include that occupier, so unresolvable." },
+    { "file": "image50.png", "why": "421x120 — a sliver, unusable at any real size." },
+    { "file": "image15.png", "why": "450x450 but soft, and its group of three cannot be resolved." }
+  ]
+}

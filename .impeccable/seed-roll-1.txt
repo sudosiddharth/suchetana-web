@@ -1,0 +1,133 @@
+DIRECTION CONCEPT SEED (key: 5c5da9b3; mode: persuade; source: api; approved pool: c3b204a1eed6; 306/564 human-approved; rerun with --scope direction --mode persuade --from 5c5da9b3 --reroll 1 --candidate-count 7 to reproduce this roll against this catalog revision)
+RE-ROLL ROUND 1: every candidate presented in earlier rounds, grounded
+  and challenger alike, is eliminated and may not return reworded. Derive
+  genuinely new grounded candidates from unexplored angles before judging
+  these fresh challengers.
+ASSIGNED INDEX: 7
+  After ordering the grounded directions by resonance, build candidate
+  7 of your own grounded list; the assignment never points at a
+  challenger. The assignment is the roll, not a suggestion: your top-ranked
+  direction is what every run would ship, so the script decides which grounded
+  direction gets built. Each direction joins a durable visual system to a
+  concrete expression for the requested first surface, decided as one. It must
+  survive the current task plus navigation, quiet and dense content,
+  interaction and state, and a substantially different future surface. In an
+  attended run, present the assigned direction fully committed and offer
+  re-roll. You may add ONE card for your top-ranked grounded candidate when
+  it is not the assigned direction, kicker IMPECCABLE’S PICK, with an honest risk line
+  naming its familiarity; one pick card, never a ranked lineup, and the pick
+  never takes the lead position. When the assignment IS your top candidate,
+  there is no pick card. Re-roll yourself only
+  on named factual grounds, when the assignment cannot carry the product's
+  truth or task; taste is never grounds.
+  The assignment exists to refuse the model's ranking rut, never to outrank
+  the user or the brief. Never expose assignment metadata in user-facing labels.
+CHALLENGERS:
+  1. an alphabet storm, where letters condense into words, break into weather, and reshape the landscape according to grammar
+     SOURCE ID: dream-surreal-impossible-worlds-alphabet-storm
+     CREATIVE SPARK: Black letters gather into CLOUD, burst into rain, and carve the word RIVER across white ground; changing one vowel turns the current into a field of silver ravens.
+     SYSTEM GRAMMAR:
+       - Palette/material: paper white ground, storm-letter black as both body ink and weather mass, one silver flash for words mid-transformation, rain gray for spent grammar
+       - Type/composition: a single monumental grotesk behaving as matter, kerning loosening into wind, words breaking across lines as literal weather fronts on an open field
+       - Topology/navigation: Travel between letter fronts, word formations, grammatical forces, and the landscapes they produce.
+       - Controls/state: Type, split, conjugate, and recombine language while physical consequences remain reversible.
+       - Responsive/motion: Use one word-weather event per phone viewport and preserve readable text throughout transformation.
+     WEB LEVERAGE: Text parsing, procedural particles, and semantic rules turn typed language into deterministic weather with accessible narrative descriptions.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/dream-surreal-impossible-worlds-alphabet-storm.webp · hero https://impeccable.style/worlds/cards/dream-surreal-impossible-worlds-alphabet-storm-hero.webp
+  2. a jacquard brocade woven from punched instructions, where thousands of binary thread choices resolve into a gold bird across midnight silk
+     SOURCE ID: textiles-weave-drape-fashion-jacquard-punched-brocade
+     CREATIVE SPARK: Rows of tiny holes pass above the loom; beneath them, gold weft slowly gathers into a bird whose wing spans hundreds of separate thread decisions.
+     SYSTEM GRAMMAR:
+       - Palette/material: midnight blue silk as ground, gold weft floats as the accent motif, punch-card cream for instruction rows, warp shadow in near-black ink
+       - Type/composition: monospaced ledger digits for card rows, motif titles in woven small caps, layout banded row by row like the loom's lift sequence
+       - Topology/navigation: Move between finished motif, weave row, card, and individual warp lift with full traceability.
+       - Controls/state: Punch, lift, throw, reverse, and compare with encoded, raised, woven, skipped, and corrected states.
+       - Responsive/motion: Present the loom as synchronized pattern and instruction rows and make every thread choice keyboard inspectable.
+     WEB LEVERAGE: A shared binary matrix can drive textile rendering, editing, and an exact accessible instruction representation.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/textiles-weave-drape-fashion-jacquard-punched-brocade.webp · hero https://impeccable.style/worlds/cards/textiles-weave-drape-fashion-jacquard-punched-brocade-hero.webp
+  3. a single illuminated initial growing into a margin of gold leaf, blue vine, beasts, and tiny narrative scenes, an inhabited threshold compressed into one letter
+     SOURCE ID: typography-calligraphy-writing-illuminated-initial-vine
+     CREATIVE SPARK: A red letter opens into a gold chamber; a blue vine escapes its stem, circles three lines of text, and ends in a fox playing a lute.
+     SYSTEM GRAMMAR:
+       - Palette/material: burnished gold leaf chambers on vellum cream, lapis blue vine as the wayfinding line, minium red initials marking every entry point into the text
+       - Type/composition: one giant historiated initial outranking three lines of compact gothic bookhand, the margin composed as an inhabited frame around the measured text block
+       - Topology/navigation: Enter through initial, branch, marginal figure, text passage, and referenced story while return remains obvious.
+       - Controls/state: Open, trace, gloss, and compare with letter, ornament, scene, annotation, and restored states.
+       - Responsive/motion: Turn the margin into a linked companion rail on phones and keep ornament optional to the reading path.
+     WEB LEVERAGE: Deep vector zoom can connect minute marginal scenes to semantic text without loading separate pages.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/typography-calligraphy-writing-illuminated-initial-vine.webp · hero https://impeccable.style/worlds/cards/typography-calligraphy-writing-illuminated-initial-vine-hero.webp
+  4. a music festival lineup sheet where every act is set in the same face and the entire hierarchy is carried by size and line breaks alone, headliners spanning the width and the smallest names packed into a justified block at the foot
+     SOURCE ID: posters-covers-sleeves-festival-lineup-poster
+     CREATIVE SPARK: No pictures at all, just names, and you can tell exactly who matters most from across the room purely by how big they are.
+     SYSTEM GRAMMAR:
+       - Palette/material: one saturated ground with a single contrasting ink, no imagery whatsoever, and the type doing every job on the sheet
+       - Type/composition: one condensed face at eight sizes, headliners spanning full width, and the long tail justified into a dense block at the foot
+       - Topology/navigation: billing is the only structure, so navigation moves down through decreasing importance
+       - Controls/state: controls are names, the active one inverts out of the ground, and sold-out days take a struck rule across their block
+       - Responsive/motion: names rebreak to keep the block justified at any width, and motion is a size step as billing changes
+     WEB LEVERAGE: responsive justified type blocks that rebreak at any width, billing-rank state, and size-step transitions
+     QUALITY BAR: board https://impeccable.style/worlds/cards/posters-covers-sleeves-festival-lineup-poster.webp · hero https://impeccable.style/worlds/cards/posters-covers-sleeves-festival-lineup-poster-hero.webp
+  5. an algorave floor, where projected live code edits the music mid-dance and every thrown bracket changes what a hundred bodies do next
+     SOURCE ID: medium-native-algorave-source-floor
+     CREATIVE SPARK: The coder deletes half a line and the kick drops out; the crowd howls, the line comes back wrong on purpose, and the room lifts.
+     SYSTEM GRAMMAR:
+       - Palette/material: phosphor green and magenta syntax on projector black, the code buffer as ground; the pattern about to change flashes amber before it sounds
+       - Type/composition: monospaced terminal type at stage scale with hard line breaks as musical bars, the composition one code buffer whose cursor line is the downbeat
+       - Topology/navigation: the source is the stage; sections of code map to audible layers you can follow live.
+       - Controls/state: edits apply on the next cycle boundary; upcoming changes are visible before they sound.
+       - Responsive/motion: code and visuals share one clock; small screens follow a single highlighted pattern lane.
+     WEB LEVERAGE: Web Audio scheduling ties editable patterns to a shared clock with live evaluation in the page.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/medium-native-algorave-source-floor.webp · hero https://impeccable.style/worlds/cards/medium-native-algorave-source-floor-hero.webp
+  6. a printing darkroom under amber safelight, where enlarger beams, timed baths, and drying lines stage photographs into slow deliberate existence
+     SOURCE ID: signals-instruments-darkroom-safelight-bay
+     CREATIVE SPARK: In the developer tray, gray ghosts gather into a face; the timer ticks, and pulling the print too early is a real loss.
+     SYSTEM GRAMMAR:
+       - Palette/material: amber safelight washing every surface as the ground, wet-print silver grays deepening to black as the image ink, enamel tray white at the edges
+       - Type/composition: grease-pencil notes and printed timer digits under amber, labels sparse on bottles and trays; test strips band the field into stepped exposures
+       - Topology/navigation: work moves through fixed stations in order: compose, expose, develop, fix, wash, dry.
+       - Controls/state: progress is chemical and irreversible past marked points; test strips preview before committing.
+       - Responsive/motion: stations linearize on phones; the develop reveal is one continuous emergence, shown statically under
+     WEB LEVERAGE: Canvas-simulated development curves let previews emerge in real time before an action commits.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/signals-instruments-darkroom-safelight-bay.webp · hero https://impeccable.style/worlds/cards/signals-instruments-darkroom-safelight-bay-hero.webp
+Fuse each challenger before judging it: the challenger supplies the form
+  and its system grammar, the product supplies every fact, and clarity wins
+  conflicts. Weigh the fused result against the assigned direction on exactly
+  two axes, audience identification and product clarity. Losing to strong
+  grounded material is a valid outcome; beating a thin or tool-monoculture
+  list is the point. A fused challenger that wins both axes becomes the build.
+  Close the weighing with a verdict per challenger, decided before any
+  borrowing is considered: wins (beats the assigned direction on both axes),
+  competitive (holds one axis), or declined (loses both). A declined
+  challenger is not spent: name the one discipline of its system the assigned
+  direction lacks, and raise the assigned direction to match before
+  presenting it. A donation transfers ambition and system discipline, never
+  the challenger's clothes; one world owns the page. Write each raise as its
+  own named line on the presented direction, and carry every verdict, kept
+  line, and raise into the decision page payload.
+When you can view images, open the QUALITY BAR board and hero for any
+challenger you weigh seriously and for the world you build. They exist as a
+craft bar, the finish level and commitment the build is expected to reach,
+never as a mockup to copy; your surface serves this product, not that render.
+PRODUCT.md and explicit incumbent brand commitments constrain every direction.
+The seed never chooses exact colors, fonts, tokens, or a user preference, and
+it never permits the world and first surface to be selected independently.
+The CREATIVE SPARK is a complete visual system, not a theme or decorative
+reference. Translate every supplied system rule into the product: palette and
+material, type and composition, topology, controls and states, and adaptation.
+Keep the source's visible character, scale, rhythm, and interaction instead of
+reducing vivid grammar to generic nouns. When the source is already a credible
+interface language, commit to it across navigation, content, controls, and
+states. Otherwise keep a literal carrier only when it becomes functional.
+Ambitious motion, spatial media, or interaction is welcome when it strengthens
+the product without weakening semantics, performance, or fallback behavior.
+TELEMETRY: after the user's choice resolves, rerun this script once with
+  --kind <assigned|pick|challenger|canon> --from 5c5da9b3 --scope direction --mode persuade,
+  adding --chosen <challenger-id> when a dealt challenger won and keeping
+  --register <safer|bolder> when the resolved round came from a steered hand.
+  One ping per resolved attended round. The ping is anonymous, the card kind
+  plus the catalog id when one won; your grounded candidates' names never
+  leave the machine, and the ping is skipped automatically when DO_NOT_TRACK
+  or IMPECCABLE_NO_TELEMETRY is set.
+A user- or brief-pinned decision beats the roll, always.
+ASSIGNED INDEX (restated for truncated readers): 7. Build candidate
+7 of your own grounded list; seed key 5c5da9b3.

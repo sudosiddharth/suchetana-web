@@ -1,0 +1,43 @@
+---
+const FACTS = [
+  { k: 'Contractor licence', v: '1CL192563BNG', s: 'Class I' },
+  { k: 'Supervisor licence', v: '1SP191691BNG', s: 'Madhusudan M.S.' },
+  { k: 'GST',                v: '29ACGPM4809H1ZE' },
+  { k: 'PAN',                v: 'ACGPM4809H' },
+  { k: 'In practice',        v: 'Since 1969', s: 'Fifty-seven years' },
+];
+---
+<footer class="foot">
+  <div class="wrap">
+    <div class="rows">
+      {FACTS.map((f) => (
+        <div class="it">
+          <div class="k">{f.k}</div>
+          <div class="v">{f.v}{f.s && <small>{f.s}</small>}</div>
+        </div>
+      ))}
+    </div>
+    <p class="fine">
+      Suchetana Electricals, a proprietorship firm. Private residences on the register are listed by
+      locality and load only. Domain and canonical URL still to be set before deploy.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .foot { background: var(--ink); color: #B9B4C2; padding: clamp(30px, 4vw, 52px) 0; }
+  .rows { display: flex; flex-wrap: wrap; gap: clamp(14px, 3vw, 40px); justify-content: space-between; }
+  .it .k {
+    font-size: 10.5px; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: #8B8599;
+  }
+  .it .v { font-family: var(--disp); font-size: 1.05rem; font-weight: 500; color: var(--lime); margin-top: 5px; }
+  .it .v small {
+    display: block; font-family: var(--text); font-size: 11px;
+    font-weight: 500; color: #8B8599; margin-top: 2px;
+  }
+  .fine {
+    margin-top: clamp(22px, 3vw, 34px); padding-top: 16px;
+    border-top: 1px solid #2C2733; font-size: 12px; color: #8B8599; max-width: 80ch;
+  }
+</style>

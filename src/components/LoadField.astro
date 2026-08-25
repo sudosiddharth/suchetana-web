@@ -1,0 +1,326 @@
+---
+import { getCollection } from 'astro:content';
+
+/**
+ * THE LIVE LINE — the whole practice standing on one energised busbar.
+ *
+ * A cap-and-pin string gains a disc as the voltage class rises, so height here is hardware,
+ * not a chart axis. Every recorded job stands on the bar, lowest class to highest: bare pins
+ * with an open ring for the fourteen jobs recorded by area, then one disc, then ten at the
+ * Chitradurga sub-station.
+ *
+ * It is alive because a line is alive. Current passes along the bar and each string flashes as
+ * it arrives — a CSS sweep with a per-string delay, so 73 elements cost nothing per frame. The
+ * pointer is a probe: the strings nearest it energise with a proximity falloff and a single
+ * readout names the job. One readout, not 73 tooltips — the old tooltips clipped straight out
+ * of the top of the section.
+ */
+const entries = await getCollection('projects');
+
+const jobs = entries
+  .map((e) => ({ slug: e.slug, ...e.data }))
+  .sort((a, b) => (a.discs - b.discs) || ((a.loadKva ?? 0) - (b.loadKva ?? 0)));
+
+const byArea = jobs.filter((j) => j.discs === 0).length;
+const withLoad = jobs.length - byArea;
+const tallest = jobs[jobs.length - 1];
+const smallest = jobs.find((j) => j.discs > 0)!;
+---
+<div class="line" id="liveline" data-count={jobs.length}>
+  <div class="lineHead">
+    <p class="lineCap">
+      Seventy-three strings on one busbar, lowest supply class to highest. Height is the hardware:
+      a string gains a disc as the voltage rises. <b>Run the pointer along the line.</b>
+    </p>
+
+    <!-- one readout, driven by the probe — never a tooltip that can clip out of the section -->
+    <div class="readout" aria-live="polite">
+      <span class="rdIdle">
+        <b><span class="fieldShown">{jobs.length}</span> standing on the bar</b>
+        <i>{withLoad} by connected load · {byArea} by area · {smallest.load} to {tallest.load}</i>
+      </span>
+      <span class="rdLive" hidden>
+        <b class="rdName"></b>
+        <i><span class="rdLoad"></span> · <span class="rdWhere"></span></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="yard" role="list" aria-label="All 73 recorded installations, lowest supply class to highest">
+    {jobs.map((j, i) => (
+      <a
+        class:list={['string', { area: j.discs === 0, key: j.key }]}
+        style={`--i:${i};--n:${j.discs}`}
+        data-sector={j.sector}
+        data-slug={j.slug}
+        data-name={j.title}
+        data-load={j.load || 'Recorded by area'}
+        data-where={j.locality}
+        href={`/work/${j.slug}`}
+        role="listitem"
+        aria-label={`${j.title}, ${j.locality}, ${j.load || 'recorded by area'}`}
+      >
+        <span class="str">
+          {j.discs === 0
+            ? <span class="ring"></span>
+            : Array.from({ length: j.discs }, () => <span class="disc"></span>)}
+          <span class="pin"></span>
+        </span>
+      </a>
+    ))}
+  </div>
+
+  <div class="bar">
+    <span class="charge"></span>
+    <span class="bead" aria-hidden="true"></span>
+  </div>
+
+  <div class="ends">
+    <span><b>{smallest.load}</b>{smallest.locality}</span>
+    <span class="r"><b>{tallest.load}</b>{tallest.title}</span>
+  </div>
+</div>
+
+<style>
+  .line {
+    margin-top: clamp(30px, 4vw, 48px);
+    --disc-h: clamp(9px, 1.35vw, 19px);
+    --sweep: 5.6s;
+  }
+
+  .lineHead {
+    display: flex; flex-wrap: wrap; gap: 14px 30px;
+    align-items: flex-end; justify-content: space-between;
+    margin-bottom: clamp(18px, 2.4vw, 30px);
+  }
+  .lineCap { max-width: 54ch; font-size: 14.5px; line-height: 1.6; color: var(--ink-70); }
+  .lineCap b { color: var(--ink); font-weight: 600; }
+
+  /* the readout is a seated instrument panel, not a floating label */
+  .readout {
+    min-width: 30ch; padding: 10px 14px;
+    background: rgba(22, 19, 26, .045);
+    border: 1px solid rgba(22, 19, 26, .12);
+    border-radius: var(--tray-r);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6);
+  }
+  .readout b {
+    display: block; font-family: var(--disp); font-size: 1.12rem;
+    font-weight: 600; letter-spacing: -.012em; line-height: 1.15;
+  }
+  .readout i {
+    display: block; font-style: normal; margin-top: 3px;
+    font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-45);
+  }
+  .line.probing .rdIdle { display: none; }
+  .rdName { color: var(--glaze); }
+
+  /* --- the yard --- */
+  .yard {
+    display: flex; align-items: flex-end; gap: clamp(2px, .3vw, 6px);
+    height: calc(var(--disc-h) * 10 + 30px);
+  }
+  .string {
+    flex: 1 1 0; min-width: 9px; position: relative;
+    display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+    height: 100%; text-decoration: none;
+    /* the probe writes this: 0 at rest, 1 when the pointer is right on the string */
+    --near: 0;
+  }
+  .str {
+    display: flex; flex-direction: column-reverse; align-items: center; width: 100%;
+    transform: translateY(calc(var(--near) * -7px));
+    transition: transform var(--t-mid) var(--ease);
+  }
+  .pin {
+    display: block; width: 2px; height: 13px; margin: 0 auto 1px;
+    background: var(--zinc-deep);
+  }
+
+  .disc {
+    display: block; width: 100%; height: var(--disc-h);
+    border-radius: 50%;
+    background: radial-gradient(60% 120% at 34% 22%,
+      #A25BD8 0%, #7A22C4 38%, #580E8F 74%, #3B0968 100%);
+    box-shadow: 0 1px 0 rgba(27, 4, 51, .5);
+    /* brightness rides both the travelling current and the pointer probe */
+    filter: brightness(calc(1 + var(--near) * .34));
+    transition: filter var(--t-mid) var(--ease);
+  }
+  .string.key .disc {
+    background: radial-gradient(60% 120% at 34% 22%,
+      #C89BEA 0%, #8B2FD6 40%, #580E8F 78%, #3B0968 100%);
+  }
+  .ring {
+    display: block; width: 100%; height: var(--disc-h);
+    border: 1.5px solid var(--zinc-deep); border-radius: 50%;
+    filter: brightness(calc(1 + var(--near) * .5));
+  }
+
+  /* current passing: each string flashes as the pulse reaches it.
+     A per-string delay makes one CSS animation read as a travelling wave, so the sweep
+     costs nothing per frame no matter how many strings stand on the bar. */
+  @media (prefers-reduced-motion: no-preference) {
+    .string .str::after {
+      content: ""; position: absolute; inset: auto 0 0; height: 100%;
+      border-radius: inherit; pointer-events: none;
+      background: linear-gradient(180deg, rgba(200, 155, 234, .55), rgba(200, 155, 234, 0) 70%);
+      opacity: 0;
+      animation: passing var(--sweep) linear infinite;
+      animation-delay: calc(var(--i) * (var(--sweep) / 96));
+    }
+    @keyframes passing {
+      0%, 6%   { opacity: 0; }
+      2%       { opacity: .85; }
+      100%     { opacity: 0; }
+    }
+  }
+
+  /* --- the busbar --- */
+  .bar { height: 8px; background: var(--zinc-deep); position: relative; overflow: hidden; }
+  .charge {
+    position: absolute; inset: 0; transform-origin: left center;
+    background: linear-gradient(90deg, var(--glaze), var(--glaze-hi) 74%, var(--brass-lit));
+  }
+  .bead {
+    position: absolute; top: -1px; bottom: -1px; width: 92px; left: 0;
+    background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0), rgba(255, 255, 255, .92) 62%, rgba(255, 255, 255, 0));
+    mix-blend-mode: screen;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .bead { animation: run var(--sweep) linear infinite; }
+    @keyframes run { from { transform: translateX(-100px); } to { transform: translateX(100vw); } }
+  }
+  @media (prefers-reduced-motion: reduce) { .bead { display: none; } }
+
+  .ends { display: flex; justify-content: space-between; gap: 20px; margin-top: 10px; }
+  .ends span { font-size: 12px; color: var(--ink-45); line-height: 1.4; }
+  .ends span.r { text-align: right; }
+  .ends b {
+    display: block; font-family: var(--disp); font-size: clamp(1.1rem, 2vw, 1.6rem);
+    font-weight: 600; letter-spacing: -.02em; color: var(--glaze);
+  }
+
+  /* a row hovered in the register pins its string here */
+  .string.pinned .disc { filter: brightness(1.45); }
+  .string.pinned .ring { filter: brightness(1.6); border-color: var(--glaze); }
+
+  /* a chosen sector dims the rest of the line */
+  .string.dim { opacity: .22; }
+  .string.dim .disc { filter: saturate(.3); }
+  .string { transition: opacity var(--t-mid) var(--ease); }
+
+  /* the line is the point, so on a phone it scrolls rather than shrinking to nothing */
+  @media (max-width: 760px) {
+    .yard {
+      overflow-x: auto; overflow-y: visible; gap: 4px;
+      -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; padding-bottom: 4px;
+    }
+    .string { flex: 0 0 15px; scroll-snap-align: center; }
+    .readout { min-width: 0; width: 100%; }
+  }
+</style>
+
+<script>
+  /* The probe: pointer position energises the strings nearest it and drives one readout.
+     Reads on pointermove, writes on the next frame, and only touches the handful of strings
+     inside the falloff — never all 73. */
+  const line = document.getElementById('liveline');
+  if (line) {
+    const yard = line.querySelector<HTMLElement>('.yard')!;
+    const strings = Array.from(yard.querySelectorAll<HTMLElement>('.string'));
+    const rdLive = line.querySelector<HTMLElement>('.rdLive')!;
+    const rdName = line.querySelector<HTMLElement>('.rdName')!;
+    const rdLoad = line.querySelector<HTMLElement>('.rdLoad')!;
+    const rdWhere = line.querySelector<HTMLElement>('.rdWhere')!;
+
+    const REACH = 3;                 // strings either side that respond
+    let raf = 0, px = -1, touched: HTMLElement[] = [];
+
+    const clear = () => {
+      for (const s of touched) s.style.setProperty('--near', '0');
+      touched = [];
+    };
+
+    function show(el: HTMLElement) {
+      rdName.textContent = el.dataset.name ?? '';
+      rdLoad.textContent = el.dataset.load ?? '';
+      rdWhere.textContent = el.dataset.where ?? '';
+      rdLive.hidden = false;
+      line.classList.add('probing');
+    }
+
+    function apply() {
+      raf = 0;
+      if (px < 0) return;
+      let best = -1, bestD = Infinity;
+      const boxes = strings.map((s, i) => {
+        const r = s.getBoundingClientRect();
+        const c = r.left + r.width / 2;
+        const d = Math.abs(c - px);
+        if (d < bestD) { bestD = d; best = i; }
+        return d;
+      });
+      clear();
+      if (best < 0) return;
+      for (let i = Math.max(0, best - REACH); i <= Math.min(strings.length - 1, best + REACH); i++) {
+        const falloff = 1 - Math.abs(i - best) / (REACH + 1);
+        strings[i].style.setProperty('--near', falloff.toFixed(3));
+        touched.push(strings[i]);
+      }
+      show(strings[best]);
+      void boxes;
+    }
+
+    yard.addEventListener('pointermove', (e) => {
+      px = e.clientX;
+      if (!raf) raf = requestAnimationFrame(apply);
+    }, { passive: true });
+
+    yard.addEventListener('pointerleave', () => {
+      px = -1; clear();
+      rdLive.hidden = true;
+      line.classList.remove('probing');
+    });
+
+    /* keyboard and touch land on the same readout, so the line is not pointer-only */
+    for (const s of strings) {
+      s.addEventListener('focus', () => {
+        clear();
+        s.style.setProperty('--near', '1');
+        touched.push(s);
+        show(s);
+      });
+    }
+
+    /* hovering a row in the register below lights that exact string up here — the reverse of
+       the pointer probe, so the two halves point at each other in both directions */
+    const bySlug = new Map(strings.map((s) => [s.dataset.slug ?? '', s]));
+    let pinned: HTMLElement | null = null;
+    document.addEventListener('register:hover', (e) => {
+      const slug = (e as CustomEvent<{ slug: string | null }>).detail?.slug ?? null;
+      if (pinned) { pinned.style.setProperty('--near', '0'); pinned.classList.remove('pinned'); pinned = null; }
+      if (!slug) { rdLive.hidden = true; line.classList.remove('probing'); return; }
+      const el = bySlug.get(slug);
+      if (!el) return;
+      el.style.setProperty('--near', '1');
+      el.classList.add('pinned');
+      pinned = el;
+      show(el);
+    });
+
+    /* the sector chips below dim the rest of the line */
+    document.addEventListener('register:filter', (e) => {
+      const sector = (e as CustomEvent<{ sector: string }>).detail?.sector ?? 'all';
+      let shown = 0;
+      for (const s of strings) {
+        const match = sector === 'all' || s.dataset.sector === sector;
+        s.classList.toggle('dim', !match);
+        if (match) shown++;
+      }
+      const count = document.querySelector('.fieldShown');
+      if (count) count.textContent = String(shown);
+    });
+  }
+</script>

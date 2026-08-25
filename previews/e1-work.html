@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suchetana Electricals — Work (Energise)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#08040D;--night:#0E0716;--raise:#170D24;--raise-2:#1E1230;
+  --line:#2A1B3D;--line-2:#3B2854;
+  --white:#FBF9FD;--soft:#B6A8C6;--dim:#7D6E90;--dimmer:#5D5170;
+  --purple:#580E8F;--purple-lift:#8B2FD6;--spark:#F0B049;
+  --disp:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --sans:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--void);color:var(--white);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,60px)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(8,4,13,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+nav .lk{display:flex;align-items:center;gap:12px}
+nav .lk img{height:27px;width:auto}
+nav .lk b{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.wa{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#fff;background:var(--purple);font-size:12.5px;font-weight:600;padding:9px 14px;border-radius:2px;transition:all .2s}
+.wa:hover{background:var(--purple-lift);transform:translateY(-1px)}
+.wa svg{width:15px;height:15px}
+
+.kick{display:flex;align-items:center;gap:11px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-bottom:20px}
+.kick i{width:6px;height:6px;border-radius:50%;background:var(--spark);display:block;flex:none}
+
+.head{padding:clamp(100px,12vw,148px) 0 clamp(24px,3.4vw,38px);position:relative;overflow:hidden}
+.head .glow{position:absolute;inset:0;z-index:0;opacity:0;
+  background:radial-gradient(100% 80% at 8% 40%,rgba(88,14,143,.5) 0%,rgba(88,14,143,.12) 45%,transparent 74%)}
+.head .wrap{position:relative;z-index:1}
+h1{font-family:var(--disp);font-weight:700;font-size:clamp(2.5rem,7.4vw,5.9rem);line-height:.9;letter-spacing:-.045em;max-width:16ch}
+h1 em{font-style:normal;color:var(--purple-lift)}
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.82fr);gap:clamp(22px,4vw,64px);align-items:end;margin-top:clamp(24px,3vw,36px)}
+@media(max-width:900px){.intro{grid-template-columns:1fr;gap:26px}}
+.intro p{color:var(--soft);max-width:52ch;line-height:1.7}
+.intro p b{color:var(--white);font-weight:600}
+.tot{display:grid;grid-template-columns:repeat(3,auto);gap:clamp(16px,3vw,42px);justify-content:start}
+.tot .n{font-family:var(--disp);font-weight:700;font-size:clamp(1.9rem,3.8vw,3rem);line-height:1;letter-spacing:-.04em;display:block;font-variant-numeric:tabular-nums}
+.tot .n small{font-family:var(--sans);font-size:.32em;font-weight:600;letter-spacing:.08em;color:var(--dim);margin-left:.3em}
+.tot .k{display:block;margin-top:7px;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim)}
+
+/* charged filter bar */
+.filterbar{position:sticky;top:64px;z-index:40;background:rgba(8,4,13,.96);backdrop-filter:blur(8px);padding:14px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-family:var(--sans);font-size:11.5px;font-weight:500;border:1px solid var(--line);background:transparent;color:var(--soft);padding:8px 13px;border-radius:999px;cursor:pointer;transition:all .22s ease;white-space:nowrap}
+.chip:hover{border-color:var(--purple-lift);color:var(--white)}
+.chip.on{background:var(--purple);border-color:var(--purple);color:#fff}
+.chip .c{opacity:.55;margin-left:6px;font-variant-numeric:tabular-nums}
+.busline{height:2px;background:var(--line);margin-top:14px;position:relative;overflow:hidden}
+.busline i{position:absolute;inset:0 auto 0 0;width:0%;background:linear-gradient(90deg,var(--purple),var(--purple-lift) 72%,var(--spark))}
+.status{padding:10px 0 0;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.status b{color:var(--spark);font-weight:600}
+
+.list{padding:clamp(8px,1.6vw,18px) 0 clamp(56px,8vw,104px)}
+.sechead{display:flex;align-items:baseline;gap:14px;padding:36px 0 12px}
+.sechead h2{font-family:var(--disp);font-weight:600;font-size:clamp(1.25rem,2.5vw,1.95rem);letter-spacing:-.03em;line-height:1.1}
+.sechead .cnt{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-left:auto;white-space:nowrap}
+.sechead + .rowset{border-top:1px solid var(--line)}
+
+.row{display:grid;grid-template-columns:40px minmax(0,1fr) minmax(0,.7fr) 120px;gap:clamp(10px,2vw,26px);align-items:baseline;padding:17px 0;position:relative}
+.row::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line)}
+.row .charge{position:absolute;left:0;bottom:0;height:1px;width:0;background:linear-gradient(90deg,var(--purple-lift),var(--spark));z-index:1}
+.row:hover{background:var(--raise)}
+.row .idx{font-size:11px;color:var(--dimmer);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.row .nm{font-family:var(--disp);font-size:clamp(1rem,1.4vw,1.18rem);font-weight:500;letter-spacing:-.024em;line-height:1.28}
+.row .nm .pl{display:block;font-family:var(--sans);font-size:12.5px;font-weight:400;color:var(--dim);margin-top:4px;letter-spacing:0}
+.row .cred{font-size:11.5px;color:var(--dim);line-height:1.5}
+.row .ld{text-align:right;font-family:var(--disp);font-weight:600;font-size:clamp(1.1rem,2vw,1.55rem);letter-spacing:-.035em;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
+.row .ld small{font-family:var(--sans);font-size:.46em;font-weight:600;letter-spacing:.07em;color:var(--dim);margin-left:.3em}
+.row .ld.none{font-family:var(--sans);font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--dimmer)}
+.row.key .nm{color:var(--spark)}
+.row.key .ld{color:var(--spark)}
+@media(max-width:860px){.row{grid-template-columns:28px minmax(0,1fr) 96px}.row .cred{grid-column:2 / -1;order:3;margin-top:2px}}
+
+.foot{background:var(--purple);padding:clamp(46px,7vw,88px) 0}
+.foot .fl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:22px}
+.foot h3{font-family:var(--disp);font-weight:700;font-size:clamp(1.6rem,3.8vw,3rem);letter-spacing:-.04em;max-width:20ch;line-height:1.02}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-size:14.5px;font-weight:600;padding:15px 21px;border-radius:2px;background:#fff;color:var(--purple);transition:all .2s ease}
+.btn:hover{background:var(--spark);color:var(--void);transform:translateY(-2px)}
+.btn svg{width:16px;height:16px}
+
+.badge{position:fixed;left:16px;bottom:16px;z-index:90;background:var(--spark);color:var(--void);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;border-radius:2px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="lk"><img src="assets/se-logo-white.png" alt="Suchetana Electricals"><b>Suchetana Electricals</b></div>
+    <a class="wa" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.16c-.25.69-1.44 1.31-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.16-1.55-1.16-2.95 0-1.4.73-2.09 1-2.38.24-.27.55-.34.73-.34h.53c.17 0 .4-.06.62.48.25.6.85 2.08.92 2.23.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.35 1.45.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.65.78 1.94.92.29.14.48.22.55.34.07.12.07.7-.18 1.39Z"/></svg>WhatsApp</a>
+  </div>
+</nav>
+
+<header class="head">
+  <div class="glow" id="glow"></div>
+  <div class="wrap">
+    <div class="kick" data-a><i></i>The register · 1969 to today</div>
+    <h1 data-a>Seventy-three jobs, <em>every one of them switched on.</em></h1>
+    <div class="intro">
+      <p data-a>Nine sectors, listed with the architect and electrical consultant of record and the
+        load delivered. <b>Fifty-nine state a connected load</b>; the rest are interior fit-outs,
+        layout works and landscape electrification, recorded by area. Private residences are listed
+        by locality only.</p>
+      <div class="tot" data-a>
+        <div><span class="n" data-to="73">0</span><span class="k">Projects</span></div>
+        <div><span class="n" data-to="39">0<small>MVA</small></span><span class="k">Connected load</span></div>
+        <div><span class="n" data-to="42">0</span><span class="k">Localities</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="filterbar">
+  <div class="wrap">
+    <div class="chips" id="chips"></div>
+    <div class="busline"><i id="busfill"></i></div>
+    <div class="status" id="status">Showing <b>73</b> of 73 projects</div>
+  </div>
+</div>
+
+<main class="list"><div class="wrap" id="list"></div></main>
+
+<section class="foot">
+  <div class="wrap fl">
+    <h3>Your project belongs on this list.</h3>
+    <a class="btn" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.16c-.25.69-1.44 1.31-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.16-1.55-1.16-2.95 0-1.4.73-2.09 1-2.38.24-.27.55-.34.73-.34h.53c.17 0 .4-.06.62.48.25.6.85 2.08.92 2.23.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.35 1.45.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.65.78 1.94.92.29.14.48.22.55.34.07.12.07.7-.18 1.39Z"/></svg>Send us the drawings</a>
+  </div>
+</section>
+
+<div class="badge">Energise — Work</div>
+
+<script src="assets/register.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const listEl = document.getElementById('list');
+const chipsEl = document.getElementById('chips');
+const statusEl = document.getElementById('status');
+let active = 'all';
+
+const C = {all:P.length};
+SECTORS.forEach(s => C[s.id] = P.filter(p => p[0]===s.id).length);
+
+chipsEl.innerHTML = [{id:'all',name:'All projects'}].concat(SECTORS).map(s =>
+  `<button class="chip${s.id==='all'?' on':''}" data-id="${s.id}">${s.name}<span class="c">${C[s.id]}</span></button>`
+).join('');
+
+function render(){
+  const groups = active === 'all' ? SECTORS : SECTORS.filter(s => s.id === active);
+  let html = '', n = 0;
+  groups.forEach(sec => {
+    const items = P.filter(p => p[0] === sec.id);
+    if (!items.length) return;
+    html += `<div class="sechead"><h2>${sec.name}</h2><span class="cnt">${items.length} project${items.length>1?'s':''}</span></div><div class="rowset">`;
+    items.forEach(p => {
+      n++;
+      const load = p[3] === '—'
+        ? '<span class="ld none">By area</span>'
+        : `<span class="ld">${p[3].replace(/ (KVA|MVA|KW)/,' <small>$1</small>')}</span>`;
+      html += `<div class="row${p[5]?' key':''}"><i class="charge"></i>
+        <span class="idx">${String(n).padStart(2,'0')}</span>
+        <span class="nm">${p[1]}<span class="pl">${p[2]}</span></span>
+        <span class="cred">${p[4]}</span>${load}</div>`;
+    });
+    html += `</div>`;
+  });
+  listEl.innerHTML = html;
+
+  const shown = P.filter(p => active==='all' || p[0]===active).length;
+  statusEl.innerHTML = `Showing <b>${shown}</b> of ${P.length} projects`;
+  const bf = document.getElementById('busfill');
+
+  if (window.gsap && !reduce){
+    gsap.fromTo(bf, {width:'0%'}, {width:(shown/P.length*100)+'%', duration:.7, ease:'power2.out'});
+    gsap.from(listEl.querySelectorAll('.row, .sechead'), {
+      opacity:0, y:16, duration:.45, stagger:.012, ease:'power2.out', overwrite:true});
+    // each row's rule charges across as it enters
+    listEl.querySelectorAll('.row').forEach(r => {
+      gsap.fromTo(r.querySelector('.charge'), {width:'0%'}, {
+        width:'100%', duration:.9, ease:'power2.out',
+        scrollTrigger:{trigger:r, start:'top 94%', once:true}});
+    });
+  } else {
+    bf.style.width = (shown/P.length*100)+'%';
+  }
+}
+
+render();
+
+chipsEl.addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  active = b.dataset.id;
+  chipsEl.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === b));
+  render();
+});
+
+if (window.gsap && !reduce){
+  gsap.registerPlugin(ScrollTrigger);
+  const tl = gsap.timeline({defaults:{ease:'power3.out'}});
+  tl.to('#glow', {opacity:1, duration:1.4})
+    .from('[data-a]', {opacity:0, y:26, duration:.8, stagger:.11}, 0);
+  document.querySelectorAll('.tot .n').forEach(el => {
+    const o = {v:0}, to = +el.dataset.to, unit = el.querySelector('small');
+    gsap.to(o, {v:to, duration:1.4, delay:.4, ease:'power2.out',
+      onUpdate(){ el.childNodes[0].nodeValue = Math.round(o.v); }});
+    if (unit) el.appendChild(unit);
+  });
+  gsap.from('.foot h3', {opacity:0, y:36, duration:.85, ease:'power3.out',
+    scrollTrigger:{trigger:'.foot', start:'top 84%'}});
+}
+</script>
+</body>
+</html>

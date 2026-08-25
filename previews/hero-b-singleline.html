@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suchetana Electricals — Direction B: Single Line</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E0D11;
+  --ink-65:#4E4B57;
+  --ink-40:#8B8794;
+  --hair:#DAD6E0;
+  --hair-soft:#ECE9F0;
+  --bg:#FFFFFF;
+  --bg-2:#F7F5FA;
+  --purple:#580E8F;
+  --purple-deep:#3C0864;
+  --purple-tint:#F1E9F8;
+  --live:#E8A21A;
+  --disp:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--disp);
+  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:radial-gradient(var(--hair-soft) 1px, transparent 1px);
+  background-size:26px 26px;background-position:-1px -1px;
+}
+.wrap{max-width:1340px;margin:0 auto;padding:0 clamp(18px,3.6vw,52px)}
+
+/* top bar */
+.topbar{background:var(--bg);border-bottom:1px solid var(--ink)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:66px}
+.lockup{display:flex;align-items:center;gap:13px}
+.lockup img{height:34px;width:auto;display:block}
+.lockup b{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.navmeta{display:flex;align-items:center;gap:22px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-40)}
+.navmeta .live{display:inline-flex;align-items:center;gap:7px;color:var(--ink)}
+.navmeta .live i{width:7px;height:7px;border-radius:50%;background:var(--live);display:block}
+@media(max-width:820px){.navmeta .hide-sm{display:none}}
+
+/* hero */
+.hero{padding-top:clamp(44px,6vw,84px);padding-bottom:clamp(30px,4vw,52px)}
+.hero-top{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:end}
+@media(max-width:940px){.hero-top{grid-template-columns:1fr;gap:34px;align-items:start}}
+
+.tagstrip{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.tag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  border:1px solid var(--hair);padding:5px 9px;color:var(--ink-65);background:var(--bg)}
+.tag.on{border-color:var(--purple);color:var(--purple);background:var(--purple-tint)}
+
+h1{
+  font-family:var(--disp);font-weight:800;
+  font-size:clamp(2.5rem,8.4vw,6.6rem);
+  line-height:.86;letter-spacing:-.042em;text-transform:uppercase;
+}
+h1 .out{
+  color:transparent;-webkit-text-stroke:1.5px var(--purple);
+  paint-order:stroke fill;display:block;
+}
+@supports not ((-webkit-text-stroke: 1px black)){ h1 .out{color:var(--purple)} }
+
+.sub{max-width:52ch;margin-top:26px;font-size:clamp(.95rem,1.25vw,1.08rem);line-height:1.6;color:var(--ink-65);font-weight:400}
+.sub b{color:var(--ink);font-weight:600}
+
+.readout{border-left:2px solid var(--purple);padding-left:18px}
+.readout .r{display:flex;align-items:baseline;gap:12px;padding:7px 0}
+.readout .n{font-family:var(--disp);font-weight:700;font-size:clamp(1.5rem,2.6vw,2rem);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;min-width:3.6ch}
+.readout .u{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-40)}
+
+/* single line diagram */
+.sld{margin-top:clamp(40px,5.5vw,72px);position:relative}
+.sld-cap{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-40);margin-bottom:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+.run{display:flex;align-items:center;gap:0;min-height:56px}
+.node{display:flex;align-items:center;gap:9px;flex:none;background:var(--bg);padding-right:12px}
+.node:first-child{padding-left:0}
+.node svg{width:30px;height:30px;flex:none;color:var(--purple)}
+.node .lab{font-family:var(--mono);font-size:9.5px;line-height:1.35;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-65);white-space:nowrap}
+.node .lab b{display:block;color:var(--ink);font-weight:700}
+.link{flex:1 1 auto;height:1.5px;background:var(--purple);min-width:16px;position:relative;opacity:.9}
+.link.dashed{background:repeating-linear-gradient(90deg,var(--purple) 0 6px,transparent 6px 12px)}
+
+.busbar{height:7px;background:var(--purple);margin-top:26px;position:relative}
+.busbar .bb-lab{position:absolute;top:-20px;left:0;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-40)}
+
+.feeders{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,40px);margin-top:0}
+.feeder{position:relative;padding-top:40px}
+.feeder::before{content:"";position:absolute;top:0;left:26px;width:1.5px;height:40px;background:var(--purple)}
+.feeder::after{content:"";position:absolute;top:34px;left:22.5px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:1.5px solid var(--purple)}
+.fcard{border:1px solid var(--hair);background:var(--bg);padding:20px 20px 18px;transition:border-color .2s ease,transform .2s ease}
+.fcard:hover{border-color:var(--purple);transform:translateY(-2px)}
+.fcard .who{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-40);margin-bottom:9px}
+.fcard h3{font-size:clamp(1.05rem,1.7vw,1.3rem);font-weight:700;letter-spacing:-.02em;line-height:1.2}
+.fcard p{font-size:13.5px;line-height:1.55;color:var(--ink-65);margin-top:8px;max-width:34ch}
+.fcard .cta{
+  margin-top:16px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+  font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;background:var(--purple);padding:11px 15px;transition:background .18s ease;
+}
+.fcard .cta:hover{background:var(--purple-deep)}
+.fcard .cta svg{width:15px;height:15px}
+.fcard.alt .cta{background:var(--ink)}
+.fcard.alt .cta:hover{background:var(--purple)}
+
+@media(max-width:820px){
+  .run{flex-wrap:wrap;gap:12px 0}
+  .link{min-width:12px}
+  .node .lab{font-size:9px}
+  .feeders{grid-template-columns:1fr;gap:0}
+  .feeder:last-child{padding-top:26px}
+  .feeder:last-child::before{height:26px}
+  .feeder:last-child::after{top:20px}
+}
+@media(max-width:560px){
+  .run .node .lab span{display:none}
+  body{background-image:none}
+}
+
+.badge{position:fixed;left:16px;bottom:16px;z-index:50;background:var(--purple);color:#fff;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;opacity:.94}
+
+@media(prefers-reduced-motion:no-preference){
+  .rise{opacity:0;transform:translateY(16px);animation:rise .75s cubic-bezier(.2,.7,.3,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .d1{animation-delay:.04s}.d2{animation-delay:.12s}.d3{animation-delay:.2s}.d4{animation-delay:.3s}.d5{animation-delay:.4s}
+  .busbar{transform-origin:left center;animation:grow 1s .55s cubic-bezier(.4,0,.1,1) backwards}
+  @keyframes grow{from{transform:scaleX(0)}}
+  .navmeta .live i{animation:blip 2.4s ease-in-out infinite}
+  @keyframes blip{0%,100%{opacity:1}50%{opacity:.25}}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="lockup">
+      <img src="assets/se-logo.png" alt="Suchetana Electricals">
+      <b>Suchetana Electricals</b>
+    </div>
+    <nav class="navmeta">
+      <span class="hide-sm">Class I · 1CL192563BNG</span>
+      <span class="live"><i></i>Est. 1969</span>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div>
+        <div class="tagstrip rise d1">
+          <span class="tag on">HT &amp; LT Supply</span>
+          <span class="tag">Sub-stations</span>
+          <span class="tag">Transformers 44–1000 KVA</span>
+          <span class="tag">Layout electrification</span>
+          <span class="tag">Interior fit-out</span>
+        </div>
+        <h1 class="rise d2">
+          Sanction<br>
+          to <span class="out">commissioning.</span>
+        </h1>
+        <p class="sub rise d3">
+          One Class I firm carries the job the whole way — sanctioned HT supply, transformer
+          erection, cable runs up to 500 m, panels, final testing. <b>73 installations since 1969</b>,
+          from a 30 KVA bungalow to a 2 × 8 MW state sub-station.
+        </p>
+      </div>
+
+      <div class="readout rise d4">
+        <div class="r"><span class="n">57</span><span class="u">Years in practice</span></div>
+        <div class="r"><span class="n">73</span><span class="u">Projects on record</span></div>
+        <div class="r"><span class="n">39</span><span class="u">MVA connected load</span></div>
+        <div class="r"><span class="n">42</span><span class="u">Localities served</span></div>
+      </div>
+    </div>
+
+    <div class="sld rise d5">
+      <div class="sld-cap">
+        <span>Scope of works — single line</span>
+        <span>Bengaluru · Karnataka · Hyderabad</span>
+      </div>
+
+      <div class="run">
+        <div class="node">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 4v24M26 4v24M6 10h20M6 18h20"/></svg>
+          <span class="lab"><b>11 KV</b><span>Utility supply</span></span>
+        </div>
+        <div class="link dashed"></div>
+        <div class="node">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 22h8l10-12M22 10h6M22 22h6"/><circle cx="12" cy="22" r="2"/><circle cx="22" cy="10" r="2"/></svg>
+          <span class="lab"><b>Isolator</b><span>DP structure</span></span>
+        </div>
+        <div class="link"></div>
+        <div class="node">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="13" cy="16" r="8"/><circle cx="21" cy="16" r="8"/></svg>
+          <span class="lab"><b>Transformer</b><span>44 – 1000 KVA</span></span>
+        </div>
+        <div class="link"></div>
+        <div class="node">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="6" width="22" height="20"/><path d="M5 13h22M11 13v13M19 13v13"/></svg>
+          <span class="lab"><b>HT cubicle</b><span>VCB · LBS · RMU</span></span>
+        </div>
+        <div class="link"></div>
+      </div>
+
+      <div class="busbar"><span class="bb-lab">Busbar</span></div>
+
+      <div class="feeders">
+        <div class="feeder">
+          <div class="fcard">
+            <div class="who">Feeder 01 — Developers, corporates, government</div>
+            <h3>You are building a project.</h3>
+            <p>Software campuses, hospitals, malls, factories, layouts and state sub-stations —
+               taken from sanction through to final commissioning, alongside your architect and electrical consultant.</p>
+            <a class="cta" href="#">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.16c-.25.69-1.44 1.31-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.16-1.55-1.16-2.95 0-1.4.73-2.09 1-2.38.24-.27.55-.34.73-.34h.53c.17 0 .4-.06.62.48.25.6.85 2.08.92 2.23.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.35 1.45.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.65.78 1.94.92.29.14.48.22.55.34.07.12.07.7-.18 1.39Z"/></svg>
+              Send project details
+            </a>
+          </div>
+        </div>
+
+        <div class="feeder">
+          <div class="fcard alt">
+            <div class="who">Feeder 02 — Homes, villas, apartments</div>
+            <h3>You are wiring a home.</h3>
+            <p>A single bungalow, a villa row or a 96-flat block. LT supply, transformer on a spun pole,
+               complete internal distribution — the same licence, the same supervisor on site.</p>
+            <a class="cta" href="#">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.16c-.25.69-1.44 1.31-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.16-1.55-1.16-2.95 0-1.4.73-2.09 1-2.38.24-.27.55-.34.73-.34h.53c.17 0 .4-.06.62.48.25.6.85 2.08.92 2.23.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.35 1.45.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.65.78 1.94.92.29.14.48.22.55.34.07.12.07.7-.18 1.39Z"/></svg>
+              Ask about a home
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="badge">Direction B — Single Line</div>
+</body>
+</html>

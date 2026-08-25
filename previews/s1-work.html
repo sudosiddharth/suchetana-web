@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suchetana Electricals — Work / The Register</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#580E8F;
+  --purple-lift:#8B2FD6;
+  --plum:#2A0745;
+  --bone:#F7F4F2;
+  --bone-2:#EFEAE6;
+  --ink:#191320;
+  --ink-60:#5B5265;
+  --ink-35:#8E869A;
+  --hair:#E0D9DC;
+  --amber:#E39A22;
+  --serif:"Instrument Serif",Georgia,serif;
+  --sans:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,60px)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(88,14,143,.94);backdrop-filter:blur(10px);color:#fff}
+nav .wrap{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+nav .lk{display:flex;align-items:center;gap:12px}
+nav .lk img{height:27px;width:auto}
+nav .lk b{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.wa{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--purple);background:#fff;font-size:12.5px;font-weight:600;padding:9px 14px;border-radius:2px;transition:background .2s,color .2s,transform .2s}
+.wa:hover{background:var(--amber);color:var(--plum);transform:translateY(-1px)}
+.wa svg{width:15px;height:15px}
+
+/* header */
+.head{padding:clamp(104px,12vw,150px) 0 clamp(28px,4vw,44px)}
+.kick{display:flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--purple);margin-bottom:20px}
+.kick i{width:26px;height:2px;background:var(--amber);display:block}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,7vw,5.6rem);line-height:.96;letter-spacing:-.03em;max-width:15ch}
+h1 em{font-style:italic;color:var(--purple)}
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:clamp(22px,4vw,64px);align-items:end;margin-top:clamp(24px,3vw,38px)}
+@media(max-width:900px){.intro{grid-template-columns:1fr;gap:26px}}
+.intro p{color:var(--ink-60);max-width:52ch;line-height:1.68}
+.intro p b{color:var(--ink);font-weight:600}
+.tot{display:grid;grid-template-columns:repeat(3,auto);gap:clamp(16px,3vw,40px);justify-content:start}
+.tot .n{font-family:var(--serif);font-size:clamp(1.8rem,3.6vw,2.9rem);line-height:1;letter-spacing:-.03em;display:block;font-variant-numeric:tabular-nums}
+.tot .n small{font-family:var(--sans);font-size:.32em;font-weight:600;letter-spacing:.08em;color:var(--ink-35);margin-left:.28em}
+.tot .k{display:block;margin-top:7px;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-35)}
+
+/* filter */
+.filterbar{position:sticky;top:64px;z-index:40;background:var(--bone);border-bottom:1px solid var(--hair);padding:14px 0}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{
+  font-family:var(--sans);font-size:11.5px;font-weight:500;letter-spacing:.03em;
+  border:1px solid var(--hair);background:transparent;color:var(--ink-60);
+  padding:8px 13px;border-radius:999px;cursor:pointer;transition:all .22s ease;white-space:nowrap;
+}
+.chip:hover{border-color:var(--purple);color:var(--purple)}
+.chip.on{background:var(--purple);border-color:var(--purple);color:#fff}
+.chip .c{opacity:.6;margin-left:6px;font-variant-numeric:tabular-nums}
+.status{margin-top:11px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-35)}
+.status b{color:var(--purple);font-weight:600}
+
+/* rows */
+.list{padding:clamp(10px,2vw,20px) 0 clamp(60px,8vw,110px)}
+.sechead{
+  display:flex;align-items:baseline;gap:14px;padding:34px 0 12px;border-bottom:1px solid var(--hair);
+}
+.sechead h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,2.6vw,2rem);letter-spacing:-.022em;line-height:1.1}
+.sechead .cnt{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-35);margin-left:auto;white-space:nowrap}
+
+.row{
+  display:grid;grid-template-columns:42px minmax(0,1fr) minmax(0,.72fr) 118px;
+  gap:clamp(10px,2vw,26px);align-items:baseline;
+  padding:17px 0;border-bottom:1px solid var(--hair);position:relative;
+}
+.row::before{
+  content:"";position:absolute;left:-14px;right:-14px;top:0;bottom:0;background:var(--bone-2);
+  opacity:0;transition:opacity .2s ease;z-index:0;
+}
+.row:hover::before{opacity:1}
+.row > *{position:relative;z-index:1}
+.row .idx{font-size:11px;color:var(--ink-35);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.row .nm{font-size:clamp(.98rem,1.35vw,1.14rem);font-weight:500;letter-spacing:-.012em;line-height:1.3}
+.row .nm .pl{display:block;font-size:12.5px;font-weight:400;color:var(--ink-35);margin-top:4px;letter-spacing:0}
+.row .cred{font-size:11.5px;color:var(--ink-35);line-height:1.5}
+.row .cred span{color:var(--ink-60)}
+.row .ld{text-align:right;font-family:var(--serif);font-size:clamp(1.05rem,1.9vw,1.5rem);letter-spacing:-.02em;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
+.row .ld small{font-family:var(--sans);font-size:.5em;font-weight:600;letter-spacing:.07em;color:var(--ink-35);margin-left:.3em}
+.row .ld.none{font-family:var(--sans);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-35)}
+.row.key .nm{color:var(--purple)}
+.row.key .ld{color:var(--purple)}
+@media(max-width:860px){
+  .row{grid-template-columns:30px minmax(0,1fr) 96px}
+  .row .cred{grid-column:2 / -1;order:3;margin-top:2px}
+}
+
+.foot{background:var(--plum);color:#EADCF6;padding:clamp(44px,6vw,76px) 0}
+.foot .fl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+.foot h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,3.4vw,2.6rem);color:#fff;letter-spacing:-.025em;max-width:20ch;line-height:1.1}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-size:14.5px;font-weight:600;padding:14px 20px;border-radius:2px;background:#fff;color:var(--purple);transition:all .2s ease}
+.btn:hover{background:var(--amber);color:var(--plum);transform:translateY(-2px)}
+.btn svg{width:16px;height:16px}
+
+.badge{position:fixed;left:16px;bottom:16px;z-index:90;background:var(--purple);color:#fff;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;border-radius:2px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="lk"><img src="assets/se-logo-white.png" alt="Suchetana Electricals"><b>Suchetana Electricals</b></div>
+    <a class="wa" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.16c-.25.69-1.44 1.31-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.16-1.55-1.16-2.95 0-1.4.73-2.09 1-2.38.24-.27.55-.34.73-.34h.53c.17 0 .4-.06.62.48.25.6.85 2.08.92 2.23.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.35 1.45.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.65.78 1.94.92.29.14.48.22.55.34.07.12.07.7-.18 1.39Z"/></svg>WhatsApp</a>
+  </div>
+</nav>
+
+<header class="head">
+  <div class="wrap">
+    <div class="kick" data-a><i></i>The register · 1969 to today</div>
+    <h1 data-a>Every job of note, <em>on the record.</em></h1>
+    <div class="intro">
+      <p data-a>Seventy-three installations across nine sectors, listed with the architect and
+        electrical consultant of record and the load delivered. <b>Fifty-nine state a connected
+        load</b>; the rest are interior fit-outs, layout works and landscape electrification,
+        recorded by area. Private residences are listed by locality only.</p>
+      <div class="tot" data-a>
+        <div><span class="n" data-to="73">0</span><span class="k">Projects</span></div>
+        <div><span class="n" data-to="39">0<small>MVA</small></span><span class="k">Connected load</span></div>
+        <div><span class="n" data-to="42">0</span><span class="k">Localities</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="filterbar">
+  <div class="wrap">
+    <div class="chips" id="chips"></div>
+    <div class="status" id="status">Showing <b>73</b> of 73 projects</div>
+  </div>
+</div>
+
+<main class="list"><div class="wrap" id="list"></div></main>
+
+<section class="foot">
+  <div class="wrap fl">
+    <h3>Your project belongs on this list.</h3>
+    <a class="btn" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.16c-.25.69-1.44 1.31-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.16-1.55-1.16-2.95 0-1.4.73-2.09 1-2.38.24-.27.55-.34.73-.34h.53c.17 0 .4-.06.62.48.25.6.85 2.08.92 2.23.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.35 1.45.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.65.78 1.94.92.29.14.48.22.55.34.07.12.07.7-.18 1.39Z"/></svg>Send us the drawings</a>
+  </div>
+</section>
+
+<div class="badge">Lineage — Work</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* Register — private residences anonymised to locality + load, per client instruction.
+   In Astro this becomes a content collection; the filter becomes the one React island. */
+const SECTORS = [
+  {id:'it',   name:'IT companies & office space'},
+  {id:'gov',  name:'Government projects'},
+  {id:'hos',  name:'Hospitals'},
+  {id:'cpx',  name:'Complex centres'},
+  {id:'ind',  name:'Industrial & factory'},
+  {id:'res',  name:'Restaurants & entertainment'},
+  {id:'apt',  name:'Apartments, villas & houses'},
+  {id:'shw',  name:'Showrooms'},
+  {id:'key',  name:'Key & ongoing projects'}
+];
+
+const P = [
+["it","Azim Premji Foundation","Sarjapura Road","200 KVA","IMG Consultant · M/s. Sripakesh",0],
+["it","Silver Software Pvt. Ltd.","ITPL, Whitefield","750 KVA","Upal Ghosh & Associates · Suresh Consultant",0],
+["it","VeriFone Communications","Kumara Park West","200 KVA","Gayathri &amp; Namith · Epithelial Engineering",0],
+["it","Azim Premji Investments","Sarjapura Road","100 KVA","IMG Consultant · M/s. Sripakesh",0],
+["it","ADC India Communication — R&amp;D","Outer Ring Road, BSK 2nd Stage","650 KVA","Elysees Interior · 56,000 sq ft, 450 workstations",0],
+["it","Frontier Business System","Wood Street, off Brigade Road","200 KVA","Gayathri &amp; Namith · Entask Consultancy",0],
+["it","India Heritage of ISKCON","Rajajinagar","—","Gayathri &amp; Namith · six floors, 95 workstations",0],
+["it","DEN Pvt. Ltd.","K.R. Road","350 KVA","Flora Arcade · 175 workstations, 10,000 sq ft",0],
+["it","MRO-TEK Pvt. Ltd.","Bellary Road, Hebbal","1000 KVA","630 A 11 KV VCB · HT cable 275 m",1],
+["it","ADC India Communication — Krone","Peenya 2nd Stage","100 KVA","Elysees Interior · self-execution LT supply",0],
+["it","FERN Builders &amp; Developers","Indiranagar &amp; Koramangala","—","Upal Ghosh · 35,000 sq ft landscape electrification",0],
+["it","KLE Institution","Nagarbhavi","100 KVA","Flora Arcade · 75 workstations",0],
+["it","Mantri Mall Management Office","Malleshwaram","—","A.N. Prakash &amp; Associates (PMC) · 10,000 sq ft",0],
+["it","Hinduja Group — DMR Enterprises","Bellary Road","160 KVA","GSA Studio · Tandem Consultant",0],
+["it","Ramsons Garment Finishings","Sarjapura Road","250 KVA","GSA Studio · Tandem Consultant",0],
+["it","Rossell Techsys","Whitefield","500 KVA","Elysees Interiors · HT power supply",0],
+["it","Rossell Techsys — Phase 2","Whitefield","250 KVA","Elysees Interiors · 48,000 sq ft",0],
+
+["gov","2 × 8 MW, 66/11 KV Sub-Station","Chitradurga, Karnataka","16 MVA","State sub-station erection",1],
+["gov","2 × 5 MVA, 110/33 KV Sub-Station","Ranebennur Taluk, Karnataka","10 MVA","Rattihalli to 33 KV sub-station",1],
+["gov","Commercial Tax Office","Hubli, Karnataka","100 KVA","11 KV double-pole overhead line, 35 m",0],
+["gov","Police Quarters","Koramangala","250 KVA","Transformer erection",0],
+["gov","Karnataka Housing Board","Koramangala","250 KVA","Transformer erection",0],
+["gov","Karnataka Housing Board","Kumbalgodu, Mysore Road","250 KVA","Transformer erection",0],
+["gov","Gulmohar Enclave","Marathahalli","250 KVA","Layout works · 11 KV overhead line",0],
+["gov","Herohalli Layout","Magadi Road","—","Layout works · 11 KV line and street lighting",0],
+
+["hos","Gunasheela Nursing Home","Basavanagudi","500 KVA","Gayathri &amp; Namith · HT enhancement, live facility",1],
+["hos","Gunasheela Trinity Hospital","Basavanagudi","500 KVA","Gayathri &amp; Namith · HT enhancement, live facility",0],
+
+["cpx","Swastik Complex","Sheshadripuram, S.C. Road","500 KVA","Divakar &amp; Associates · 500 KVA × 2",0],
+["cpx","Tallam Arcade (Geetha Complex)","S.C. Road, Majestic Circle","500 KVA","HT cable 475 m on a loop with police station and cinema",1],
+["cpx","Abhinay Complex &amp; Cinema Hall","B.V.K. Iyengar Road","250 KVA","Transformer, HT cubicle, HT cable 110 m",0],
+["cpx","Commercial complex","Marathahalli","250 KVA","Sathendra Bathkal &amp; Associates",0],
+["cpx","Commercial complex","Kumara Park West","200 KVA","Gayathri &amp; Namith · LBS and ring main unit",0],
+
+["ind","Ankith Garments","Bommasandra Industrial Area","250 KVA","Aminbhavi &amp; Hegde · Sai Engineers",0],
+["ind","Venkateshwara Garments","Hoskote Industrial Area","250 KVA","Sai Engineers",0],
+
+["res","Hotel Empire — Restaurant &amp; Lodging","Castle Street, Richmond Road","315 KVA","Martin Antony Njavally · LBS and ring main unit",1],
+["res","HM Leisure — Amoeba","Mantri Square","125 KVA","Manah Studio · Nugy Consultancy · 25,000 sq ft",0],
+["res","Shram Enterprises — Shiv Sagar","Mantri Square","120 KVA","GSA Studio · Tandem Consultant · 17,000 sq ft",0],
+["res","Shram Enterprises — Riverside","Whitefield Main Road","160 KW","GNA Architects · Panchamukhi · 10,000 sq ft",0],
+["res","Shram Enterprises — Shiv Sagar","Commercial Street","70 KW","GSA Studio · Tandem Consultant · 8,000 sq ft",0],
+["res","Red Apple Kitchen — Toscano","Orion Mall, Yeshwanthpur","70 KW","RC Architects · JES Design Consultant",0],
+["res","Beijing Bites / Chungs","Five branches across Bengaluru","—","Satish Naik &amp; Associates · 2,500 sq ft per branch",0],
+["res","ISKCON Charity","Rajajinagar","—","Gayathri &amp; Namith · stilt and ground, 3,000 sq ft each",0],
+
+["apt","Godrej Properties — Gold County","Tumkur Road","—","P.G. Patki Architects · Procon Engineers · villas",1],
+["apt","GR Constructions — Singasandra","Hosur Road","250 KVA","Design Attitude · Sai Pranava · 96 flats",0],
+["apt","Emmanuel Constructions — Angle Arch","Kammasandra, Hosur Road","250 KVA","Gayathri &amp; Namith · 24 villas, transformer on spun pole",0],
+["apt","Build Mart — Rathod Land Mark","Bengaluru","250 KVA","Ecumene Habitat · JES Design · 40 flats + commercial",0],
+["apt","Build Mart — Ratio Vatika","Bengaluru","250 KVA","Aslam Architects · Suyog Consultants · 20 flats",0],
+["apt","Apartments at Primrose Road","M.G. Road Cross","250 KVA","Divakar &amp; Associates",0],
+["apt","Emmanuel Constructions — Emmanuel Pearl","Rest House Road, off Brigade Road","100 KVA","Team 2 Architects · Pie Consultancy · 100 KVA × 2",0],
+["apt","Emmanuel Constructions — Emmanuel Nest","K.R. Puram","100 KVA","Maya Architect · SAN Consultant · 12 flats",0],
+["apt","K.V. Properties — layout","O Farm, 7-acre layout","100 KVA","Interface, Domlur · 18 units, spun-pole transformer",0],
+["apt","Apartment building","Horamavu, Outer Ring Road","80 KVA","Praxis Inc. · Epithelial Engineering · spun-pole HT",0],
+["apt","Apartment building","Sanjaynagar","75 KVA","In-house · LT supply",0],
+["apt","Transformer shifting","J.P. Nagar 2nd Phase","250 KVA","11 KV line 125 m, double-pole structure",0],
+["apt","Private residence","Palace Cross Road","44 KVA","GNA Architects · Poorna Consultants",0],
+["apt","Residential bungalow","West of Chord Road, Rajajinagar","40 KVA","Proposed supply",0],
+["apt","Residential bungalow","Boopsandra","40 KVA","Ecumene Solution · JES Design Consultants",0],
+["apt","Residential bungalow","Jayanagar","30 KVA","Nugy Consultancy · smallest recorded supply",1],
+
+["shw","Golden Properties — Toy Showroom","Bengaluru","350 KVA","Five floors of 4,000 sq ft each",1],
+["shw","Fab India Overseas","Mantri Square","—","Ecumene Solution · 5,000 sq ft interior",0],
+["shw","Favourite Shop — Manyavar","Mantri Square","—","Choreography of Spaces · 5,000 sq ft",0],
+["shw","Kids Favourite Shop","Mantri Square","—","Choreography of Spaces · 5,000 sq ft",0],
+["shw","Mahaveer Bath Solution — Jaquar","Hyderabad","—","Creo Concept · sanitary ware showroom",0],
+["shw","Cosmo Lighting — Jaquar","Hyderabad","—","Creo Concept · lighting showroom",0],
+["shw","Krishna Enterprises — Jaquar","Hyderabad","—","Creo Concept · sanitary ware showroom",0],
+
+["key","JN Constructions — Atomic Minerals Directorate","AMD Complex, Nagarbhavi","—","Govt. of India · DCSEM, Anushaktinagar · Phase II",1],
+["key","A3 Developers","Papareddypalya, Nagarbhavi","250 KVA","Goutham Venkatesh Architects · 129 KW LT",0],
+["key","Sri Sathyanarayana &amp; Sons","Railway Parallel Road, Sheshadripuram","200 KVA","Sublime Architects · 16,000 sq ft, plus 100 KVA LT",0],
+["key","M/s. Global Calcium Pvt. Ltd.","Koramangala","160 KVA","PR Design Group · 12,000 sq ft commercial",0],
+["key","Residential apartments","Girls School Street, Sheshadripuram","100 KVA","Flora Arcade · 12 flats of 2,400 sq ft",0],
+["key","Private residence","Bengaluru","100 KVA","OCD Architects · LT power supply",0],
+["key","Twin residential bungalows","Boopsandra, Sanjaynagar","60 KVA","Tejesh Architect · LT power supply",0],
+["key","Tenova Delkor Pvt. Ltd.","Tumkur–Bengaluru Road","50 KW","Celebrity Interiors · 50 workstations",0]
+];
+
+const listEl = document.getElementById('list');
+const chipsEl = document.getElementById('chips');
+const statusEl = document.getElementById('status');
+let active = 'all';
+
+function counts(){
+  const m = {all:P.length};
+  SECTORS.forEach(s => m[s.id] = P.filter(p => p[0]===s.id).length);
+  return m;
+}
+const C = counts();
+
+function buildChips(){
+  const all = [{id:'all',name:'All projects'}].concat(SECTORS);
+  chipsEl.innerHTML = all.map(s =>
+    `<button class="chip${s.id==='all'?' on':''}" data-id="${s.id}">${s.name}<span class="c">${C[s.id]}</span></button>`
+  ).join('');
+}
+
+function render(){
+  const groups = active === 'all' ? SECTORS : SECTORS.filter(s => s.id === active);
+  let html = '', n = 0;
+  groups.forEach(sec => {
+    const items = P.filter(p => p[0] === sec.id);
+    if (!items.length) return;
+    html += `<div class="sechead"><h2>${sec.name}</h2><span class="cnt">${items.length} project${items.length>1?'s':''}</span></div>`;
+    items.forEach(p => {
+      n++;
+      const load = p[3] === '—'
+        ? '<span class="ld none">By area</span>'
+        : `<span class="ld">${p[3].replace(/ (KVA|MVA|KW)/,' <small>$1</small>')}</span>`;
+      html += `<div class="row${p[5]?' key':''}">
+        <span class="idx">${String(n).padStart(2,'0')}</span>
+        <span class="nm">${p[1]}<span class="pl">${p[2]}</span></span>
+        <span class="cred">${p[4]}</span>
+        ${load}
+      </div>`;
+    });
+  });
+  listEl.innerHTML = html;
+  const shown = P.filter(p => active==='all' || p[0]===active).length;
+  statusEl.innerHTML = `Showing <b>${shown}</b> of ${P.length} projects`;
+
+  if (window.gsap && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    gsap.from(listEl.querySelectorAll('.row, .sechead'), {
+      opacity:0, y:18, duration:.5, stagger:.014, ease:'power2.out', overwrite:true
+    });
+  }
+}
+
+buildChips();
+render();
+
+chipsEl.addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  active = b.dataset.id;
+  chipsEl.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === b));
+  render();
+});
+
+if (window.gsap && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('[data-a]', {opacity:0, y:26, duration:.85, stagger:.11, ease:'power3.out'});
+  document.querySelectorAll('.tot .n').forEach(el => {
+    const o = {v:0}, to = +el.dataset.to, unit = el.querySelector('small');
+    gsap.to(o, {v:to, duration:1.4, delay:.35, ease:'power2.out', onUpdate(){
+      el.childNodes[0].nodeValue = Math.round(o.v);
+    }});
+    if (unit) el.appendChild(unit);
+  });
+  gsap.from('.foot h3', {opacity:0, y:34, duration:.8, ease:'power3.out',
+    scrollTrigger:{trigger:'.foot', start:'top 82%'}});
+}
+</script>
+</body>
+</html>

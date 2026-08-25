@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.astro/
+.astro-dev-*.log
+.impeccable/review/
+.impeccable/*-profile/
+.impeccable/pf.html
+.DS_Store
+
+.vercel

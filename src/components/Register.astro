@@ -1,0 +1,234 @@
+---
+import { getCollection } from 'astro:content';
+import RegisterFilter from './react/RegisterFilter';
+import type { Job, Sector } from './react/RegisterFilter';
+import LoadField from './LoadField.astro';
+
+/** Canonical sector order, as the profile prints it. */
+const SECTORS: Sector[] = [
+  { id: 'it',  name: 'IT companies & office space' },
+  { id: 'gov', name: 'Government projects' },
+  { id: 'hos', name: 'Hospitals' },
+  { id: 'cpx', name: 'Complex centres' },
+  { id: 'ind', name: 'Industrial & factory' },
+  { id: 'res', name: 'Restaurants & entertainment' },
+  { id: 'apt', name: 'Apartments, villas & houses' },
+  { id: 'shw', name: 'Showrooms' },
+  { id: 'key', name: 'Key & ongoing projects' },
+];
+
+const entries = await getCollection('projects');
+const jobs: Job[] = entries
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((e) => ({
+    slug: e.slug,
+    title: e.data.title,
+    locality: e.data.locality,
+    load: e.data.load,
+    loadKva: e.data.loadKva,
+    discs: e.data.discs,
+    recordedAs: e.data.recordedAs,
+    sector: e.data.sector,
+    sectorName: e.data.sectorName,
+    sectorBlurb: e.data.sectorBlurb,
+    key: e.data.key,
+  }));
+
+const withLoad = jobs.filter((j) => j.loadKva !== null).length;
+---
+<section class="reg" id="register">
+  <div class="wrap">
+    <div class="regHead">
+      <h2 data-rise>Seventy-three jobs, measured in discs.</h2>
+      <p data-rise>
+        Every installation the firm has recorded, with the architect and electrical consultant of
+        record and the load delivered. A disc insulator stack encodes voltage class — so each job
+        below carries the stack its supply needed. <strong>{withLoad} of the seventy-three state a
+        connected load;</strong> the rest are fit-outs and layout works, recorded by area. Private
+        residences are listed by locality only.
+      </p>
+    </div>
+
+    <LoadField />
+
+    <RegisterFilter jobs={jobs} sectors={SECTORS} client:visible />
+  </div>
+</section>
+
+<style>
+  .reg { background: var(--lime); padding: var(--band) 0 clamp(44px, 6vw, 84px); }
+  .regHead {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, .8fr);
+    gap: clamp(18px, 3.4vw, 54px);
+    align-items: end;
+  }
+  .regHead h2 { font-size: clamp(2.1rem, 4.6vw, 3.5rem); max-width: 20ch; }
+  .regHead p { max-width: 66ch; color: var(--ink-70); font-size: 15.5px; line-height: 1.62; }
+  .regHead p strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 900px) { .regHead { grid-template-columns: 1fr; gap: 20px; } }
+</style>
+
+<!-- The register list is rendered by a React island, so its styles cannot be scoped. -->
+<style is:global>
+  /* the control bar sticks under the masthead: 73 rows is long enough to lose your place in.
+     Named .regBar, not .bar — these styles are global and LoadField's busbar is a .bar too. */
+  .regBar {
+    position: sticky; top: 60px; z-index: 20;
+    background: var(--lime); padding: clamp(14px, 2vw, 20px) 0 clamp(12px, 1.6vw, 16px);
+    margin-top: clamp(26px, 3.4vw, 40px);
+    border-bottom: 1.5px solid var(--zinc-deep);
+    box-shadow: 0 12px 18px -18px rgba(22, 19, 26, .5);
+  }
+  .regBarIn {
+    display: flex; flex-wrap: wrap; align-items: flex-end; gap: 14px clamp(16px, 2.4vw, 32px);
+  }
+  .search { flex: 1 1 260px; min-width: 0; }
+  .search label {
+    display: block; font-size: 11px; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-45); margin-bottom: 6px;
+  }
+  .search input {
+    width: 100%; background: transparent; border: 0;
+    border-bottom: 1.5px solid var(--zinc-deep); color: var(--ink);
+    font-family: var(--text); font-size: 16px; padding: 7px 0; border-radius: 0;
+    transition: border-color var(--t-fast) var(--ease);
+  }
+  .search input:focus { outline: none; border-color: var(--glaze); }
+  .search input::placeholder { color: var(--ink-45); }
+
+  .sortWrap { display: flex; gap: 0; border: 1.5px solid var(--zinc-deep); }
+  .sortBtn {
+    background: transparent; border: 0; cursor: pointer;
+    font-family: var(--disp); font-size: 15px; font-weight: 500; color: var(--ink-70);
+    padding: 8px 14px 6px;
+    transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+  }
+  .sortBtn + .sortBtn { border-left: 1.5px solid var(--zinc-deep); }
+  .sortBtn:hover { color: var(--glaze); }
+  .sortBtn[aria-pressed="true"] { background: var(--glaze); color: #fff; }
+
+  .tally {
+    font-family: var(--disp); font-size: 15px; font-weight: 500; color: var(--ink-45);
+    white-space: nowrap; padding-bottom: 5px;
+  }
+  .tally b { font-size: 1.5rem; font-weight: 600; color: var(--glaze); letter-spacing: -.02em; }
+
+  .none { padding: clamp(30px, 5vw, 60px) 0; font-size: 1.05rem; color: var(--ink-70); }
+  .clear {
+    background: none; border: 0; padding: 0; cursor: pointer; font: inherit;
+    color: var(--glaze); border-bottom: 2px solid currentColor;
+  }
+
+  .sectors { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; }
+  .sec {
+    font-family: var(--disp); font-size: 15.5px; font-weight: 500; letter-spacing: .01em;
+    background: transparent; border: 1.5px solid var(--zinc-deep); color: var(--ink);
+    padding: 7px 13px 5px; cursor: pointer;
+    transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease),
+                color var(--t-fast) var(--ease);
+  }
+  .sec:hover { border-color: var(--glaze); color: var(--glaze); }
+  .sec[aria-pressed="true"] { background: var(--glaze); border-color: var(--glaze); color: #fff; }
+  .sec i { font-style: normal; opacity: .6; margin-left: 7px; }
+  .sec[aria-pressed="true"] i { opacity: .75; }
+
+  .status {
+    padding: 11px 0 0; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-45);
+  }
+  .status b { color: var(--glaze); font-weight: 600; }
+
+  .lineup { margin-top: clamp(26px, 3.4vw, 40px); }
+  .grp { margin-top: clamp(30px, 3.6vw, 46px); }
+  .grp:first-child { margin-top: 0; }
+  /* each sector arrives with its own header: what it is, how many, and the load range */
+  .grpHead {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px clamp(16px, 3vw, 40px); align-items: baseline;
+    padding-bottom: 12px; border-bottom: 1.5px solid var(--zinc-deep);
+    scroll-margin-top: 150px;
+  }
+  .grpHead h3 {
+    font-size: clamp(1.35rem, 2.6vw, 2.1rem); color: var(--ink); font-weight: 600;
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  .grpHead h3 em {
+    font-style: normal; font-family: var(--text); font-size: 12px; font-weight: 600;
+    letter-spacing: .1em; color: #fff; background: var(--glaze);
+    padding: 3px 8px 2px; border-radius: 999px;
+  }
+  .grpHead p {
+    grid-column: 1; max-width: 74ch; font-size: 14px; line-height: 1.6; color: var(--ink-70);
+  }
+  .grpHead .range {
+    grid-column: 2; grid-row: 1; font-family: var(--disp); font-size: 1.1rem; font-weight: 600;
+    color: var(--glaze); white-space: nowrap; letter-spacing: -.015em;
+  }
+  @media (max-width: 700px) {
+    .grpHead { grid-template-columns: 1fr; }
+    .grpHead .range { grid-column: 1; grid-row: auto; }
+  }
+
+  /* every change of view deals the rows in again — the list reads as an instrument responding,
+     not a table swapping its contents. `backwards` holds the start frame through the delay. */
+  @keyframes dealIn {
+    from { opacity: 0; transform: translate3d(0, 14px, 0); }
+    to   { opacity: 1; transform: none; }
+  }
+  .job {
+    animation: dealIn 460ms var(--ease) var(--d, 0ms) backwards;
+    display: grid; grid-template-columns: 64px minmax(0, 1fr) auto;
+    gap: clamp(12px, 2vw, 28px); align-items: center;
+    padding: 14px 0; border-bottom: 1px solid var(--lime-2);
+    text-decoration: none; color: inherit;
+    transition: background var(--t-fast) var(--ease);
+  }
+  /* Browser history must not recolour the register. In the screenshot, visited project links
+     leaked the UA purple into random rows, making the lineup look corrupted. Key jobs remain
+     deliberately glazed through the more specific rule below. */
+  .job:visited { color: var(--ink); }
+  .job:visited .who b { color: var(--ink); }
+  .job:hover, .job:focus-visible { background: var(--lime-2); }
+  .job:hover .who b, .job:focus-visible .who b { color: var(--glaze); }
+  .stkwrap { display: flex; justify-content: center; }
+  .stkwrap .stk { height: 46px; width: auto; display: block; overflow: visible; }
+  .job .who { min-width: 0; }
+  .job .who b {
+    display: block; font-family: var(--disp); font-weight: 600;
+    letter-spacing: -.015em; line-height: 1.06;
+    transition: color var(--t-fast) var(--ease);
+  }
+  .job .who span { display: block; font-size: 13px; color: var(--ink-45); margin-top: 3px; }
+  .job .kv {
+    font-family: var(--disp); font-weight: 600; font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+    letter-spacing: -.02em; white-space: nowrap; text-align: right;
+  }
+  .job .kv u {
+    text-decoration: none; font-family: var(--text); font-size: .52em;
+    font-weight: 600; color: var(--ink-45); margin-left: .35em;
+  }
+  .job .kv.area {
+    font-family: var(--text); font-size: 12px; font-weight: 500; color: var(--ink-45);
+  }
+  .job.key .who b, .job.key .kv { color: var(--glaze); }
+
+  /* hierarchy by scale alone — load decides the type size */
+  .job[data-w="1"] .who b { font-size: clamp(.98rem, 1.15vw, 1.05rem); }
+  .job[data-w="2"] .who b { font-size: clamp(1.06rem, 1.4vw, 1.24rem); }
+  .job[data-w="3"] .who b { font-size: clamp(1.16rem, 1.7vw, 1.5rem); }
+  .job[data-w="4"] .who b { font-size: clamp(1.3rem, 2.2vw, 1.95rem); }
+  .job[data-w="5"] .who b { font-size: clamp(1.5rem, 3vw, 2.6rem); }
+  .job[data-w="6"] .who b { font-size: clamp(1.75rem, 4.2vw, 3.5rem); }
+
+  .grpHead { animation: dealIn 460ms var(--ease) backwards; }
+  @media (prefers-reduced-motion: reduce) {
+    .job, .grpHead { animation: none; }
+  }
+
+  @media (max-width: 640px) {
+    .job { grid-template-columns: 44px minmax(0, 1fr); row-gap: 6px; }
+    .stkwrap .stk { height: 38px; }
+    .job .kv { grid-column: 2; text-align: left; }
+  }
+</style>

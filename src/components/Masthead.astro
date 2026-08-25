@@ -1,0 +1,54 @@
+---
+const { path = '/' } = Astro.props;
+const NAV = [
+  { href: '/portfolio/', label: 'Portfolio' },
+  { href: '/team/',      label: 'Team' },
+  { href: '/contact/',   label: 'Contact' },
+];
+const here = (href: string) => path === href || path.startsWith(href);
+---
+<header class="mast">
+  <div class="wrap">
+    <a class="mark" href="/" aria-label="Suchetana Electricals — home">
+      <span class="brand-flip" aria-hidden="true">
+        <span class="brand-face brand-mark"><img src="/assets/se-mark-white.png" alt="" width="44" height="24" /></span>
+        <span class="brand-face brand-name">Suchetana Electricals</span>
+      </span>
+    </a>
+    <nav aria-label="Main">
+      {NAV.map((n) => (
+        <a href={n.href} aria-current={here(n.href) ? 'page' : undefined}>{n.label}</a>
+      ))}
+      <a class="tel" href="tel:+919845013813">+91 98450 13813</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .mast { background: var(--zinc-dark); color: var(--lime); position: relative; z-index: 30; }
+  .mast .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 18px; height: 60px;
+  }
+  .mark { display: block; width: clamp(154px,20vw,230px); height: 36px; min-width: 0; text-decoration: none; perspective: 800px; }
+  .brand-flip{display:block;position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:brand-turn .76s cubic-bezier(.77,0,.175,1) 2s both}
+  .brand-face{position:absolute;inset:0;display:flex;align-items:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+  .brand-mark img { height: 26px; width: auto; display: block; }
+  .brand-name {transform:rotateX(180deg);font-family:var(--disp);font-size:17px;font-weight:600;letter-spacing:.02em;white-space:nowrap}
+  @keyframes brand-turn{to{transform:rotateX(180deg)}}
+  nav { display: flex; align-items: center; gap: clamp(14px, 2.2vw, 30px); }
+  nav a {
+    font-family: var(--disp); font-size: 15.5px; font-weight: 500; letter-spacing: .015em;
+    text-decoration: none; color: #D9DBDE;
+    padding: 3px 0; border-bottom: 2px solid transparent;
+    transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+  }
+  nav a:hover { color: #fff; border-color: var(--brass-lit); }
+  nav a[aria-current="page"] { color: #fff; border-color: var(--brass); }
+  nav a.tel { font-family: var(--text); font-size: 13px; color: #B6BBC0; }
+  @media (max-width: 720px) { nav a.tel { display: none; } .mast .wrap{gap:10px}.mark{width:148px}.brand-name{font-size:15px}nav{gap:clamp(10px,3vw,14px)}nav a{font-size:14px} }
+  @media (max-width: 390px) { .mark{width:128px}.brand-name{font-size:13.5px}nav{gap:9px}nav a{font-size:12.5px} }
+  @media (orientation:landscape) and (max-height:540px){.mast .wrap{height:50px}.mark{height:30px}.brand-mark img{height:22px}.brand-name{font-size:14px}}
+  @media (prefers-reduced-motion:reduce){.brand-flip{animation:none;transform:none}.brand-mark{display:none}.brand-name{transform:none}}
+  @media (prefers-contrast:more){.brand-name{color:#fff}}
+</style>

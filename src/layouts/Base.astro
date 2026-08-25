@@ -1,0 +1,186 @@
+---
+import '../styles/tokens.css';
+import Masthead from '../components/Masthead.astro';
+import Foot from '../components/Foot.astro';
+import Boot from '../components/Boot.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path only, e.g. "/work/mro-tek-pvt-ltd". Joined to the site origin for canonical + OG. */
+  path?: string;
+}
+const { title, description, path = '/' } = Astro.props;
+
+// Astro.site comes from astro.config.mjs. Still a placeholder domain — see the TODO there.
+const canonical = new URL(path, Astro.site ?? 'https://suchetanaelectricals.example').toString();
+const routeContract = path === '/' ? `<!--
+HOME SURFACE CONTRACT — seed 52c534eb / user-approved monumental machine
+THESIS: One substantial electrical installation proves the firm before any explanation. Refuses childish diagram language, a photo carousel, generic particles and a multi-viewport hero sequence.
+OWN-WORLD: A near-black commissioning bay containing one precision-rendered high-tension transformer and switchgear installation, zinc structure, Oxford-purple porcelain and copper contacts; everything around it is quiet.
+STORY: The machine emerges once under a commissioning light; visitors immediately see the 30 KVA to 2 × 8 MW range, contact Madhusudan or enter Portfolio, then continue into verified evidence, licence accountability and the new-project terminal.
+FIRST VIEWPORT: Poster-scale “Power, carried all the way through,” actions and range occupy the left; one low-view monumental installation fills the right and leaves the viewport edges.
+FORM: One almost-still 100svh industrial campaign image with a 1.3-second exposure reveal and a five-pixel pointer response; purpose-built portrait and compact-landscape compositions; the masthead mark turns once after two seconds to name Suchetana Electricals, with a complete static reduced-motion equivalent.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
+-->` : path === '/portfolio/' ? `<!--
+PORTFOLIO SURFACE CONTRACT — seed 209656dd / user-pinned composition
+THESIS: The work is encountered as a film before it is audited as a register. Refuses a small gallery followed by a technical list.
+OWN-WORLD: Near-black projection room lit by Oxford purple, white captions and zinc-gray controls. Monumental frames and honest low-resolution replacement slates.
+STORY: Visitors feel the completed work first, then switch to Project Index for all 73 verified installations.
+FIRST VIEWPORT: A darkened full-bleed project frame with “Work, energised.” at poster scale and a floating Film / Project index switch.
+FORM: Cinematic film with a separate technical index; user-approved after surface seed 209656dd.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
+-->` : path === '/team/' ? `<!--
+TEAM SURFACE CONTRACT — user-pinned licence chain
+THESIS: Accountability has one current name. Refuses the equal-profile-card team page and the inaccurate three-generation succession story.
+OWN-WORLD: Madhusudan's real portrait, an active zinc Class I plate, one Oxford-purple current line, one founder-to-son handover, and supporting responsibility circuits.
+STORY: Madhusudan owns, licenses and runs the firm; founder Sri Subramanyappa is the origin; brother Suchetan and the long-serving site team branch in support.
+FIRST VIEWPORT: Madhusudan's portrait dominates beside the statement “The licence holder is the person who answers” and his active licence numbers.
+FORM: Portrait-led licence chain with engraved nameplates; user approved Madhusudan dominance, names plus responsibility circuits, and connected generation plates.
+FINISH: reviewed, documented and mechanically checked before completion.
+-->` : path === '/contact/' ? `<!--
+CONTACT SURFACE CONTRACT — user-pinned drawing table
+THESIS: A drawing set is useful; an address is enough to begin. Refuses the conventional marketing form and chat-interface imitation.
+OWN-WORLD: One lime electrical drawing sheet on a zinc review table, graphite rules, Oxford-purple issued lines, a real title block, a project transmittal and brass only at WhatsApp dispatch.
+STORY: Builder or homeowner records whatever is known, sees it assembled into a plain enquiry, and hands it directly to Madhusudan M.S., proprietor and Class I licence holder.
+FIRST VIEWPORT: Monumental statement at the top of the sheet, a restrained recipient plate with Madhusudan's portrait, then the interactive drawing title block already visible below.
+FORM: Electrical drawing-table intake with one authored DRAFT-to-READY transition; approved after rejecting the generic direct-line form.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
+-->` : '';
+---
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="en_IN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#4E5359" />
+
+  {/* the raw mark is 983×540, so pointing a favicon at it squashed it — these are square with real padding */}
+  <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+  <link rel="icon" href="/assets/icon-32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="/assets/icon-16.png" type="image/png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Khand:wght@400;500;600;700&family=Kumbh+Sans:wght@400;500;600;700&display=swap" />
+
+  {/* Decided before first paint, so the curtain never flashes in after the page has drawn.
+      Skipped for repeat visits in the session and for anyone who asked for less motion. */}
+  <script is:inline>
+    (function () {
+      try {
+        var quiet = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var seen = sessionStorage.getItem('se-booted');
+        if (!quiet && !seen) document.documentElement.classList.add('booting');
+        else document.documentElement.classList.add('lit');
+      } catch (e) {
+        document.documentElement.classList.add('lit');
+      }
+      /* Whatever happens to the entrance animations, the finished state is forced on.
+         A CSS animation that never advances would otherwise hold a word edge-on for good,
+         and the headline is not something motion is allowed to own. */
+      setTimeout(function () {
+        document.documentElement.classList.add('settled');
+      }, 2400);
+    })();
+  </script>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'ElectricalContractor',
+    name: 'Suchetana Electricals',
+    foundingDate: '1969',
+    description: 'Class I electrical contractors in Bengaluru, held by one family since 1969.',
+    telephone: '+91-98450-13813',
+    email: 'suchetanaele@gmail.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'G 4/5, No. 139, Shalimar Galaxy, 1st Main Road, Sheshadripuram',
+      addressLocality: 'Bengaluru',
+      addressRegion: 'Karnataka',
+      postalCode: '560020',
+      addressCountry: 'IN',
+    },
+    areaServed: 'Bengaluru, Karnataka',
+  })} />
+</head>
+<body>
+<Fragment set:html={routeContract} />
+<!--
+IMPECCABLE DIRECTION CONTRACT — seed 5c5da9b3 / reroll 1 / assigned index 7
+THESIS: A licensed trade is proven by its own material, not by a document about it. Refuses the
+  contractor-site default (hard-hat photo plate, blue gradient, three service cards) and the austere
+  ledger/schematic arrangement this project already rejected.
+OWN-WORLD: Two materials only — porcelain glazed in #580E8F and galvanised zinc — on a zinc-daylight
+  ground with lime-wash content fields and brass reserved for the primary action. Khand display over
+  Kumbh Sans. No cards, no eyebrows, no section numbers; hierarchy by scale alone.
+STORY: A builder or a homeowner sees one family-held Class I licence that has carried 73 jobs from
+  sanctioned supply to commissioning, then messages the proprietor on WhatsApp.
+FIRST VIEWPORT: Zinc field. Left, the claim at poster scale in Khand with one glazed word; beneath it
+  one supporting sentence, then the brass WhatsApp action. Right, a monumental purple-glazed insulator
+  stack rising off the bottom edge, its specular highlight tracking the pointer.
+FORM: Pole-line hardware as material object — candidate 7 of my resonance-ordered list, seed 5c5da9b3.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review and the
+  documenter, not at a clean detector pass.
+-->
+
+<Boot />
+
+<!-- one set of porcelain/zinc defs for every stack on the page -->
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <radialGradient id="gz" cx="34%" cy="24%" r="78%">
+      <stop offset="0%"   stop-color="#B96FE8" />
+      <stop offset="34%"  stop-color="#7A22C4" />
+      <stop offset="72%"  stop-color="#580E8F" />
+      <stop offset="100%" stop-color="#2E0650" />
+    </radialGradient>
+    <linearGradient id="zn" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#6E747B" />
+      <stop offset="26%"  stop-color="#C6C8CC" />
+      <stop offset="58%"  stop-color="#8A8F96" />
+      <stop offset="100%" stop-color="#5B6067" />
+    </linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#C89BEA" stop-opacity=".95" />
+      <stop offset="100%" stop-color="#C89BEA" stop-opacity="0" />
+    </linearGradient>
+    <!-- a cap-and-pin disc: shadow, tucked skirt, brim, rib, dome, boss, one narrow specular -->
+    <g id="disc">
+      <ellipse cx="130" cy="60" rx="106" ry="19" fill="#1B0433" opacity=".5" />
+      <path d="M14 40c0 17 52 30 116 30s116-13 116-30v9c0 18-52 31-116 31S14 67 14 49Z" fill="#2A0550" />
+      <ellipse cx="130" cy="40" rx="116" ry="27" fill="url(#gz)" />
+      <ellipse cx="130" cy="40" rx="86" ry="19" fill="none" stroke="#3B0968" stroke-opacity=".4" stroke-width="1.5" />
+      <ellipse cx="130" cy="31" rx="58" ry="15" fill="#6A18AB" />
+      <ellipse cx="130" cy="28" rx="22" ry="6" fill="#43097A" />
+      <path class="spec" d="M54 32c11-10 35-16 58-16" fill="none" stroke="#EBD8F8" stroke-opacity=".6"
+            stroke-width="5" stroke-linecap="round" />
+      <ellipse cx="130" cy="40" rx="116" ry="27" fill="none" stroke="url(#rim)" stroke-width="2" />
+    </g>
+  </defs>
+</svg>
+
+<Masthead path={path} />
+<main id="top">
+  <slot />
+</main>
+<Foot />
+
+<script>
+  import { initMotion } from '../scripts/motion';
+  initMotion();
+</script>
+</body>
+</html>

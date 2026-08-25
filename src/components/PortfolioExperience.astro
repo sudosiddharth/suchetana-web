@@ -1,0 +1,123 @@
+---
+import Gallery from './Gallery.astro';
+import Register from './Register.astro';
+---
+<section class="portfolioExperience" data-portfolio-experience>
+  <div class="viewRail" aria-label="Portfolio view">
+    <div class="viewRailIn">
+      <p><span data-view-label>Film</span><small>Suchetana Electricals · work archive</small></p>
+      <div class="viewSwitch" role="group" aria-label="Choose portfolio view">
+        <button type="button" data-view="film" aria-pressed="true">Film</button>
+        <button type="button" data-view="index" aria-pressed="false">Project index</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="currentFlash" aria-hidden="true"><i></i></div>
+
+  <div class="viewPanel filmPanel" data-panel="film">
+    <Gallery />
+  </div>
+  <div class="viewPanel indexPanel" data-panel="index" hidden>
+    <Register />
+  </div>
+</section>
+
+<script>
+  const experience = document.querySelector<HTMLElement>('[data-portfolio-experience]');
+  if (experience) {
+    const buttons = [...experience.querySelectorAll<HTMLButtonElement>('[data-view]')];
+    const panels = [...experience.querySelectorAll<HTMLElement>('[data-panel]')];
+    const label = experience.querySelector<HTMLElement>('[data-view-label]');
+    const flash = experience.querySelector<HTMLElement>('.currentFlash');
+    const quiet = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let active = 'film';
+
+    const switchTo = (next: string, moveFocus = false) => {
+      if (next === active) return;
+      active = next;
+      if (!quiet && flash) {
+        flash.classList.remove('trip');
+        void flash.offsetWidth;
+        flash.classList.add('trip');
+      }
+      window.setTimeout(() => {
+        panels.forEach((panel) => { panel.hidden = panel.dataset.panel !== next; });
+        buttons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.view === next)));
+        if (label) label.textContent = next === 'film' ? 'Film' : 'Project index';
+        experience.dataset.active = next;
+        history.replaceState(null, '', next === 'index' ? '#project-index' : location.pathname);
+        scrollTo({ top: 0, behavior: quiet ? 'auto' : 'smooth' });
+        if (moveFocus) experience.querySelector<HTMLButtonElement>(`[data-view="${next}"]`)?.focus();
+      }, quiet ? 0 : 230);
+    };
+
+    buttons.forEach((button) => button.addEventListener('click', () => switchTo(button.dataset.view ?? 'film')));
+    if (location.hash === '#project-index') switchTo('index');
+    addEventListener('hashchange', () => switchTo(location.hash === '#project-index' ? 'index' : 'film'));
+  }
+</script>
+
+<style>
+  .portfolioExperience { background: #0D0C10; min-height: 100dvh; position: relative; }
+  .viewRail {
+    position: sticky; top: 0; z-index: 28; height: 0; overflow: visible;
+    color: #fff; pointer-events: none;
+  }
+  .viewRailIn {
+    width: min(1400px, calc(100% - 2 * var(--pad-x))); margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center; gap: 20px;
+    padding-top: 16px; pointer-events: auto;
+  }
+  .viewRail p {
+    color: #fff; font-family: var(--disp); font-size: 18px; line-height: 1;
+    text-shadow: 0 1px 14px rgba(0,0,0,.8);
+  }
+  .viewRail p small {
+    display: block; margin-top: 5px; font-family: var(--text); color: rgba(255,255,255,.62);
+    font-size: 9px; letter-spacing: .13em; text-transform: uppercase;
+  }
+  .viewSwitch {
+    display: flex; padding: 4px; background: rgba(13,12,16,.82);
+    border: 1px solid rgba(255,255,255,.18); box-shadow: 0 10px 36px -18px rgba(0,0,0,.9);
+    backdrop-filter: blur(14px);
+  }
+  .viewSwitch button {
+    border: 0; background: transparent; color: rgba(255,255,255,.7); cursor: pointer;
+    padding: 9px 14px 7px; font-family: var(--disp); font-size: 15px; font-weight: 600;
+    transition: color 260ms var(--ease), background 260ms var(--ease), transform 180ms var(--ease);
+  }
+  .viewSwitch button:hover { color: #fff; }
+  .viewSwitch button:active { transform: scale(.97); }
+  .viewSwitch button[aria-pressed="true"] { color: #fff; background: var(--glaze); }
+  .viewPanel[hidden] { display: none !important; }
+
+  .currentFlash { position: fixed; inset: 0; z-index: 27; pointer-events: none; visibility: hidden; }
+  .currentFlash i {
+    position: absolute; left: -15vw; top: 50%; width: 130vw; height: 2px;
+    background: #fff; box-shadow: 0 0 10px #fff, 0 0 34px var(--glaze-hi), 0 0 90px var(--glaze);
+    transform: scaleX(0); transform-origin: left;
+  }
+  .currentFlash.trip { visibility: visible; }
+  .currentFlash.trip i { animation: currentTrip 480ms cubic-bezier(.7,0,.2,1) both; }
+  @keyframes currentTrip {
+    0% { transform: scaleX(0); opacity: 0; }
+    35% { transform: scaleX(1); opacity: 1; }
+    100% { transform: scaleX(1); opacity: 0; }
+  }
+
+  .indexPanel { background: var(--lime); padding-top: 76px; min-height: 100dvh; }
+  .indexPanel :global(.reg) { padding-top: clamp(44px, 6vw, 86px); }
+  .indexPanel :global(.regBar) { top: 0; }
+
+  @media (max-width: 640px) {
+    .viewRailIn { width: calc(100% - 24px); padding-top: 10px; }
+    .viewRail p small { display: none; }
+    .viewSwitch button { padding: 8px 10px 6px; font-size: 13px; }
+    .indexPanel { padding-top: 58px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .currentFlash { display: none; }
+    .viewSwitch button { transition: none; }
+  }
+</style>

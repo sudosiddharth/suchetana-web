@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suchetana Electricals — Founder / Three generations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --purple:#580E8F;
+  --purple-deep:#3A0960;
+  --purple-lift:#8B2FD6;
+  --plum:#250640;
+  --wash:#EADCF6;
+  --wash-2:#C3A6DC;
+  --wash-3:#9B84B4;
+  --line:rgba(255,255,255,.2);
+  --amber:#F0B049;
+  --serif:"Instrument Serif",Georgia,serif;
+  --sans:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--purple);color:#fff;font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1340px;margin:0 auto;padding:0 clamp(20px,4vw,60px);width:100%}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(88,14,143,.9);backdrop-filter:blur(10px)}
+nav .wrap{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+nav .lk{display:flex;align-items:center;gap:12px}
+nav .lk img{height:27px;width:auto}
+nav .lk b{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.wa{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--purple);background:#fff;font-size:12.5px;font-weight:600;padding:9px 14px;border-radius:2px;transition:all .2s}
+.wa:hover{background:var(--amber);color:var(--plum);transform:translateY(-1px)}
+.wa svg{width:15px;height:15px}
+
+.kick{display:flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:20px}
+.kick i{width:26px;height:2px;background:var(--amber);display:block}
+
+/* proprietor */
+.prop{padding:clamp(104px,12vw,150px) 0 clamp(40px,6vw,80px)}
+.pgrid{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:start}
+@media(max-width:940px){.pgrid{grid-template-columns:1fr;gap:32px}}
+.portrait{border:1px solid var(--line);aspect-ratio:4/5;display:grid;place-items:center;position:relative;background:rgba(0,0,0,.14)}
+.portrait .mono{font-family:var(--serif);font-size:clamp(3rem,7vw,5.4rem);letter-spacing:.02em;color:rgba(255,255,255,.5)}
+.portrait .tag{position:absolute;left:0;bottom:0;right:0;padding:14px 16px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--wash-3);border-top:1px solid var(--line)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,6vw,4.6rem);line-height:1;letter-spacing:-.03em}
+.role{margin-top:14px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+.bio{margin-top:24px;max-width:52ch;color:var(--wash);line-height:1.72;font-size:clamp(1rem,1.2vw,1.1rem)}
+.bio b{color:#fff;font-weight:600}
+.pull{margin-top:26px;border-left:2px solid var(--amber);padding-left:18px;font-family:var(--serif);font-size:clamp(1.2rem,2.2vw,1.75rem);line-height:1.2;letter-spacing:-.02em}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(18px,3vw,40px);margin-top:30px}
+@media(max-width:620px){.meta{grid-template-columns:1fr}}
+.mr{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.mr .k{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--wash-3)}
+.mr .v{font-size:13.5px;text-align:right}
+.repr{margin-top:30px}
+.repr .h{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--wash-3);margin-bottom:12px}
+.rp{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line)}
+.rp .n{font-size:14.5px}
+.rp .n small{display:block;color:var(--wash-3);font-size:11.5px;margin-top:3px}
+.rp .l{font-family:var(--serif);font-size:1.25rem;letter-spacing:-.02em;white-space:nowrap;color:var(--amber)}
+
+/* horizontal lineage */
+.stage{position:relative;overflow:hidden;border-top:1px solid var(--line)}
+.track{display:flex;align-items:stretch}
+.panel{flex:0 0 100vw;min-height:88vh;display:flex;align-items:center;padding:70px 0}
+@media(max-width:900px){.track{flex-direction:column}.panel{flex:0 0 auto;min-height:auto;padding:56px 0;border-bottom:1px solid var(--line)}}
+.gen{display:grid;grid-template-columns:minmax(0,.6fr) minmax(0,1fr);gap:clamp(26px,5vw,72px);align-items:center;width:100%}
+@media(max-width:1000px){.gen{grid-template-columns:1fr;gap:26px}}
+.year{font-family:var(--serif);font-weight:400;font-size:clamp(4.4rem,14vw,12rem);line-height:.8;letter-spacing:-.05em;color:rgba(255,255,255,.15);font-variant-numeric:tabular-nums}
+.gen.alt .year{color:var(--amber);opacity:.92}
+.tile{width:clamp(70px,8vw,104px);aspect-ratio:1;display:grid;place-items:center;border:1px solid var(--line);font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.9rem);letter-spacing:.04em;margin-bottom:20px}
+.gen h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,3.8vw,3rem);line-height:1.06;letter-spacing:-.024em;max-width:21ch}
+.gen .r{margin-top:12px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+.gen p{margin-top:16px;max-width:50ch;color:var(--wash);line-height:1.7}
+.facts{margin-top:22px;display:flex;flex-wrap:wrap;gap:9px}
+.fact{border:1px solid var(--line);padding:8px 12px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--wash-2)}
+.rail{position:fixed;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.16);z-index:70}
+.rail i{display:block;height:100%;width:0%;background:var(--amber)}
+
+/* team */
+.team{background:var(--plum);padding:clamp(46px,7vw,96px) 0}
+.ttop{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:clamp(24px,3.4vw,40px)}
+.ttop h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,3.6vw,2.8rem);letter-spacing:-.025em;max-width:24ch;line-height:1.08}
+.ttop span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--wash-3)}
+.tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2.2vw,26px)}
+@media(max-width:1000px){.tgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.tgrid{grid-template-columns:1fr}}
+.person{border-top:1px solid var(--line);padding-top:16px}
+.person .in{font-family:var(--serif);font-size:1.5rem;color:var(--purple-lift);letter-spacing:.02em}
+.person h4{font-family:var(--serif);font-weight:400;font-size:1.3rem;margin-top:12px;letter-spacing:-.02em;line-height:1.15}
+.person .rr{margin-top:8px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.person p{margin-top:12px;font-size:13px;color:var(--wash-2);line-height:1.6}
+.person .yrs{margin-top:12px;font-family:var(--serif);font-size:1.6rem;letter-spacing:-.02em;color:#fff}
+.person .yrs small{font-family:var(--sans);font-size:.4em;letter-spacing:.14em;text-transform:uppercase;color:var(--wash-3);margin-left:.4em}
+
+.badge{position:fixed;left:16px;bottom:14px;z-index:90;background:#fff;color:var(--purple);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;border-radius:2px}
+.note{position:fixed;right:16px;bottom:14px;z-index:90;background:rgba(0,0,0,.42);color:var(--wash-2);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:7px 10px;border-radius:2px;max-width:44vw}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="lk"><img src="assets/se-logo-white.png" alt="Suchetana Electricals"><b>Suchetana Electricals</b></div>
+    <a class="wa" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.16c-.25.69-1.44 1.31-1.99 1.36-.53.05-1.02.24-3.44-.72-2.9-1.14-4.74-4.1-4.88-4.29-.14-.19-1.16-1.55-1.16-2.95 0-1.4.73-2.09 1-2.38.24-.27.55-.34.73-.34h.53c.17 0 .4-.06.62.48.25.6.85 2.08.92 2.23.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.3 2.35 1.45.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.15.26.1 1.65.78 1.94.92.29.14.48.22.55.34.07.12.07.7-.18 1.39Z"/></svg>WhatsApp</a>
+  </div>
+</nav>
+
+<div class="rail"><i id="railFill"></i></div>
+
+<section class="prop">
+  <div class="wrap">
+    <div class="kick" data-a><i></i>The proprietor</div>
+    <div class="pgrid">
+      <div class="portrait" data-a>
+        <span class="mono">MS</span>
+        <span class="tag">Portrait awaited from the client</span>
+      </div>
+      <div>
+        <h1 data-a>Mr. Madhusudan M.S.</h1>
+        <div class="role" data-a>Proprietor · second generation · 35 years in the trade</div>
+        <p class="bio" data-a>Son of the founder, he assisted his father from a very young age. He
+          provides the direction and focus of the organisation and has been instrumental in achieving
+          its market and financial goals. <b>He holds the Class I contractor licence himself</b>, and
+          is currently identifying and entering new markets for the firm's contracts and services.</p>
+        <p class="pull" data-a>The name on the licence is the name that answers the phone.</p>
+        <div class="meta" data-stagger>
+          <div class="mr"><span class="k">Qualification</span><span class="v">Dip. Electrical Engineering, BBM</span></div>
+          <div class="mr"><span class="k">In the trade</span><span class="v">35 years</span></div>
+          <div class="mr"><span class="k">Contractor licence</span><span class="v">Class I — 1CL192563BNG</span></div>
+          <div class="mr"><span class="k">Supervisor licence</span><span class="v">1SP191691BNG</span></div>
+        </div>
+        <div class="repr" data-a>
+          <div class="h">Representative projects, signed personally</div>
+          <div class="rp"><span class="n">MRO-TEK Pvt. Ltd.<small>Bellary Road, Hebbal</small></span><span class="l">1000 KVA</span></div>
+          <div class="rp"><span class="n">66/11 KV state sub-station<small>Chitradurga, Karnataka</small></span><span class="l">2 × 8 MW</span></div>
+          <div class="rp"><span class="n">Azim Premji Foundation<small>Sarjapura Road, Bengaluru</small></span><span class="l">200 KVA</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stage" id="stage">
+  <div class="track" id="track">
+
+    <section class="panel">
+      <div class="wrap gen">
+        <div class="year" data-anim>1969</div>
+        <div data-anim>
+          <div class="tile">SM</div>
+          <h2>Sri Subramanyappa M. founds the firm.</h2>
+          <div class="r">Founder · Licensed Electrical Engineer, Mysore State</div>
+          <p>A proprietorship set up to take domestic, commercial and industrial electrical
+             contracting work — Class I from the outset. He gives the firm stable direction for close
+             to three decades, and sets its market and financial course.</p>
+          <div class="facts"><span class="fact">Class I from day one</span><span class="fact">Mysore State licence</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="wrap gen alt">
+        <div class="year" data-anim>1996</div>
+        <div data-anim>
+          <div class="tile">MS</div>
+          <h2>A generation hands over.</h2>
+          <div class="r">Mr. Madhusudan M.S. · proprietor</div>
+          <p>The founder retires after twenty-seven years at the head of the firm. His son — on site
+             with him since childhood — takes the licence and the responsibility, and has held both
+             for the thirty years since.</p>
+          <div class="facts"><span class="fact">Founder retires 1996</span><span class="fact">No change of family</span><span class="fact">No change of licence class</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="wrap gen">
+        <div class="year" data-anim>Today</div>
+        <div data-anim>
+          <div class="tile">SMS</div>
+          <h2>Mr. Suchetan M.S. runs the engineering.</h2>
+          <div class="r">Concept Design Architect · Graduate Electrical Engineer · 34 years</div>
+          <p>The third generation oversees engineering and implementation across the firm —
+             long-term resource planning, skills advancement, metrics control, and co-ordination
+             between engineering and site. He brings thirty-four years in electrical networking of
+             computer systems and other high-end equipment.</p>
+          <div class="facts"><span class="fact">University of Bangalore</span><span class="fact">Engineering &amp; implementation</span></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<section class="team">
+  <div class="wrap">
+    <div class="ttop">
+      <h2 data-a>Directed by three generations. Held up by a site team measured in decades.</h2>
+      <span data-a>Engineering &amp; site</span>
+    </div>
+    <div class="tgrid" data-stagger>
+      <div class="person">
+        <div class="in">JS</div>
+        <h4>Mr. Jagadisha S.</h4>
+        <div class="rr">Project Manager · Supervisor &amp; Site In-charge</div>
+        <p>Holds Government of Karnataka supervisor and wireman licences. Arranges manpower,
+           equipment and logistics for installation and commissioning.</p>
+        <div class="yrs">38<small>years with the firm</small></div>
+      </div>
+      <div class="person">
+        <div class="in">YM</div>
+        <h4>Mr. Yatish M.</h4>
+        <div class="rr">Implementation Manager</div>
+        <p>Foreman Training Institute qualified, with experience across construction and electrical
+           servicing in industrial, commercial and domestic sectors.</p>
+        <div class="yrs">24<small>years experience</small></div>
+      </div>
+      <div class="person">
+        <div class="in">SG</div>
+        <h4>Mr. Siddappa G.C.</h4>
+        <div class="rr">Technical Support · Supervisor &amp; Site In-charge</div>
+        <p>Diploma in Electrical Engineering. Handles plan execution, site charge and the planning of
+           manpower and equipment.</p>
+        <div class="yrs">16<small>years experience</small></div>
+      </div>
+      <div class="person">
+        <div class="in">VV</div>
+        <h4>Mr. Vinod V.</h4>
+        <div class="rr">Technical Support · Quantity Take-off</div>
+        <p>B.E. Electrical &amp; Electronics. Plan execution, site charge, billing and quantity
+           take-off across installation and commissioning.</p>
+        <div class="yrs">B.E.<small>Electrical &amp; Electronics</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="badge">Lineage — Founder</div>
+<div class="note">Monogram tiles stand in until portraits arrive</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (window.gsap && !reduce){
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray('[data-a]').forEach(el => {
+    gsap.from(el, {opacity:0, y:26, duration:.8, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 90%'}});
+  });
+  gsap.utils.toArray('[data-stagger]').forEach(g => {
+    gsap.from(g.children, {opacity:0, y:28, duration:.7, stagger:.08, ease:'power3.out',
+      scrollTrigger:{trigger:g, start:'top 86%'}});
+  });
+
+  const mm = gsap.matchMedia();
+
+  mm.add('(min-width: 901px)', () => {
+    const track = document.getElementById('track');
+    const dist = () => track.scrollWidth - window.innerWidth;
+    const sweep = gsap.to(track, {
+      x: () => -dist(), ease:'none',
+      scrollTrigger:{
+        trigger:'#stage', start:'top top', end:() => '+=' + dist(),
+        pin:true, scrub:.8, invalidateOnRefresh:true,
+        onUpdate: s => { document.getElementById('railFill').style.width = (s.progress*100)+'%'; }
+      }
+    });
+    gsap.utils.toArray('.panel').forEach(p => {
+      gsap.from(p.querySelectorAll('[data-anim]'), {
+        opacity:0, y:50, duration:.9, stagger:.12, ease:'power3.out',
+        scrollTrigger:{trigger:p, containerAnimation:sweep, start:'left 74%'}
+      });
+      const yr = p.querySelector('.year');
+      if (yr) gsap.fromTo(yr, {x:64}, {x:-38, ease:'none',
+        scrollTrigger:{trigger:p, containerAnimation:sweep, start:'left right', end:'right left', scrub:true}});
+    });
+  });
+
+  mm.add('(max-width: 900px)', () => {
+    gsap.utils.toArray('.panel').forEach(p => {
+      gsap.from(p.querySelectorAll('[data-anim]'), {
+        opacity:0, y:36, duration:.8, stagger:.1, ease:'power3.out',
+        scrollTrigger:{trigger:p, start:'top 78%'}
+      });
+    });
+    ScrollTrigger.create({trigger:'body', start:'top top', end:'bottom bottom', scrub:true,
+      onUpdate: s => { document.getElementById('railFill').style.width = (s.progress*100)+'%'; }});
+  });
+}
+</script>
+</body>
+</html>
